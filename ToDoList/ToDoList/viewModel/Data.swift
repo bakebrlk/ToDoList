@@ -14,15 +14,15 @@ struct Data{
             WelcomePageClass(id: 0,
                              title: "Task Managment & To-Do List",
                              description: "This productive tool is designed to help you better manage your task project-wise conveniently!",
-                             imageName: "welcome1"),
+                             imageName: "onbording1"),
             WelcomePageClass(id: 1,
                              title: "Task Managment & To-Do List",
                              description: "This productive tool is designed to help you better manage your task project-wise conveniently!",
-                             imageName: "welcome1"),
+                             imageName: "onbording2"),
             WelcomePageClass(id: 1,
                              title: "Task Managment & To-Do List",
                              description: "This productive tool is designed to help you better manage your task project-wise conveniently!",
-                             imageName: "welcome1"),
+                             imageName: "onbording3"),
             
         ]
     }

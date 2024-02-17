@@ -18,13 +18,14 @@ struct WelcomePageModel: View{
     
     @State private var descriptionView = Text("")
     
-    private var imageView: Image {
-        Image(imageName)
-    }
+    @State private var imageView = Image("")
     
     var body: some View {
         VStack {
+            imageView
+                .padding()
             titleView
+                .padding()
             descriptionView
         }
         .onAppear{
@@ -41,6 +42,8 @@ extension WelcomePageModel {
         
         titleView = textView(text: title, font: .title)
         descriptionView = textView(text: desciption, font: .largeTitle)
+        imageView = Image(imageName)
+            
     }
 }
 
