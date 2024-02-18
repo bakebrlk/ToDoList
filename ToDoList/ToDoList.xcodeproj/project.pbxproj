@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B1601212B82B56A0017FD2B /* LexendDeca-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8B1601202B82B56A0017FD2B /* LexendDeca-Regular.ttf */; };
 		8B279F322B80A16E00C1C298 /* ToDoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B279F312B80A16E00C1C298 /* ToDoListApp.swift */; };
 		8B279F342B80A16E00C1C298 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B279F332B80A16E00C1C298 /* ContentView.swift */; };
 		8B279F362B80A17000C1C298 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B279F352B80A17000C1C298 /* Assets.xcassets */; };
@@ -20,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B1601202B82B56A0017FD2B /* LexendDeca-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LexendDeca-Regular.ttf"; sourceTree = "<group>"; };
+		8B16013C2B82B8710017FD2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B279F2E2B80A16E00C1C298 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B279F312B80A16E00C1C298 /* ToDoListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListApp.swift; sourceTree = "<group>"; };
 		8B279F332B80A16E00C1C298 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +47,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B16011C2B82B3EC0017FD2B /* img */ = {
+			isa = PBXGroup;
+			children = (
+				8BC1B6E52B8158380069ECF6 /* onbording3.png */,
+				8BC1B6E72B8158380069ECF6 /* onbording1.png */,
+				8BC1B6E62B8158380069ECF6 /* onbording2.png */,
+			);
+			path = img;
+			sourceTree = "<group>";
+		};
+		8B16011D2B82B4090017FD2B /* font */ = {
+			isa = PBXGroup;
+			children = (
+				8B1601202B82B56A0017FD2B /* LexendDeca-Regular.ttf */,
+			);
+			path = font;
+			sourceTree = "<group>";
+		};
 		8B279F252B80A16E00C1C298 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				8B279F312B80A16E00C1C298 /* ToDoListApp.swift */,
+				8B16013C2B82B8710017FD2B /* Info.plist */,
 				8B279F352B80A17000C1C298 /* Assets.xcassets */,
 			);
 			path = main;
@@ -118,9 +140,8 @@
 		8BC1B6DE2B81579E0069ECF6 /* source */ = {
 			isa = PBXGroup;
 			children = (
-				8BC1B6E72B8158380069ECF6 /* onbording1.png */,
-				8BC1B6E62B8158380069ECF6 /* onbording2.png */,
-				8BC1B6E52B8158380069ECF6 /* onbording3.png */,
+				8B16011D2B82B4090017FD2B /* font */,
+				8B16011C2B82B3EC0017FD2B /* img */,
 			);
 			path = source;
 			sourceTree = "<group>";
@@ -187,6 +208,7 @@
 				8BC1B6E92B8158380069ECF6 /* onbording2.png in Resources */,
 				8B279F362B80A17000C1C298 /* Assets.xcassets in Resources */,
 				8BC1B6E82B8158380069ECF6 /* onbording3.png in Resources */,
+				8B1601212B82B56A0017FD2B /* LexendDeca-Regular.ttf in Resources */,
 				8BC1B6EA2B8158380069ECF6 /* onbording1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,6 +360,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ToDoList/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ToDoList/main/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -366,6 +389,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ToDoList/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ToDoList/main/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

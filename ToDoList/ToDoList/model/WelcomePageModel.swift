@@ -33,14 +33,15 @@ struct WelcomePageModel: View{
                     HStack{
 
                         Spacer()
-                        textView(text: "Let's Start", font: .system(.title3, weight: .bold))
+                        Text("Let's Start")  
+                            .font( .system(.title3, weight: .bold))
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
                             .padding(.leading)
                                                 
                         Spacer()
-
-                        textView(text: "->", font: .system(.title3, weight: .bold))
+                        
+                        textView(text: "->", weight: .bold, size: 22)
                             .foregroundColor(.white)
                             .padding(.trailing)
                     }
@@ -70,11 +71,12 @@ struct WelcomePageModel: View{
                 
                 descriptionView
                     .multilineTextAlignment(.center)
+                    .foregroundColor(Color(red: 0.43, green: 0.416, blue: 0.486))
                     .padding()
                 Spacer()
                 
                 nextPage
-                    .frame(maxWidth: .infinity, maxHeight: make.size.height/10)
+                    .frame(maxWidth: .infinity, maxHeight: make.size.height/12)
                     .background(Color.purple)
                     .cornerRadius(18)
                     .padding()
@@ -92,18 +94,21 @@ extension WelcomePageModel {
         desciption = Data.WelcomePage.data[id].description
         imageName = Data.WelcomePage.data[id].imageName
         
-        titleView = textView(text: title, font: .system(size: 36, weight: .medium))
-        descriptionView = textView(text: desciption, font: .system(size: 22, weight: .thin))
+        titleView = textView(text: title, weight: .bold, size: 34)
+        descriptionView = textView(text: desciption, weight: .thin, size: 18)
+        
         imageView = Image(imageName)
             
     }
 }
 
 extension WelcomePageModel {
-    func textView(text: String, font: Font) -> Text{
+    func textView(text: String, weight: Font.Weight, size: CGFloat)-> Text{
         Text(text)
-            .font(font)
-        
+            .fontWeight(weight)
+            .font(.custom("LexendDeca-Regular", size: size))
+            
+            
     }
 }
 
