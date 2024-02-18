@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		8B1601212B82B56A0017FD2B /* LexendDeca-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8B1601202B82B56A0017FD2B /* LexendDeca-Regular.ttf */; };
+		8B16013E2B82C4A10017FD2B /* CheckAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B16013D2B82C4A10017FD2B /* CheckAccountView.swift */; };
+		8B1601402B82C57A0017FD2B /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B16013F2B82C57A0017FD2B /* CustomButton.swift */; };
+		8B1601422B82C6960017FD2B /* CustomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1601412B82C6960017FD2B /* CustomText.swift */; };
 		8B279F322B80A16E00C1C298 /* ToDoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B279F312B80A16E00C1C298 /* ToDoListApp.swift */; };
-		8B279F342B80A16E00C1C298 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B279F332B80A16E00C1C298 /* ContentView.swift */; };
 		8B279F362B80A17000C1C298 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B279F352B80A17000C1C298 /* Assets.xcassets */; };
 		8B279F392B80A17000C1C298 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B279F382B80A17000C1C298 /* Preview Assets.xcassets */; };
 		8B40321A2B80B0590097D29C /* WelcomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4032192B80B0590097D29C /* WelcomePageView.swift */; };
@@ -23,9 +25,11 @@
 /* Begin PBXFileReference section */
 		8B1601202B82B56A0017FD2B /* LexendDeca-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LexendDeca-Regular.ttf"; sourceTree = "<group>"; };
 		8B16013C2B82B8710017FD2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B16013D2B82C4A10017FD2B /* CheckAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAccountView.swift; sourceTree = "<group>"; };
+		8B16013F2B82C57A0017FD2B /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		8B1601412B82C6960017FD2B /* CustomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomText.swift; sourceTree = "<group>"; };
 		8B279F2E2B80A16E00C1C298 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B279F312B80A16E00C1C298 /* ToDoListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListApp.swift; sourceTree = "<group>"; };
-		8B279F332B80A16E00C1C298 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8B279F352B80A17000C1C298 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B279F382B80A17000C1C298 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8B4032192B80B0590097D29C /* WelcomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageView.swift; sourceTree = "<group>"; };
@@ -116,6 +120,8 @@
 			isa = PBXGroup;
 			children = (
 				8B40321D2B80C4930097D29C /* WelcomePageModel.swift */,
+				8B16013F2B82C57A0017FD2B /* CustomButton.swift */,
+				8B1601412B82C6960017FD2B /* CustomText.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -124,7 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				8B4032192B80B0590097D29C /* WelcomePageView.swift */,
-				8B279F332B80A16E00C1C298 /* ContentView.swift */,
+				8B16013D2B82C4A10017FD2B /* CheckAccountView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -220,8 +226,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B279F342B80A16E00C1C298 /* ContentView.swift in Sources */,
+				8B1601422B82C6960017FD2B /* CustomText.swift in Sources */,
+				8B16013E2B82C4A10017FD2B /* CheckAccountView.swift in Sources */,
 				8B40321A2B80B0590097D29C /* WelcomePageView.swift in Sources */,
+				8B1601402B82C57A0017FD2B /* CustomButton.swift in Sources */,
 				8B279F322B80A16E00C1C298 /* ToDoListApp.swift in Sources */,
 				8B40321E2B80C4930097D29C /* WelcomePageModel.swift in Sources */,
 				8B40321C2B80C3480097D29C /* Data.swift in Sources */,

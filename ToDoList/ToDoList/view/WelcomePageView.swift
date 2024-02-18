@@ -41,7 +41,7 @@ struct WelcomePageView: View{
                                                 
                         Spacer()
                         
-                        textView(text: "->", weight: .bold, size: 22)
+                        textView(text: "->", size: 22)
                             .foregroundColor(.white)
                             .padding(.trailing)
                     }
@@ -93,20 +93,10 @@ extension WelcomePageView {
         desciption = Data.WelcomePage.data[id].description
         imageName = Data.WelcomePage.data[id].imageName
         
-        titleView = textView(text: title, weight: .bold, size: 34)
-        descriptionView = textView(text: desciption, weight: .thin, size: 18)
+        titleView = textView(text: title, size: 34)
+        descriptionView = textView(text: desciption, size: 18)
         
         imageView = Image(imageName)
-            
-    }
-}
-
-extension WelcomePageView {
-    func textView(text: String, weight: Font.Weight, size: CGFloat)-> Text{
-        Text(text)
-            .fontWeight(weight)
-            .font(.custom("LexendDeca-Regular", size: size))
-            
             
     }
 }
