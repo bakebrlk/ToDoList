@@ -73,7 +73,6 @@ struct WelcomePageView: View{
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color(red: 0.43, green: 0.416, blue: 0.486))
                     .padding()
-                Spacer()
                 
                 nextPage
                     .frame(maxWidth: .infinity, maxHeight: make.size.height/12)
