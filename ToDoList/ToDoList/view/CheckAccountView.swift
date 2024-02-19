@@ -11,19 +11,29 @@ struct CheckAccountView: View {
     
     var body: some View {
         
-        VStack{
-            
-            welcomeText
-            buttons
+        GeometryReader { make in
+            VStack{
+                Spacer()
+                welcomePhoto
+                Spacer()
+                welcomeText
+                buttons
+                    .frame(maxWidth: .infinity, maxHeight: make.size.height/6)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.purple)
             
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.purple)
-        
     }
 }
 
 extension CheckAccountView {
+    
+    private var welcomePhoto: some View {
+        Image("checkAcc")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+    }
     
     private var welcomeText: some View {
         textView(text: "Welcome to the task management app", size: 32)
@@ -32,18 +42,21 @@ extension CheckAccountView {
     }
     
     private var buttons: some View {
-        GeometryReader { make in
-            VStack{
-                customButton(text: "I've already account ", action: haveAccount())
-                    .foregroundColor(.white)
-                customButton(text: "Sign Up", action: signUp())
-                    .frame(maxWidth: make.size.width, maxHeight: make.size.height/14)
-                    .background(Color.white)
-                    .foregroundColor(.black)
-                    .cornerRadius(18)
-                    .padding()
-            }
+         
+        VStack{
+            Spacer()
+            customButton(text: "I've already account ", action: haveAccount())
+                .foregroundColor(.white)
+            customButton(text: "Sign Up", action: signUp())
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.white)
+                .foregroundColor(.black)
+                .cornerRadius(18)
+                .padding()
+            
         }
+        
+        
     }
 }
 

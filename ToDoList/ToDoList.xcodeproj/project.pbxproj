@@ -11,6 +11,7 @@
 		8B16013E2B82C4A10017FD2B /* CheckAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B16013D2B82C4A10017FD2B /* CheckAccountView.swift */; };
 		8B1601402B82C57A0017FD2B /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B16013F2B82C57A0017FD2B /* CustomButton.swift */; };
 		8B1601422B82C6960017FD2B /* CustomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1601412B82C6960017FD2B /* CustomText.swift */; };
+		8B1601442B82CD000017FD2B /* checkAcc.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B1601432B82CD000017FD2B /* checkAcc.png */; };
 		8B279F322B80A16E00C1C298 /* ToDoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B279F312B80A16E00C1C298 /* ToDoListApp.swift */; };
 		8B279F362B80A17000C1C298 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B279F352B80A17000C1C298 /* Assets.xcassets */; };
 		8B279F392B80A17000C1C298 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B279F382B80A17000C1C298 /* Preview Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		8B16013D2B82C4A10017FD2B /* CheckAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAccountView.swift; sourceTree = "<group>"; };
 		8B16013F2B82C57A0017FD2B /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		8B1601412B82C6960017FD2B /* CustomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomText.swift; sourceTree = "<group>"; };
+		8B1601432B82CD000017FD2B /* checkAcc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkAcc.png; sourceTree = "<group>"; };
 		8B279F2E2B80A16E00C1C298 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B279F312B80A16E00C1C298 /* ToDoListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListApp.swift; sourceTree = "<group>"; };
 		8B279F352B80A17000C1C298 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 		8B16011C2B82B3EC0017FD2B /* img */ = {
 			isa = PBXGroup;
 			children = (
+				8B1601432B82CD000017FD2B /* checkAcc.png */,
 				8BC1B6E52B8158380069ECF6 /* onbording3.png */,
 				8BC1B6E72B8158380069ECF6 /* onbording1.png */,
 				8BC1B6E62B8158380069ECF6 /* onbording2.png */,
@@ -214,6 +217,7 @@
 				8BC1B6E92B8158380069ECF6 /* onbording2.png in Resources */,
 				8B279F362B80A17000C1C298 /* Assets.xcassets in Resources */,
 				8BC1B6E82B8158380069ECF6 /* onbording3.png in Resources */,
+				8B1601442B82CD000017FD2B /* checkAcc.png in Resources */,
 				8B1601212B82B56A0017FD2B /* LexendDeca-Regular.ttf in Resources */,
 				8BC1B6EA2B8158380069ECF6 /* onbording1.png in Resources */,
 			);
