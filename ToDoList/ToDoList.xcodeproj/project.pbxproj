@@ -18,6 +18,8 @@
 		8B1601512B82F40F0017FD2B /* signin.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B1601502B82F40F0017FD2B /* signin.png */; };
 		8B1601532B82F6F70017FD2B /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1601522B82F6F70017FD2B /* SignIn.swift */; };
 		8B1601552B82F9B40017FD2B /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1601542B82F9B40017FD2B /* SignUp.swift */; };
+		8B1601572B82FC3F0017FD2B /* signup.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B1601562B82FC3E0017FD2B /* signup.png */; };
+		8B1601592B82FC7E0017FD2B /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1601582B82FC7E0017FD2B /* SignUpView.swift */; };
 		8B279F322B80A16E00C1C298 /* ToDoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B279F312B80A16E00C1C298 /* ToDoListApp.swift */; };
 		8B279F362B80A17000C1C298 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B279F352B80A17000C1C298 /* Assets.xcassets */; };
 		8B279F392B80A17000C1C298 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B279F382B80A17000C1C298 /* Preview Assets.xcassets */; };
@@ -42,6 +44,8 @@
 		8B1601502B82F40F0017FD2B /* signin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signin.png; sourceTree = "<group>"; };
 		8B1601522B82F6F70017FD2B /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		8B1601542B82F9B40017FD2B /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		8B1601562B82FC3E0017FD2B /* signup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signup.png; sourceTree = "<group>"; };
+		8B1601582B82FC7E0017FD2B /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		8B279F2E2B80A16E00C1C298 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B279F312B80A16E00C1C298 /* ToDoListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListApp.swift; sourceTree = "<group>"; };
 		8B279F352B80A17000C1C298 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -68,6 +72,7 @@
 		8B16011C2B82B3EC0017FD2B /* img */ = {
 			isa = PBXGroup;
 			children = (
+				8B1601562B82FC3E0017FD2B /* signup.png */,
 				8B1601502B82F40F0017FD2B /* signin.png */,
 				8B1601432B82CD000017FD2B /* checkAcc.png */,
 				8BC1B6E52B8158380069ECF6 /* onbording3.png */,
@@ -157,6 +162,7 @@
 				8B4032192B80B0590097D29C /* WelcomePageView.swift */,
 				8B16013D2B82C4A10017FD2B /* CheckAccountView.swift */,
 				8B16014C2B82D8CA0017FD2B /* SignInView.swift */,
+				8B1601582B82FC7E0017FD2B /* SignUpView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -241,6 +247,7 @@
 			files = (
 				8B279F392B80A17000C1C298 /* Preview Assets.xcassets in Resources */,
 				8BC1B6E92B8158380069ECF6 /* onbording2.png in Resources */,
+				8B1601572B82FC3F0017FD2B /* signup.png in Resources */,
 				8B279F362B80A17000C1C298 /* Assets.xcassets in Resources */,
 				8BC1B6E82B8158380069ECF6 /* onbording3.png in Resources */,
 				8B1601442B82CD000017FD2B /* checkAcc.png in Resources */,
@@ -265,6 +272,7 @@
 				8B16013E2B82C4A10017FD2B /* CheckAccountView.swift in Sources */,
 				8B16014F2B82DA060017FD2B /* CustomTextField.swift in Sources */,
 				8B40321A2B80B0590097D29C /* WelcomePageView.swift in Sources */,
+				8B1601592B82FC7E0017FD2B /* SignUpView.swift in Sources */,
 				8B1601402B82C57A0017FD2B /* CustomButton.swift in Sources */,
 				8B279F322B80A16E00C1C298 /* ToDoListApp.swift in Sources */,
 				8B40321E2B80C4930097D29C /* WelcomePageModel.swift in Sources */,
