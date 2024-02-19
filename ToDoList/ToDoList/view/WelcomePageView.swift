@@ -76,7 +76,7 @@ struct WelcomePageView: View{
                 
                 nextPage
                     .frame(maxWidth: .infinity, maxHeight: make.size.height/12)
-                    .background(Color.purple)
+                    .background(Color("purple"))
                     .cornerRadius(18)
                     .padding()
             }

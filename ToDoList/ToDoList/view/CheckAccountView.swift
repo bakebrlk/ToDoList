@@ -18,10 +18,10 @@ struct CheckAccountView: View {
                 Spacer()
                 welcomeText
                 buttons
-                    .frame(maxWidth: .infinity, maxHeight: make.size.height/6)
+                    .frame(maxWidth: .infinity, maxHeight: make.size.height/5.5)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.purple)
+            .background(Color("purple"))
             
         }
     }

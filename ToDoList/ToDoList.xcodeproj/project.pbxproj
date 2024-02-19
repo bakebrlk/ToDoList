@@ -12,6 +12,12 @@
 		8B1601402B82C57A0017FD2B /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B16013F2B82C57A0017FD2B /* CustomButton.swift */; };
 		8B1601422B82C6960017FD2B /* CustomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1601412B82C6960017FD2B /* CustomText.swift */; };
 		8B1601442B82CD000017FD2B /* checkAcc.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B1601432B82CD000017FD2B /* checkAcc.png */; };
+		8B16014B2B82D7580017FD2B /* StatusWelcomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B16014A2B82D7580017FD2B /* StatusWelcomePage.swift */; };
+		8B16014D2B82D8CA0017FD2B /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B16014C2B82D8CA0017FD2B /* SignInView.swift */; };
+		8B16014F2B82DA060017FD2B /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B16014E2B82DA060017FD2B /* CustomTextField.swift */; };
+		8B1601512B82F40F0017FD2B /* signin.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B1601502B82F40F0017FD2B /* signin.png */; };
+		8B1601532B82F6F70017FD2B /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1601522B82F6F70017FD2B /* SignIn.swift */; };
+		8B1601552B82F9B40017FD2B /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1601542B82F9B40017FD2B /* SignUp.swift */; };
 		8B279F322B80A16E00C1C298 /* ToDoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B279F312B80A16E00C1C298 /* ToDoListApp.swift */; };
 		8B279F362B80A17000C1C298 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B279F352B80A17000C1C298 /* Assets.xcassets */; };
 		8B279F392B80A17000C1C298 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B279F382B80A17000C1C298 /* Preview Assets.xcassets */; };
@@ -30,6 +36,12 @@
 		8B16013F2B82C57A0017FD2B /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		8B1601412B82C6960017FD2B /* CustomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomText.swift; sourceTree = "<group>"; };
 		8B1601432B82CD000017FD2B /* checkAcc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkAcc.png; sourceTree = "<group>"; };
+		8B16014A2B82D7580017FD2B /* StatusWelcomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusWelcomePage.swift; sourceTree = "<group>"; };
+		8B16014C2B82D8CA0017FD2B /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		8B16014E2B82DA060017FD2B /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		8B1601502B82F40F0017FD2B /* signin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signin.png; sourceTree = "<group>"; };
+		8B1601522B82F6F70017FD2B /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
+		8B1601542B82F9B40017FD2B /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		8B279F2E2B80A16E00C1C298 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B279F312B80A16E00C1C298 /* ToDoListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListApp.swift; sourceTree = "<group>"; };
 		8B279F352B80A17000C1C298 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,6 +68,7 @@
 		8B16011C2B82B3EC0017FD2B /* img */ = {
 			isa = PBXGroup;
 			children = (
+				8B1601502B82F40F0017FD2B /* signin.png */,
 				8B1601432B82CD000017FD2B /* checkAcc.png */,
 				8BC1B6E52B8158380069ECF6 /* onbording3.png */,
 				8BC1B6E72B8158380069ECF6 /* onbording1.png */,
@@ -70,6 +83,13 @@
 				8B1601202B82B56A0017FD2B /* LexendDeca-Regular.ttf */,
 			);
 			path = font;
+			sourceTree = "<group>";
+		};
+		8B1601472B82D4A80017FD2B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		8B279F252B80A16E00C1C298 = {
@@ -91,6 +111,7 @@
 		8B279F302B80A16E00C1C298 /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
+				8B1601472B82D4A80017FD2B /* Controller */,
 				8BC1B6DE2B81579E0069ECF6 /* source */,
 				8B4032182B80AF730097D29C /* viewModel */,
 				8B4032172B80AF680097D29C /* view */,
@@ -125,6 +146,7 @@
 				8B40321D2B80C4930097D29C /* WelcomePageModel.swift */,
 				8B16013F2B82C57A0017FD2B /* CustomButton.swift */,
 				8B1601412B82C6960017FD2B /* CustomText.swift */,
+				8B16014E2B82DA060017FD2B /* CustomTextField.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -134,6 +156,7 @@
 			children = (
 				8B4032192B80B0590097D29C /* WelcomePageView.swift */,
 				8B16013D2B82C4A10017FD2B /* CheckAccountView.swift */,
+				8B16014C2B82D8CA0017FD2B /* SignInView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -142,6 +165,9 @@
 			isa = PBXGroup;
 			children = (
 				8B40321B2B80C3480097D29C /* Data.swift */,
+				8B16014A2B82D7580017FD2B /* StatusWelcomePage.swift */,
+				8B1601522B82F6F70017FD2B /* SignIn.swift */,
+				8B1601542B82F9B40017FD2B /* SignUp.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -218,6 +244,7 @@
 				8B279F362B80A17000C1C298 /* Assets.xcassets in Resources */,
 				8BC1B6E82B8158380069ECF6 /* onbording3.png in Resources */,
 				8B1601442B82CD000017FD2B /* checkAcc.png in Resources */,
+				8B1601512B82F40F0017FD2B /* signin.png in Resources */,
 				8B1601212B82B56A0017FD2B /* LexendDeca-Regular.ttf in Resources */,
 				8BC1B6EA2B8158380069ECF6 /* onbording1.png in Resources */,
 			);
@@ -230,8 +257,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B16014D2B82D8CA0017FD2B /* SignInView.swift in Sources */,
+				8B1601552B82F9B40017FD2B /* SignUp.swift in Sources */,
+				8B16014B2B82D7580017FD2B /* StatusWelcomePage.swift in Sources */,
 				8B1601422B82C6960017FD2B /* CustomText.swift in Sources */,
+				8B1601532B82F6F70017FD2B /* SignIn.swift in Sources */,
 				8B16013E2B82C4A10017FD2B /* CheckAccountView.swift in Sources */,
+				8B16014F2B82DA060017FD2B /* CustomTextField.swift in Sources */,
 				8B40321A2B80B0590097D29C /* WelcomePageView.swift in Sources */,
 				8B1601402B82C57A0017FD2B /* CustomButton.swift in Sources */,
 				8B279F322B80A16E00C1C298 /* ToDoListApp.swift in Sources */,
