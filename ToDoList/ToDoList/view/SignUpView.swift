@@ -62,7 +62,7 @@ extension SignUpView{
     private var signUp: some View {
         Button(
             action: {
-                if ToDoList.signIn(email: email, password: password) {
+                if FirebaseFunction.signUp() {
                     print("succes")
                 }
         }, label: {
