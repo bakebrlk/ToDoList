@@ -48,10 +48,10 @@ extension CheckAccountView {
          
         VStack{
             Spacer()
-            NavigationLink(destination: SignInView()){
+       
                 customButton(text: "I've already account ", action: haveAccount())
                     .foregroundColor(.white)
-            }
+            
           
                 customButton(text: "Sign Up", action: signUp())
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
