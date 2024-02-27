@@ -75,6 +75,7 @@
 		8B40321E2B80C4930097D29C /* WelcomePageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B40321D2B80C4930097D29C /* WelcomePageModel.swift */; };
 		8B82BD462B8E53C900DC3BF2 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82BD452B8E53C800DC3BF2 /* Router.swift */; };
 		8B82BD482B8E563D00DC3BF2 /* NavigationModifire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82BD472B8E563D00DC3BF2 /* NavigationModifire.swift */; };
+		8B82BD4A2B8E576100DC3BF2 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82BD492B8E576100DC3BF2 /* View.swift */; };
 		8B874DB12B8E37F30076E224 /* emailLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B874DB02B8E37F20076E224 /* emailLogo.png */; };
 		8B874DB32B8E382E0076E224 /* SendMailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B874DB22B8E382E0076E224 /* SendMailView.swift */; };
 		8B8A2B762B8DBFB000D74AB0 /* AuthDataResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8A2B752B8DBFB000D74AB0 /* AuthDataResultModel.swift */; };
@@ -109,6 +110,7 @@
 		8B40321D2B80C4930097D29C /* WelcomePageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageModel.swift; sourceTree = "<group>"; };
 		8B82BD452B8E53C800DC3BF2 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		8B82BD472B8E563D00DC3BF2 /* NavigationModifire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModifire.swift; sourceTree = "<group>"; };
+		8B82BD492B8E576100DC3BF2 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		8B874DB02B8E37F20076E224 /* emailLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emailLogo.png; sourceTree = "<group>"; };
 		8B874DB22B8E382E0076E224 /* SendMailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMailView.swift; sourceTree = "<group>"; };
 		8B8A2B752B8DBFB000D74AB0 /* AuthDataResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataResultModel.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 				8B8A2B792B8DC13900D74AB0 /* Authentication.swift */,
 				8B82BD452B8E53C800DC3BF2 /* Router.swift */,
 				8B82BD472B8E563D00DC3BF2 /* NavigationModifire.swift */,
+				8B82BD492B8E576100DC3BF2 /* View.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				8B8A2B762B8DBFB000D74AB0 /* AuthDataResultModel.swift in Sources */,
 				8B1601422B82C6960017FD2B /* CustomText.swift in Sources */,
 				8B874DB32B8E382E0076E224 /* SendMailView.swift in Sources */,
+				8B82BD4A2B8E576100DC3BF2 /* View.swift in Sources */,
 				8B82BD482B8E563D00DC3BF2 /* NavigationModifire.swift in Sources */,
 				8B16013E2B82C4A10017FD2B /* CheckAccountView.swift in Sources */,
 				8B16014F2B82DA060017FD2B /* CustomTextField.swift in Sources */,
