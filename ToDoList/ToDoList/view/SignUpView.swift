@@ -15,26 +15,29 @@ struct SignUpView: View {
     @State private var confpassword: String = ""
     
     var body: some View{
-        GeometryReader{ make in
-            VStack {
-                Spacer()
-                image
-                
-                emailView
-                    .frame(maxWidth: .infinity, maxHeight: make.size.height/10)
-                passwordView
-                    .frame(maxWidth: .infinity, maxHeight: make.size.height/10)
-                confpasswordView
-                    .frame(maxWidth: .infinity, maxHeight: make.size.height/10)
-
-                HStack{
+        
+            GeometryReader{ make in
+                VStack {
                     Spacer()
-                    signIn
+                    image
+                    
+                    emailView
+                        .frame(maxWidth: .infinity, maxHeight: make.size.height/10)
+                    passwordView
+                        .frame(maxWidth: .infinity, maxHeight: make.size.height/10)
+                    confpasswordView
+                        .frame(maxWidth: .infinity, maxHeight: make.size.height/10)
+                    
+                    HStack{
+                        Spacer()
+                        signIn
+                    }
+                    signUp
+                        .frame(maxHeight: make.size.height/8)
+                    Spacer()
                 }
-                signUp
-                    .frame(maxHeight: make.size.height/10)
-                Spacer()
-            }
+                .navigationTitle("Welcome our Friend!")
+            
         }
     }
 }
@@ -70,7 +73,9 @@ extension SignUpView{
                     }
                 }
         }, label: {
-            textView(text: "Sign Up", size: 22)
+            NavigationLink(destination: SignUpView()){
+                textView(text: "Sign Up", size: 22)
+            }
         })
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color("purple"))

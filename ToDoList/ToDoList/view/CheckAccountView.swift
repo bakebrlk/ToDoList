@@ -10,20 +10,23 @@ import SwiftUI
 struct CheckAccountView: View {
     
     var body: some View {
-        
-        GeometryReader { make in
-            VStack{
-                Spacer()
-                welcomePhoto
-                Spacer()
-                welcomeText
-                buttons
-                    .frame(maxWidth: .infinity, maxHeight: make.size.height/5.5)
+        NavigationView {
+            GeometryReader { make in
+                VStack{
+                    Spacer()
+                    welcomePhoto
+                    Spacer()
+                    welcomeText
+                    
+                    buttons
+                        .frame(maxWidth: .infinity, maxHeight: make.size.height/5.5)
+                    
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color("purple"))
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color("purple"))
-            
         }
+        
     }
 }
 
@@ -45,15 +48,18 @@ extension CheckAccountView {
          
         VStack{
             Spacer()
-            customButton(text: "I've already account ", action: haveAccount())
-                .foregroundColor(.white)
-            customButton(text: "Sign Up", action: signUp())
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.white)
-                .foregroundColor(.black)
-                .cornerRadius(18)
-                .padding()
-            
+            NavigationLink(destination: SignInView()){
+                customButton(text: "I've already account ", action: haveAccount())
+                    .foregroundColor(.white)
+            }
+            NavigationLink(destination: SignUpView()){
+                customButton(text: "Sign Up", action: signUp())
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.white)
+                    .foregroundColor(.black)
+                    .cornerRadius(18)
+                    .padding()
+            }
         }
         
         

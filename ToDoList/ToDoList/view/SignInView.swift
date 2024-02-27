@@ -29,9 +29,10 @@ struct SignInView: View {
                         signUp
                     }
                     signIn
-                        .frame(maxHeight: make.size.height/10)
+                        .frame(maxHeight: make.size.height/8)
                     Spacer()
                 }
+                .navigationTitle("Welcome to Back")
             }
         }
     }
