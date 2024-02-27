@@ -52,14 +52,14 @@ extension CheckAccountView {
                 customButton(text: "I've already account ", action: haveAccount())
                     .foregroundColor(.white)
             }
-            NavigationLink(destination: SignUpView()){
+          
                 customButton(text: "Sign Up", action: signUp())
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color.white)
                     .foregroundColor(.black)
                     .cornerRadius(18)
                     .padding()
-            }
+            
         }
         
         
