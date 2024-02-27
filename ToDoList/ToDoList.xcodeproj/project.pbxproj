@@ -21,7 +21,7 @@
 		8B279F322B80A16E00C1C298 /* ToDoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B279F312B80A16E00C1C298 /* ToDoListApp.swift */; };
 		8B279F362B80A17000C1C298 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B279F352B80A17000C1C298 /* Assets.xcassets */; };
 		8B279F392B80A17000C1C298 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B279F382B80A17000C1C298 /* Preview Assets.xcassets */; };
-		8B2CBC502B84B23100AF9025 /* GoogleService-Info (1).plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B2CBC4F2B84B23100AF9025 /* GoogleService-Info (1).plist */; };
+		8B2CBC502B84B23100AF9025 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B2CBC4F2B84B23100AF9025 /* GoogleService-Info.plist */; };
 		8B2EC8BF2B84C0D100A6BF00 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8B2EC8BE2B84C0D100A6BF00 /* FirebaseAnalytics */; };
 		8B2EC8C12B84C0D100A6BF00 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 8B2EC8C02B84C0D100A6BF00 /* FirebaseAnalyticsOnDeviceConversion */; };
 		8B2EC8C32B84C0D100A6BF00 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8B2EC8C22B84C0D100A6BF00 /* FirebaseAnalyticsSwift */; };
@@ -73,6 +73,8 @@
 		8B40321A2B80B0590097D29C /* WelcomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4032192B80B0590097D29C /* WelcomePageView.swift */; };
 		8B40321C2B80C3480097D29C /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B40321B2B80C3480097D29C /* Data.swift */; };
 		8B40321E2B80C4930097D29C /* WelcomePageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B40321D2B80C4930097D29C /* WelcomePageModel.swift */; };
+		8B8A2B762B8DBFB000D74AB0 /* AuthDataResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8A2B752B8DBFB000D74AB0 /* AuthDataResultModel.swift */; };
+		8B8A2B7A2B8DC13900D74AB0 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8A2B792B8DC13900D74AB0 /* Authentication.swift */; };
 		8BC1B6E82B8158380069ECF6 /* onbording3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1B6E52B8158380069ECF6 /* onbording3.png */; };
 		8BC1B6E92B8158380069ECF6 /* onbording2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1B6E62B8158380069ECF6 /* onbording2.png */; };
 		8BC1B6EA2B8158380069ECF6 /* onbording1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1B6E72B8158380069ECF6 /* onbording1.png */; };
@@ -95,11 +97,13 @@
 		8B279F312B80A16E00C1C298 /* ToDoListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListApp.swift; sourceTree = "<group>"; };
 		8B279F352B80A17000C1C298 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B279F382B80A17000C1C298 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		8B2CBC4F2B84B23100AF9025 /* GoogleService-Info (1).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info (1).plist"; sourceTree = "<group>"; };
+		8B2CBC4F2B84B23100AF9025 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8B2EC91C2B84C33A00A6BF00 /* FirebaseFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFunction.swift; sourceTree = "<group>"; };
 		8B4032192B80B0590097D29C /* WelcomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageView.swift; sourceTree = "<group>"; };
 		8B40321B2B80C3480097D29C /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		8B40321D2B80C4930097D29C /* WelcomePageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageModel.swift; sourceTree = "<group>"; };
+		8B8A2B752B8DBFB000D74AB0 /* AuthDataResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataResultModel.swift; sourceTree = "<group>"; };
+		8B8A2B792B8DC13900D74AB0 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		8BC1B6E52B8158380069ECF6 /* onbording3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onbording3.png; sourceTree = "<group>"; };
 		8BC1B6E62B8158380069ECF6 /* onbording2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onbording2.png; sourceTree = "<group>"; };
 		8BC1B6E72B8158380069ECF6 /* onbording1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onbording1.png; sourceTree = "<group>"; };
@@ -233,7 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				8B279F312B80A16E00C1C298 /* ToDoListApp.swift */,
-				8B2CBC4F2B84B23100AF9025 /* GoogleService-Info (1).plist */,
+				8B2CBC4F2B84B23100AF9025 /* GoogleService-Info.plist */,
 				8B16013C2B82B8710017FD2B /* Info.plist */,
 				8B279F352B80A17000C1C298 /* Assets.xcassets */,
 			);
@@ -247,6 +251,7 @@
 				8B16013F2B82C57A0017FD2B /* CustomButton.swift */,
 				8B1601412B82C6960017FD2B /* CustomText.swift */,
 				8B16014E2B82DA060017FD2B /* CustomTextField.swift */,
+				8B8A2B752B8DBFB000D74AB0 /* AuthDataResultModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -268,6 +273,7 @@
 				8B40321B2B80C3480097D29C /* Data.swift */,
 				8B16014A2B82D7580017FD2B /* StatusWelcomePage.swift */,
 				8B2EC91C2B84C33A00A6BF00 /* FirebaseFunction.swift */,
+				8B8A2B792B8DC13900D74AB0 /* Authentication.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -398,7 +404,7 @@
 				8BC1B6E82B8158380069ECF6 /* onbording3.png in Resources */,
 				8B1601442B82CD000017FD2B /* checkAcc.png in Resources */,
 				8B1601512B82F40F0017FD2B /* signin.png in Resources */,
-				8B2CBC502B84B23100AF9025 /* GoogleService-Info (1).plist in Resources */,
+				8B2CBC502B84B23100AF9025 /* GoogleService-Info.plist in Resources */,
 				8B1601212B82B56A0017FD2B /* LexendDeca-Regular.ttf in Resources */,
 				8BC1B6EA2B8158380069ECF6 /* onbording1.png in Resources */,
 			);
@@ -414,6 +420,7 @@
 				8B2EC91D2B84C33A00A6BF00 /* FirebaseFunction.swift in Sources */,
 				8B16014D2B82D8CA0017FD2B /* SignInView.swift in Sources */,
 				8B16014B2B82D7580017FD2B /* StatusWelcomePage.swift in Sources */,
+				8B8A2B762B8DBFB000D74AB0 /* AuthDataResultModel.swift in Sources */,
 				8B1601422B82C6960017FD2B /* CustomText.swift in Sources */,
 				8B16013E2B82C4A10017FD2B /* CheckAccountView.swift in Sources */,
 				8B16014F2B82DA060017FD2B /* CustomTextField.swift in Sources */,
@@ -421,6 +428,7 @@
 				8B1601592B82FC7E0017FD2B /* SignUpView.swift in Sources */,
 				8B1601402B82C57A0017FD2B /* CustomButton.swift in Sources */,
 				8B279F322B80A16E00C1C298 /* ToDoListApp.swift in Sources */,
+				8B8A2B7A2B8DC13900D74AB0 /* Authentication.swift in Sources */,
 				8B40321E2B80C4930097D29C /* WelcomePageModel.swift in Sources */,
 				8B40321C2B80C3480097D29C /* Data.swift in Sources */,
 			);

@@ -62,8 +62,12 @@ extension SignUpView{
     private var signUp: some View {
         Button(
             action: {
-                if FirebaseFunction.signUp() {
-                    print("succes")
+                DispatchQueue.main.async {
+                    if Authentication.signUp(email: email, password: password, confPassword: confpassword) {
+                        print("Succes")
+                    }else{
+                        print("error")
+                    }
                 }
         }, label: {
             textView(text: "Sign Up", size: 22)
