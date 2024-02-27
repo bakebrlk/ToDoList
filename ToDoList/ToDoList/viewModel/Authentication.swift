@@ -30,10 +30,31 @@ struct Authentication{
         return true
     }
     
+    static func signIn(email: String, password: String) -> Bool{
+        
+        Task{
+            do{
+                let returnedUserData = try await FirebaseFunction.signIn(email: email, password: password)
+                print(returnedUserData)
+                return true
+            }catch{
+                print("error")
+                return false
+            }
+        }
+        
+        return true
+        
+    }
     
     static func checkAuthentication() -> Bool{
         let authUser = try? FirebaseFunction.getAuthenticatedUser()
         return authUser == nil
+    }
+    
+    
+    static func signOut() throws{
+        try FirebaseFunction.signOut()
     }
 }
 

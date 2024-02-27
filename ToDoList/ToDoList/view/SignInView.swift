@@ -55,7 +55,7 @@ extension SignInView {
     private var signIn: some View {
         Button(
             action: {
-                if FirebaseFunction.signIn() {
+                if Authentication.signIn(email: email, password: password) {
                     print("succes")
                 }
         }, label: {
