@@ -13,23 +13,25 @@ struct SignInView: View {
     @State private var password = ""
     
     var body: some View {
-        GeometryReader{ make in
-            VStack {
-                Spacer()
-                image
-                
-                emailView
-                    .frame(maxWidth: .infinity, maxHeight: make.size.height/10)
-                passwordView
-                    .frame(maxWidth: .infinity, maxHeight: make.size.height/10)
-                
-                HStack{
+        NavigationView {
+            GeometryReader{ make in
+                VStack {
                     Spacer()
-                    signUp
+                    image
+                    
+                    emailView
+                        .frame(maxWidth: .infinity, maxHeight: make.size.height/10)
+                    passwordView
+                        .frame(maxWidth: .infinity, maxHeight: make.size.height/10)
+                    
+                    HStack{
+                        Spacer()
+                        signUp
+                    }
+                    signIn
+                        .frame(maxHeight: make.size.height/10)
+                    Spacer()
                 }
-                signIn
-                    .frame(maxHeight: make.size.height/10)
-                Spacer()
             }
         }
     }
@@ -71,10 +73,9 @@ extension SignInView {
     private var signUp: some View {
         Button(
             action: {
-            print("Sign In")
         }
             , label: {
-            textView(text: "Sign Up", size: 16)
+            textView(text: "Forgot password", size: 16)
         })
         .foregroundColor(.orange)
         .padding(.trailing)

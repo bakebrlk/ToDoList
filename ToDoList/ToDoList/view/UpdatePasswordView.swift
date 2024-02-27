@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UpdatePasswordView: View {
     
-    let email: String
+    let email: String = "210103194@stu.sdu.edu.kz"
     @State private var password: String = ""
     @State private var confPassword: String = ""
     
@@ -20,28 +20,25 @@ struct UpdatePasswordView: View {
                     Spacer()
                     image
                     
-                    passwordView
+                    emailView
                         .frame(maxWidth: .infinity, maxHeight: make.size.height/10)
-                    confPasswordView
-                        .frame(maxWidth: .infinity, maxHeight: make.size.height/10)
-                    
+    
                     updatePassword
                         .frame(maxHeight: make.size.height/10)
                     Spacer()
                 }
             }
         }
+        .fullScreenCover(isPresented: .constant(true), content: {
+            SendMailView()
+        })
     }
         
 }
 
 extension UpdatePasswordView {
-    private var passwordView: some View {
-        CustomTextField(text: $password, isSecure: true, titleKey: "password: ", haveSecure: true)
-    }
-    
-    private var confPasswordView: some View {
-        CustomTextField(text: $confPassword, isSecure: true, titleKey: "confirm password: ", haveSecure: true)
+    private var emailView: some View {
+        CustomTextField(text: $password, isSecure: false, titleKey: "email: ", haveSecure: false)
     }
     
     private var image: some View {
@@ -54,8 +51,12 @@ extension UpdatePasswordView {
     private var updatePassword: some View {
         Button(
             action: {
-                if Authentication.signIn(email: email, password: password) {
-                    print("succes")
+                if password == confPassword {
+                    Authentication.resendPassword(email: email)
+                    try? Authentication.signOut()
+                   
+                }else{
+                    print("-")
                 }
         }, label: {
             textView(text: "Update Password", size: 22)
@@ -69,5 +70,5 @@ extension UpdatePasswordView {
 }
 
 #Preview {
-    UpdatePasswordView(email: "bake")
+    UpdatePasswordView()
 }

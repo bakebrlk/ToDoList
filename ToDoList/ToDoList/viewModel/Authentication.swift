@@ -52,6 +52,30 @@ struct Authentication{
         return authUser == nil
     }
     
+    static func resendPassword(email: String) {
+        DispatchQueue.main.async {
+            Task {
+                do{
+                    try? await FirebaseFunction.resentPassword(email: email)
+                }
+            }
+        }
+    }
+    
+    static func updatePassword(password: String) -> Bool {
+        DispatchQueue.main.async {
+            Task{
+                do{
+                    try? await FirebaseFunction.updatePassword(password: password)
+                    print("Update Password")
+                    return true
+                }
+            }
+        }
+        
+        return true
+    }
+    
     
     static func signOut() throws{
         try FirebaseFunction.signOut()
