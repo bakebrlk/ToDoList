@@ -30,6 +30,15 @@ struct Authentication{
         return true
     }
     
+    
+    static func checkAuthentication() -> Bool{
+        let authUser = try? FirebaseFunction.getAuthenticatedUser()
+        return authUser == nil
+    }
+}
+
+extension Authentication {
+    
     private static func validPassword(password: String) -> Bool {
         
         let uppercaseLetterRegex = ".*[A-Z]+.*"

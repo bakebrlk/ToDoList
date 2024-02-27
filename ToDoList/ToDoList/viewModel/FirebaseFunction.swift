@@ -23,4 +23,12 @@ struct FirebaseFunction{
     static func signIn() -> Bool{
         return true
     }
+    
+    static func getAuthenticatedUser()throws -> AuthDataResultModel {
+        guard let user = Auth.auth().currentUser else {
+            throw URLError(.badServerResponse)
+        }
+        
+        return AuthDataResultModel(user: user)
+    }
 }
