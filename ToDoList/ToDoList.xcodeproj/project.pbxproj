@@ -82,6 +82,9 @@
 		8B8A2B762B8DBFB000D74AB0 /* AuthDataResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8A2B752B8DBFB000D74AB0 /* AuthDataResultModel.swift */; };
 		8B8A2B7A2B8DC13900D74AB0 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8A2B792B8DC13900D74AB0 /* Authentication.swift */; };
 		8B8A2B7C2B8DE0CF00D74AB0 /* UpdatePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8A2B7B2B8DE0CF00D74AB0 /* UpdatePasswordView.swift */; };
+		8BC0AD972B910C3100DE3BCC /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC0AD962B910C3100DE3BCC /* HomePageView.swift */; };
+		8BC0AD992B9110CB00DE3BCC /* CustomImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC0AD982B9110CB00DE3BCC /* CustomImage.swift */; };
+		8BC0AD9B2B91146600DE3BCC /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC0AD9A2B91146600DE3BCC /* ImagePicker.swift */; };
 		8BC1B6E82B8158380069ECF6 /* onbording3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1B6E52B8158380069ECF6 /* onbording3.png */; };
 		8BC1B6E92B8158380069ECF6 /* onbording2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1B6E62B8158380069ECF6 /* onbording2.png */; };
 		8BC1B6EA2B8158380069ECF6 /* onbording1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1B6E72B8158380069ECF6 /* onbording1.png */; };
@@ -118,6 +121,9 @@
 		8B8A2B752B8DBFB000D74AB0 /* AuthDataResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataResultModel.swift; sourceTree = "<group>"; };
 		8B8A2B792B8DC13900D74AB0 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		8B8A2B7B2B8DE0CF00D74AB0 /* UpdatePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordView.swift; sourceTree = "<group>"; };
+		8BC0AD962B910C3100DE3BCC /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
+		8BC0AD982B9110CB00DE3BCC /* CustomImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImage.swift; sourceTree = "<group>"; };
+		8BC0AD9A2B91146600DE3BCC /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		8BC1B6E52B8158380069ECF6 /* onbording3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onbording3.png; sourceTree = "<group>"; };
 		8BC1B6E62B8158380069ECF6 /* onbording2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onbording2.png; sourceTree = "<group>"; };
 		8BC1B6E72B8158380069ECF6 /* onbording1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onbording1.png; sourceTree = "<group>"; };
@@ -267,6 +273,8 @@
 				8B1601412B82C6960017FD2B /* CustomText.swift */,
 				8B16014E2B82DA060017FD2B /* CustomTextField.swift */,
 				8B8A2B752B8DBFB000D74AB0 /* AuthDataResultModel.swift */,
+				8BC0AD982B9110CB00DE3BCC /* CustomImage.swift */,
+				8BC0AD9A2B91146600DE3BCC /* ImagePicker.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -280,6 +288,7 @@
 				8B1601582B82FC7E0017FD2B /* SignUpView.swift */,
 				8B8A2B7B2B8DE0CF00D74AB0 /* UpdatePasswordView.swift */,
 				8B874DB22B8E382E0076E224 /* SendMailView.swift */,
+				8BC0AD962B910C3100DE3BCC /* HomePageView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -452,12 +461,15 @@
 				8B16014F2B82DA060017FD2B /* CustomTextField.swift in Sources */,
 				8B40321A2B80B0590097D29C /* WelcomePageView.swift in Sources */,
 				8B1601592B82FC7E0017FD2B /* SignUpView.swift in Sources */,
+				8BC0AD9B2B91146600DE3BCC /* ImagePicker.swift in Sources */,
 				8B82BD462B8E53C900DC3BF2 /* Router.swift in Sources */,
+				8BC0AD992B9110CB00DE3BCC /* CustomImage.swift in Sources */,
 				8B1601402B82C57A0017FD2B /* CustomButton.swift in Sources */,
 				8B279F322B80A16E00C1C298 /* ToDoListApp.swift in Sources */,
 				8B8A2B7A2B8DC13900D74AB0 /* Authentication.swift in Sources */,
 				8B8A2B7C2B8DE0CF00D74AB0 /* UpdatePasswordView.swift in Sources */,
 				8B40321E2B80C4930097D29C /* WelcomePageModel.swift in Sources */,
+				8BC0AD972B910C3100DE3BCC /* HomePageView.swift in Sources */,
 				8B40321C2B80C3480097D29C /* Data.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
