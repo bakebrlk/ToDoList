@@ -19,9 +19,9 @@ extension StatisticsCircleModel {
             .frame(width: width, height: height)
     }
     
-    private func statisticsCircles(width: CGFloat, height: CGFloat) -> some View {
+    public func statisticsCircles(width: CGFloat, height: CGFloat) -> some View {
         ZStack{
-            getCircle(strokeLineWidth: 24, width: width, height: height)
+            getCircle(strokeLineWidth: 10, width: width, height: height)
                 .foregroundColor(.white)
                 .shadow(color: .black.opacity(0.1), radius: 10, x: 10, y: 10)
             
@@ -39,17 +39,13 @@ extension StatisticsCircleModel {
             
             Circle()
                 .trim(from: 0, to: proces)
-                .stroke(style: StrokeStyle(lineWidth: 24, lineCap: .round))
+                .stroke(style: StrokeStyle(lineWidth: 10, lineCap: .round))
                 .frame(width: width, height: height)
                 .rotationEffect(.degrees(-90))
                 .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color.purple, Color.blue]), startPoint: .topLeading, endPoint: .bottomTrailing))
             
             textView(text: "\(Int(proces*100))%", size: 28)
-        }
-        .onAppear {
-            withAnimation {
-                proces = 0.1
-            }
+                .foregroundColor(.white)
         }
         
     }
