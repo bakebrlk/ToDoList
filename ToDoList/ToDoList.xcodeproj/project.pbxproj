@@ -203,13 +203,6 @@
 			path = font;
 			sourceTree = "<group>";
 		};
-		8B1601472B82D4A80017FD2B /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
 		8B279F252B80A16E00C1C298 = {
 			isa = PBXGroup;
 			children = (
@@ -229,7 +222,6 @@
 		8B279F302B80A16E00C1C298 /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
-				8B1601472B82D4A80017FD2B /* Controller */,
 				8BC1B6DE2B81579E0069ECF6 /* source */,
 				8B4032182B80AF730097D29C /* viewModel */,
 				8B4032172B80AF680097D29C /* view */,
