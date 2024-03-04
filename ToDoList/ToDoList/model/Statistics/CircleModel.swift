@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct StatisticsCircleModel {
+struct CircleModel {
     
     @Binding var proces: Double
 }
 
-extension StatisticsCircleModel {
+extension CircleModel {
     private func getCircle(strokeLineWidth: CGFloat, width: CGFloat, height: CGFloat) -> some View {
         Circle()
             .stroke(lineWidth: strokeLineWidth)
