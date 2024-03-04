@@ -12,16 +12,28 @@ struct HomePageView: View {
     @State private var isImagePickerPresented = false
     @State private var selectedImage: UIImage?
     
+    @State private var todayStatus: String = "Your today's task almost done!"
+    @State private var statisticsValue = 0.0
+  
+    //MARK: Body
     var body: some View {
         
-        NavigationView{
             GeometryReader { make in
                 VStack(alignment: .leading){
                     topBar(height: make.size.height)
+                    
+                    allStatistics(height: make.size.height, width: make.size.width)
+                    
+                    inProgress()
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-        }
+            .onAppear{
+                withAnimation{
+                    statisticsValue = 0.2
+                }
+            }
+        
         
     }
 }
@@ -74,14 +86,95 @@ extension HomePageView{
     
     //MARK: All Statistics
     
-    private func allStatistics(height: CGFloat) -> some View{
+    private func allStatistics(height: CGFloat, width: CGFloat) -> some View{
         HStack {
-            Text(" ")
+            VStack(alignment: .leading){
+                todayStatusView
+                    .lineLimit(nil)
+                Spacer()
+                viewTaskBtn(width: width/2.5, height: height/16)
+                
+            }
+            .frame(maxWidth: width/2.35)
+            .padding()
+            
+            statisticsCircle(width: width/4.4, height: width/4.4)
+         
+            VStack{
+                optionsBTN
+                Spacer()
+            }
         }
-        .frame(maxWidth: .infinity, maxHeight: height)
-        .cornerRadius(20)
+        .frame(maxWidth: .infinity, maxHeight: height/4)
+        .background(Color("purple"))
+        .cornerRadius(26)
+        .padding()
     }
     
+    private var todayStatusView: some View {
+        textView(text: todayStatus, size: 16)
+            .foregroundColor(.white)
+            .padding(.top)
+    }
+    
+    private func viewTaskBtn(width: CGFloat, height: CGFloat) -> some View {
+        customButton(text: "View Task", action: openTask())
+            .frame(maxWidth: width, maxHeight: height)
+            .background(Color.white)
+            .foregroundColor(Color("purple"))
+            .cornerRadius(16)
+            .padding(.bottom)
+    }
+    
+    private func openTask(){
+        
+    }
+    
+    private func statisticsCircle(width: CGFloat, height: CGFloat) -> some View {
+        CircleModel(proces: $statisticsValue).statisticsCircles(width: width, height: height)
+    }
+        
+    private var optionsBTN: some View {
+            
+        Button(action: {
+            openOptions()
+        }
+               , label: {
+            VStack{
+                Text("...")
+                    .font(.system(size: 14))
+                    .foregroundStyle(Color.white)
+                  Spacer()
+            }
+        })
+            .frame(width: 25, height: 25)
+            .background(Gradient(colors: [.white.opacity(0.5), .gray.opacity(0.5)]))
+            .cornerRadius(8)
+            .padding()
+    }
+    
+    private func openOptions(){
+        
+    }
+    
+    //MARK: In Progress - Group
+    
+    private func inProgress() -> some View{
+        
+        VStack(alignment: .leading){
+            
+            textView(text: "In Progress (\(Data.Tasks.inProgress.count))", size: 18)
+                .padding(.leading)
+            
+            ScrollView(.horizontal, showsIndicators: false){
+                HStack{
+                    ForEach(Data.Tasks.inProgress, id: \.self){ task in
+                        cartModel.getCart(model: task)
+                        
+                    }}
+            }
+        }
+    }
 }
 
 #Preview {

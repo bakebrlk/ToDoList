@@ -6,8 +6,8 @@
 //
 
 import SwiftUI
-
 import FirebaseCore
+
 @main
 struct ToDoListApp: App {
     
@@ -15,8 +15,19 @@ struct ToDoListApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationView{
-                WelcomePageView()
+            GeometryReader{ make in
+                NavigationView{
+                    HomePageView()
+                }
+                .onAppear{
+                    if !sizeStatus() {
+                        print("size")
+                        setStatusSize(status: true)
+                        setSize(width: make.size.width, height: make.size.height)
+                    }else{
+                        print("Size: \(getSize())")
+                    }
+                }
             }
         }
     }

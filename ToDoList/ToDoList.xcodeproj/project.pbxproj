@@ -12,12 +12,21 @@
 		8B1601402B82C57A0017FD2B /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B16013F2B82C57A0017FD2B /* CustomButton.swift */; };
 		8B1601422B82C6960017FD2B /* CustomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1601412B82C6960017FD2B /* CustomText.swift */; };
 		8B1601442B82CD000017FD2B /* checkAcc.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B1601432B82CD000017FD2B /* checkAcc.png */; };
-		8B16014B2B82D7580017FD2B /* StatusWelcomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B16014A2B82D7580017FD2B /* StatusWelcomePage.swift */; };
+		8B16014B2B82D7580017FD2B /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B16014A2B82D7580017FD2B /* UserDefaults.swift */; };
 		8B16014D2B82D8CA0017FD2B /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B16014C2B82D8CA0017FD2B /* SignInView.swift */; };
 		8B16014F2B82DA060017FD2B /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B16014E2B82DA060017FD2B /* CustomTextField.swift */; };
 		8B1601512B82F40F0017FD2B /* signin.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B1601502B82F40F0017FD2B /* signin.png */; };
 		8B1601572B82FC3F0017FD2B /* signup.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B1601562B82FC3E0017FD2B /* signup.png */; };
 		8B1601592B82FC7E0017FD2B /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1601582B82FC7E0017FD2B /* SignUpView.swift */; };
+		8B1BB5DE2B95723D001D62DA /* cartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1BB5DD2B95723D001D62DA /* cartModel.swift */; };
+		8B1BB5E12B9577C8001D62DA /* RecrangleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1BB5E02B9577C8001D62DA /* RecrangleModel.swift */; };
+		8B1BB5E52B957C4E001D62DA /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1BB5E42B957C4E001D62DA /* Size.swift */; };
+		8B1BB5EB2B958CF1001D62DA /* taskLogo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B1BB5E62B958CF1001D62DA /* taskLogo1.png */; };
+		8B1BB5EC2B958CF1001D62DA /* taskLogo3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B1BB5E72B958CF1001D62DA /* taskLogo3.png */; };
+		8B1BB5ED2B958CF1001D62DA /* taskLogo5.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B1BB5E82B958CF1001D62DA /* taskLogo5.png */; };
+		8B1BB5EE2B958CF1001D62DA /* taskLogo2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B1BB5E92B958CF1001D62DA /* taskLogo2.png */; };
+		8B1BB5EF2B958CF1001D62DA /* taskLogo4.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B1BB5EA2B958CF1001D62DA /* taskLogo4.png */; };
+		8B1BB5F12B958E3F001D62DA /* inProgressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1BB5F02B958E3F001D62DA /* inProgressModel.swift */; };
 		8B279F322B80A16E00C1C298 /* ToDoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B279F312B80A16E00C1C298 /* ToDoListApp.swift */; };
 		8B279F362B80A17000C1C298 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B279F352B80A17000C1C298 /* Assets.xcassets */; };
 		8B279F392B80A17000C1C298 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B279F382B80A17000C1C298 /* Preview Assets.xcassets */; };
@@ -88,6 +97,7 @@
 		8BC1B6E82B8158380069ECF6 /* onbording3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1B6E52B8158380069ECF6 /* onbording3.png */; };
 		8BC1B6E92B8158380069ECF6 /* onbording2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1B6E62B8158380069ECF6 /* onbording2.png */; };
 		8BC1B6EA2B8158380069ECF6 /* onbording1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1B6E72B8158380069ECF6 /* onbording1.png */; };
+		8BDE130B2B912253005BBEFF /* CircleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDE130A2B912253005BBEFF /* CircleModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,12 +107,21 @@
 		8B16013F2B82C57A0017FD2B /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		8B1601412B82C6960017FD2B /* CustomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomText.swift; sourceTree = "<group>"; };
 		8B1601432B82CD000017FD2B /* checkAcc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkAcc.png; sourceTree = "<group>"; };
-		8B16014A2B82D7580017FD2B /* StatusWelcomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusWelcomePage.swift; sourceTree = "<group>"; };
+		8B16014A2B82D7580017FD2B /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		8B16014C2B82D8CA0017FD2B /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		8B16014E2B82DA060017FD2B /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		8B1601502B82F40F0017FD2B /* signin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signin.png; sourceTree = "<group>"; };
 		8B1601562B82FC3E0017FD2B /* signup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signup.png; sourceTree = "<group>"; };
 		8B1601582B82FC7E0017FD2B /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		8B1BB5DD2B95723D001D62DA /* cartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cartModel.swift; sourceTree = "<group>"; };
+		8B1BB5E02B9577C8001D62DA /* RecrangleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecrangleModel.swift; sourceTree = "<group>"; };
+		8B1BB5E42B957C4E001D62DA /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
+		8B1BB5E62B958CF1001D62DA /* taskLogo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taskLogo1.png; sourceTree = "<group>"; };
+		8B1BB5E72B958CF1001D62DA /* taskLogo3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taskLogo3.png; sourceTree = "<group>"; };
+		8B1BB5E82B958CF1001D62DA /* taskLogo5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taskLogo5.png; sourceTree = "<group>"; };
+		8B1BB5E92B958CF1001D62DA /* taskLogo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taskLogo2.png; sourceTree = "<group>"; };
+		8B1BB5EA2B958CF1001D62DA /* taskLogo4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taskLogo4.png; sourceTree = "<group>"; };
+		8B1BB5F02B958E3F001D62DA /* inProgressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = inProgressModel.swift; sourceTree = "<group>"; };
 		8B279F2E2B80A16E00C1C298 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B279F312B80A16E00C1C298 /* ToDoListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListApp.swift; sourceTree = "<group>"; };
 		8B279F352B80A17000C1C298 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -127,6 +146,7 @@
 		8BC1B6E52B8158380069ECF6 /* onbording3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onbording3.png; sourceTree = "<group>"; };
 		8BC1B6E62B8158380069ECF6 /* onbording2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onbording2.png; sourceTree = "<group>"; };
 		8BC1B6E72B8158380069ECF6 /* onbording1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onbording1.png; sourceTree = "<group>"; };
+		8BDE130A2B912253005BBEFF /* CircleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +210,11 @@
 		8B16011C2B82B3EC0017FD2B /* img */ = {
 			isa = PBXGroup;
 			children = (
+				8B1BB5E62B958CF1001D62DA /* taskLogo1.png */,
+				8B1BB5E92B958CF1001D62DA /* taskLogo2.png */,
+				8B1BB5E72B958CF1001D62DA /* taskLogo3.png */,
+				8B1BB5EA2B958CF1001D62DA /* taskLogo4.png */,
+				8B1BB5E82B958CF1001D62DA /* taskLogo5.png */,
 				8B874DB02B8E37F20076E224 /* emailLogo.png */,
 				8B1601562B82FC3E0017FD2B /* signup.png */,
 				8B1601502B82F40F0017FD2B /* signin.png */,
@@ -209,11 +234,25 @@
 			path = font;
 			sourceTree = "<group>";
 		};
-		8B1601472B82D4A80017FD2B /* Controller */ = {
+		8B1BB5E22B9577D0001D62DA /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
+				8BDE130A2B912253005BBEFF /* CircleModel.swift */,
+				8B1BB5E02B9577C8001D62DA /* RecrangleModel.swift */,
 			);
-			path = Controller;
+			path = Statistics;
+			sourceTree = "<group>";
+		};
+		8B1BB5E32B95796A001D62DA /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				8B874DB22B8E382E0076E224 /* SendMailView.swift */,
+				8B8A2B7B2B8DE0CF00D74AB0 /* UpdatePasswordView.swift */,
+				8B16014C2B82D8CA0017FD2B /* SignInView.swift */,
+				8B1601582B82FC7E0017FD2B /* SignUpView.swift */,
+				8B16013D2B82C4A10017FD2B /* CheckAccountView.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		8B279F252B80A16E00C1C298 = {
@@ -235,7 +274,6 @@
 		8B279F302B80A16E00C1C298 /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
-				8B1601472B82D4A80017FD2B /* Controller */,
 				8BC1B6DE2B81579E0069ECF6 /* source */,
 				8B4032182B80AF730097D29C /* viewModel */,
 				8B4032172B80AF680097D29C /* view */,
@@ -268,6 +306,7 @@
 		8B4032162B80AF5D0097D29C /* model */ = {
 			isa = PBXGroup;
 			children = (
+				8B1BB5E22B9577D0001D62DA /* Statistics */,
 				8B40321D2B80C4930097D29C /* WelcomePageModel.swift */,
 				8B16013F2B82C57A0017FD2B /* CustomButton.swift */,
 				8B1601412B82C6960017FD2B /* CustomText.swift */,
@@ -275,6 +314,8 @@
 				8B8A2B752B8DBFB000D74AB0 /* AuthDataResultModel.swift */,
 				8BC0AD982B9110CB00DE3BCC /* CustomImage.swift */,
 				8BC0AD9A2B91146600DE3BCC /* ImagePicker.swift */,
+				8B1BB5DD2B95723D001D62DA /* cartModel.swift */,
+				8B1BB5F02B958E3F001D62DA /* inProgressModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -282,12 +323,8 @@
 		8B4032172B80AF680097D29C /* view */ = {
 			isa = PBXGroup;
 			children = (
+				8B1BB5E32B95796A001D62DA /* Auth */,
 				8B4032192B80B0590097D29C /* WelcomePageView.swift */,
-				8B16013D2B82C4A10017FD2B /* CheckAccountView.swift */,
-				8B16014C2B82D8CA0017FD2B /* SignInView.swift */,
-				8B1601582B82FC7E0017FD2B /* SignUpView.swift */,
-				8B8A2B7B2B8DE0CF00D74AB0 /* UpdatePasswordView.swift */,
-				8B874DB22B8E382E0076E224 /* SendMailView.swift */,
 				8BC0AD962B910C3100DE3BCC /* HomePageView.swift */,
 			);
 			path = view;
@@ -297,13 +334,14 @@
 			isa = PBXGroup;
 			children = (
 				8B40321B2B80C3480097D29C /* Data.swift */,
-				8B16014A2B82D7580017FD2B /* StatusWelcomePage.swift */,
+				8B16014A2B82D7580017FD2B /* UserDefaults.swift */,
 				8B2EC91C2B84C33A00A6BF00 /* FirebaseFunction.swift */,
 				8B8A2B792B8DC13900D74AB0 /* Authentication.swift */,
 				8B82BD452B8E53C800DC3BF2 /* Router.swift */,
 				8B82BD472B8E563D00DC3BF2 /* NavigationModifire.swift */,
 				8B82BD492B8E576100DC3BF2 /* View.swift */,
 				8B82BD4B2B8E59AB00DC3BF2 /* Navigation.swift */,
+				8B1BB5E42B957C4E001D62DA /* Size.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -428,14 +466,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B279F392B80A17000C1C298 /* Preview Assets.xcassets in Resources */,
+				8B1BB5ED2B958CF1001D62DA /* taskLogo5.png in Resources */,
 				8BC1B6E92B8158380069ECF6 /* onbording2.png in Resources */,
 				8B1601572B82FC3F0017FD2B /* signup.png in Resources */,
 				8B279F362B80A17000C1C298 /* Assets.xcassets in Resources */,
 				8BC1B6E82B8158380069ECF6 /* onbording3.png in Resources */,
 				8B1601442B82CD000017FD2B /* checkAcc.png in Resources */,
 				8B874DB12B8E37F30076E224 /* emailLogo.png in Resources */,
+				8B1BB5EF2B958CF1001D62DA /* taskLogo4.png in Resources */,
 				8B1601512B82F40F0017FD2B /* signin.png in Resources */,
+				8B1BB5EC2B958CF1001D62DA /* taskLogo3.png in Resources */,
 				8B2CBC502B84B23100AF9025 /* GoogleService-Info.plist in Resources */,
+				8B1BB5EB2B958CF1001D62DA /* taskLogo1.png in Resources */,
+				8B1BB5EE2B958CF1001D62DA /* taskLogo2.png in Resources */,
 				8B1601212B82B56A0017FD2B /* LexendDeca-Regular.ttf in Resources */,
 				8BC1B6EA2B8158380069ECF6 /* onbording1.png in Resources */,
 			);
@@ -450,14 +493,17 @@
 			files = (
 				8B2EC91D2B84C33A00A6BF00 /* FirebaseFunction.swift in Sources */,
 				8B16014D2B82D8CA0017FD2B /* SignInView.swift in Sources */,
-				8B16014B2B82D7580017FD2B /* StatusWelcomePage.swift in Sources */,
+				8B16014B2B82D7580017FD2B /* UserDefaults.swift in Sources */,
 				8B8A2B762B8DBFB000D74AB0 /* AuthDataResultModel.swift in Sources */,
+				8B1BB5E52B957C4E001D62DA /* Size.swift in Sources */,
 				8B1601422B82C6960017FD2B /* CustomText.swift in Sources */,
 				8B874DB32B8E382E0076E224 /* SendMailView.swift in Sources */,
 				8B82BD4A2B8E576100DC3BF2 /* View.swift in Sources */,
 				8B82BD4C2B8E59AB00DC3BF2 /* Navigation.swift in Sources */,
+				8B1BB5F12B958E3F001D62DA /* inProgressModel.swift in Sources */,
 				8B82BD482B8E563D00DC3BF2 /* NavigationModifire.swift in Sources */,
 				8B16013E2B82C4A10017FD2B /* CheckAccountView.swift in Sources */,
+				8B1BB5E12B9577C8001D62DA /* RecrangleModel.swift in Sources */,
 				8B16014F2B82DA060017FD2B /* CustomTextField.swift in Sources */,
 				8B40321A2B80B0590097D29C /* WelcomePageView.swift in Sources */,
 				8B1601592B82FC7E0017FD2B /* SignUpView.swift in Sources */,
@@ -467,7 +513,9 @@
 				8B1601402B82C57A0017FD2B /* CustomButton.swift in Sources */,
 				8B279F322B80A16E00C1C298 /* ToDoListApp.swift in Sources */,
 				8B8A2B7A2B8DC13900D74AB0 /* Authentication.swift in Sources */,
+				8B1BB5DE2B95723D001D62DA /* cartModel.swift in Sources */,
 				8B8A2B7C2B8DE0CF00D74AB0 /* UpdatePasswordView.swift in Sources */,
+				8BDE130B2B912253005BBEFF /* CircleModel.swift in Sources */,
 				8B40321E2B80C4930097D29C /* WelcomePageModel.swift in Sources */,
 				8BC0AD972B910C3100DE3BCC /* HomePageView.swift in Sources */,
 				8B40321C2B80C3480097D29C /* Data.swift in Sources */,
