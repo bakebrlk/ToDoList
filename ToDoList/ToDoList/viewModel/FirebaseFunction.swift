@@ -10,9 +10,7 @@ import SwiftUI
 import FirebaseAuth
 
 struct FirebaseFunction{
-    
-    static let shared = FirebaseFunction()
-    
+        
     private init() {}
     
     static func signUp(email: String, password: String) async throws -> AuthDataResultModel{
