@@ -18,7 +18,7 @@ struct cartModel{
                     .resizable()
                     .aspectRatio(contentMode: .fit)
             }
-            .frame(maxHeight: Size.size[1]*0.05)
+            .frame(maxHeight: Size.size[1]*0.04)
             .padding()
             
             textView(text: model.title, size: 18)
@@ -51,7 +51,7 @@ struct cartModel{
             CircleModel(process: .constant(model.process), textSize: 14, textColor: .black, colors: [model.color]).statisticsCircles(width: 50, height: 50)
                 .padding(.trailing)
         }
-        .frame(width: Size.size[0]*0.9, height: Size.size[1]*0.12)
+        .frame(width: Size.size[0]*0.9, height: Size.size[1]*0.1)
         .background(.white.opacity(0.6))
         .cornerRadius(20)
         .padding(.leading)
