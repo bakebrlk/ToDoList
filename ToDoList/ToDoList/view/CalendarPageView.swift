@@ -7,12 +7,16 @@
 
 import SwiftUI
 
-struct CalendarView: View {
+struct CalendarPageView: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
+extension CalendarPageView {
+    
+}
+
 #Preview {
-    CalendarView()
+    CalendarPageView()
 }
