@@ -9,7 +9,11 @@ import SwiftUI
 
 struct CircleModel {
     
-    @Binding var proces: Double
+    @Binding var process: Double
+    
+    var textSize: CGFloat
+    var textColor: Color
+    var colors: [Color]
 }
 
 extension CircleModel {
@@ -25,7 +29,7 @@ extension CircleModel {
                 .foregroundColor(.white)
                 .shadow(color: .black.opacity(0.1), radius: 10, x: 10, y: 10)
             
-            getCircle(strokeLineWidth: 0.34, width: width/1.14, height: height/1.14)
+            getCircle(strokeLineWidth: 0.34, width: width/1.2, height: height/1.2)
                 .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.black.opacity(0.3),.clear]), startPoint: .bottomTrailing, endPoint: .topLeading))
                 .overlay {
                     Circle()
@@ -38,14 +42,14 @@ extension CircleModel {
                 }
             
             Circle()
-                .trim(from: 0, to: proces)
+                .trim(from: 0, to: process)
                 .stroke(style: StrokeStyle(lineWidth: 10, lineCap: .round))
                 .frame(width: width, height: height)
                 .rotationEffect(.degrees(-90))
-                .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color.purple, Color.blue]), startPoint: .topLeading, endPoint: .bottomTrailing))
+                .foregroundStyle(LinearGradient(gradient: Gradient(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing))
             
-            textView(text: "\(Int(proces*100))%", size: 28)
-                .foregroundColor(.white)
+            textView(text: "\(Int(process*100))%", size: textSize)
+                .foregroundColor(textColor)
         }
         
     }
