@@ -7,13 +7,23 @@
 
 import SwiftUI
 
-public func topTitleView(title: String, action: ()) -> some View{
+public func NavigationTopBar(title: String, backAction: ()) -> some View{
     HStack{
+        
+        customButton(text: "<-", action: backAction)
+            .frame(maxWidth: Size.size[0]*0.06)
+            .foregroundColor(.black)
+        
+        Spacer()
+        textView(text: title, size: 18)
+        Spacer()
         Button(action: {
             
         }, label: {
-            /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
+            CustomImage.getImage(systemName: "bell.fill")
+                .foregroundColor(.black)
         })
-        textView(text: title, size: 18)
     }
+    .frame(maxWidth: Size.size[0], maxHeight: Size.size[1]*0.03)
+    .padding()
 }
