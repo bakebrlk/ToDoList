@@ -9,9 +9,9 @@ import SwiftUI
 
 struct CalendarPageView: View {
     
-    private let taskVariant = ["All","To do", "In Progress", "Done"]
+    private let taskStatus = ["All","To do", "In Progress", "Done"]
 
-    @State private var taskVariantId = 0
+    @State private var taskStatusId = 0
     
     var body: some View {
         VStack{
@@ -39,17 +39,22 @@ extension CalendarPageView {
     
 //MARK: Calendar
     private func calendar() -> some View {
-        HStack{
-            CalendarModel.shared.forCalendarPage(date: Date())
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack{
+                ForEach(0..<31) { date in
+                    let date = Calendar.current.date(byAdding: .day, value: date, to: Date()) ?? Date()
+                    CalendarModel.shared.forCalendarPage(date: date)
+                }
+            }
+            .padding(5)
         }
-        .padding()
     }
     
 //MARK: Filter Task
     private func filterTask() -> some View {
         ScrollView(.horizontal,showsIndicators: false){
             HStack{
-                ForEach(0..<taskVariant.count, id: \.self){ id in
+                ForEach(0..<taskStatus.count, id: \.self){ id in
                    filterTaskView(id: id)
                 }
             }
@@ -60,14 +65,14 @@ extension CalendarPageView {
     
     private func filterTaskView(id: Int) -> some View {
         Button(action: {
-            taskVariantId = id
+            taskStatusId = id
         }, label: {
-            textView(text: taskVariant[id], size: 16)
+            textView(text: taskStatus[id], size: 16)
                 .padding([.leading,.trailing],20)
                 .padding([.top,.bottom],10)
-                .foregroundColor(taskVariantId == id ? .white : Color("purple"))
+                .foregroundColor(taskStatusId == id ? .white : Color("purple"))
         })
-        .background(Color("purple").opacity(taskVariantId == id ? 1 : 0.1))
+        .background(Color("purple").opacity(taskStatusId == id ? 1 : 0.1))
         .cornerRadius(16)
         .padding(5)
     }
