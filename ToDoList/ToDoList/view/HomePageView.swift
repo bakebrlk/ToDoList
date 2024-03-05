@@ -25,16 +25,18 @@ struct HomePageView: View {
                     allStatistics(height: make.size.height, width: make.size.width)
                     
                     inProgress()
+                    
+                    TaskGroup()
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.cyan.opacity(0.1))
+
             }
             .onAppear{
                 withAnimation{
                     statisticsValue = 0.2
                 }
             }
-        
-        
     }
 }
 
@@ -131,7 +133,7 @@ extension HomePageView{
     }
     
     private func statisticsCircle(width: CGFloat, height: CGFloat) -> some View {
-        CircleModel(proces: $statisticsValue).statisticsCircles(width: width, height: height)
+        CircleModel(process: $statisticsValue, textSize: 28, textColor: .white, colors: [Color.purple, Color.blue] ).statisticsCircles(width: width, height: height)
     }
         
     private var optionsBTN: some View {
@@ -169,9 +171,27 @@ extension HomePageView{
             ScrollView(.horizontal, showsIndicators: false){
                 HStack{
                     ForEach(Data.Tasks.inProgress, id: \.self){ task in
-                        cartModel.getCart(model: task)
+                        cartModel.getInProgress(model: task)
                         
                     }}
+            }
+        }
+    }
+    
+    //MARK: Task Group
+    
+    private func TaskGroup() -> some View {
+        VStack(alignment: .leading){
+            
+            textView(text: "Task Groups (\(Data.Tasks.TaskGroup.count))", size: 18)
+                .padding()
+            
+            ScrollView(.vertical, showsIndicators: false){
+                VStack{
+                    ForEach(Data.Tasks.TaskGroup, id: \.self){ taks in
+                        cartModel.getTaskGroup(model: taks)
+                    }
+                }
             }
         }
     }

@@ -29,11 +29,19 @@ struct Data{
     
     struct Tasks{
         static let inProgress: [inProgressModel] = [
-            inProgressModel(group: "Buissness", title: "Buy Flowers", logo: "TaskLogo1", color: .cyan, progress: 0.5),
-            inProgressModel(group: "Buissness", title: "Pay for sub", logo: "TaskLogo2", color: .green, progress: 0.2),
-            inProgressModel(group: "Buissness", title: "write code", logo: "TaskLogo3", color: .purple, progress: 0.7),
-            inProgressModel(group: "Buissness", title: "do project", logo: "TaskLogo4", color: .mint, progress: 0.1),
-            inProgressModel(group: "Buissness", title: "conf project", logo: "TaskLogo5", color: .teal, progress: 1.0),
+            inProgressModel(group: "Buissness", title: "Buy Flowers", logo: "taskLogo1", color: .cyan, progress: 0.5),
+            inProgressModel(group: "Buissness", title: "Pay for sub", logo: "taskLogo2", color: .green, progress: 0.2),
+            inProgressModel(group: "Buissness", title: "write code", logo: "taskLogo3", color: .purple, progress: 0.7),
+            inProgressModel(group: "Buissness", title: "do project", logo: "taskLogo4", color: .mint, progress: 0.1),
+            inProgressModel(group: "Buissness", title: "conf project", logo: "taskLogo5", color: .teal, progress: 1.0),
+        ]
+        
+        static let TaskGroup: [TaskGroupModel] = [
+            TaskGroupModel(title: "Buissness", count: 20, ava: "taskLogo1", process: 0.5, color: .red.opacity(0.6)),
+            TaskGroupModel(title: "Buissness", count: 5, ava: "taskLogo3", process: 0.2, color: .purple.opacity(0.6)),
+            TaskGroupModel(title: "Buissness", count: 1, ava: "taskLogo2", process: 0.1, color: .blue.opacity(0.6)),
+            TaskGroupModel(title: "Buissness", count: 30, ava: "taskLogo4", process: 0.4, color: .yellow.opacity(0.6)),
+            TaskGroupModel(title: "Buissness", count: 15, ava: "taskLogo5", process: 0.9, color: .mint.opacity(0.6))
         ]
     }
 }
