@@ -9,7 +9,7 @@ import SwiftUI
 
 struct cartModel{
         
-    static func getInPro(model: inProgressModel) -> some View{
+    static func getInProgress(model: inProgressModel) -> some View{
         VStack {
             HStack{
                 textView(text: model.group, size: 14)
