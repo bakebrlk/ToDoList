@@ -179,7 +179,6 @@ extension HomePageView{
     }
     
     //MARK: Task Group
-    
     private func TaskGroup() -> some View {
         VStack(alignment: .leading){
             
