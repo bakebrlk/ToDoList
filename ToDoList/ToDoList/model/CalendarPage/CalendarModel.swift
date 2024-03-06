@@ -23,6 +23,12 @@ struct CalendarModel{
         .cornerRadius(16)
     }
     
+    public func time(currentDate: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        return dateFormatter.string(from: currentDate)
+    }
+    
     private func month(currentDate: Date) -> String {
         let calendar = Calendar.current
         let month = calendar.component(.month, from: currentDate)
