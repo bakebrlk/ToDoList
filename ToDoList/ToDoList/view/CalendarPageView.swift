@@ -13,13 +13,16 @@ struct CalendarPageView: View {
 
     @State private var taskStatusId = 0
     
+//MARK: Body
     var body: some View {
         VStack{
             navigationBar
             
             calendar()
             
-            filterTask()
+            statusTask()
+            
+            statusResult()
         }
         .frame(maxWidth: .infinity,maxHeight: .infinity)
         .background(Color.cyan.opacity(0.1))
@@ -50,12 +53,12 @@ extension CalendarPageView {
         }
     }
     
-//MARK: Filter Task
-    private func filterTask() -> some View {
+//MARK: Status Task
+    private func statusTask() -> some View {
         ScrollView(.horizontal,showsIndicators: false){
             HStack{
                 ForEach(0..<taskStatus.count, id: \.self){ id in
-                   filterTaskView(id: id)
+                   statusTaskView(id: id)
                 }
             }
             .padding(.leading)
@@ -63,7 +66,7 @@ extension CalendarPageView {
         .frame(maxWidth: .infinity)
     }
     
-    private func filterTaskView(id: Int) -> some View {
+    private func statusTaskView(id: Int) -> some View {
         Button(action: {
             taskStatusId = id
         }, label: {
@@ -75,6 +78,15 @@ extension CalendarPageView {
         .background(Color("purple").opacity(taskStatusId == id ? 1 : 0.1))
         .cornerRadius(16)
         .padding(5)
+    }
+    
+//MARK: Status Result
+    private func statusResult() -> some View {
+        ScrollView(.vertical, showsIndicators: false){
+            ForEach(Data.Tasks.Task){ task in
+                TaskModel.TaskModel(model: task)
+            }
+        }
     }
 }
 

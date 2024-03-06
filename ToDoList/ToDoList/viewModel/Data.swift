@@ -43,5 +43,13 @@ struct Data{
             TaskGroupModel(title: "Buissness", count: 30, ava: "taskLogo4", process: 0.4, color: .yellow.opacity(0.6)),
             TaskGroupModel(title: "Buissness", count: 15, ava: "taskLogo5", process: 0.9, color: .mint.opacity(0.6))
         ]
+        
+        static let Task: [TaskModel] = [
+            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .done, time: Date(), image: "taskLogo1", color: .purple.opacity(0.5)),
+            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .inProcess, time: Date(), image: "taskLogo2", color: .mint.opacity(0.5)),
+            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .toDo, time: Date(), image: "taskLogo3", color: .orange.opacity(0.5)),
+            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .done, time: Date(), image: "taskLogo4", color: .brown.opacity(0.5)),
+            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .inProcess, time: Date(), image: "taskLogo5", color: .pink.opacity(0.5)),
+        ]
     }
 }
