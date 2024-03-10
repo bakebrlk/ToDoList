@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CalendarModel{
     
-    public static let shared = CalendarModel()
+    public static var shared = CalendarModel()
     
     public func forCalendarPage(date: Date) -> some View {
         VStack{
@@ -19,8 +19,7 @@ struct CalendarModel{
             textView(text: dayOfWeek(currentDate: date), size: 12)
         }
         .frame(width: Size.size[0]/5.4, height: Size.size[1]/9)
-        .background(Color.white)
-        .cornerRadius(16)
+        .background(Color.clear)
     }
     
     public func time(currentDate: Date) -> String {
