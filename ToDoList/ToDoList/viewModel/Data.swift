@@ -37,19 +37,19 @@ struct Data{
         ]
         
         static let TaskGroup: [TaskGroupModel] = [
-            TaskGroupModel(title: "Buissness", count: 20, ava: "taskLogo1", process: 0.5, color: .red.opacity(0.6)),
-            TaskGroupModel(title: "Buissness", count: 5, ava: "taskLogo3", process: 0.2, color: .purple.opacity(0.6)),
-            TaskGroupModel(title: "Buissness", count: 1, ava: "taskLogo2", process: 0.1, color: .blue.opacity(0.6)),
-            TaskGroupModel(title: "Buissness", count: 30, ava: "taskLogo4", process: 0.4, color: .yellow.opacity(0.6)),
-            TaskGroupModel(title: "Buissness", count: 15, ava: "taskLogo5", process: 0.9, color: .mint.opacity(0.6))
+            TaskGroupModel(title: "Buissness", count: 20, img: "taskLogo1", process: 0.5, color: .red.opacity(0.6)),
+            TaskGroupModel(title: "Buissness", count: 5, img: "taskLogo3", process: 0.2, color: .purple.opacity(0.6)),
+            TaskGroupModel(title: "Buissness", count: 1, img: "taskLogo2", process: 0.1, color: .blue.opacity(0.6)),
+            TaskGroupModel(title: "Buissness", count: 30, img: "taskLogo4", process: 0.4, color: .yellow.opacity(0.6)),
+            TaskGroupModel(title: "Buissness", count: 15, img: "taskLogo5", process: 0.9, color: .mint.opacity(0.6))
         ]
-        
+
         static let Task: [TaskModel] = [
-            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .done, time: Date(), image: "taskLogo1", color: .purple.opacity(0.5)),
-            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .inProcess, time: Date(), image: "taskLogo2", color: .mint.opacity(0.5)),
-            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .toDo, time: Date(), image: "taskLogo3", color: .orange.opacity(0.5)),
-            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .done, time: Date(), image: "taskLogo4", color: .brown.opacity(0.5)),
-            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .inProcess, time: Date(), image: "taskLogo5", color: .pink.opacity(0.5)),
+            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .done, time: Date(),taskGroup: TaskGroup[0]),
+            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .inProcess, time: Date(), taskGroup: TaskGroup[1]),
+            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .toDo, time: Date(), taskGroup: TaskGroup[2]),
+            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .done, time: Date(), taskGroup: TaskGroup[3]),
+            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .inProcess, time: Date(), taskGroup: TaskGroup[4]),
         ]
     }
 }

@@ -35,7 +35,7 @@ struct cartModel{
     
     static func getTaskGroup(model: TaskGroupModel) -> some View {
         HStack{
-            Image(model.ava)
+            Image(model.img)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .padding()

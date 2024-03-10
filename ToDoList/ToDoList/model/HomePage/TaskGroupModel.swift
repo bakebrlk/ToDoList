@@ -11,7 +11,7 @@ struct TaskGroupModel:Identifiable, Hashable{
     var id = UUID()
     let title: String
     let count: Int
-    let ava: String
+    let img: String
     let process: CGFloat
     let color: Color
 }

@@ -13,8 +13,7 @@ struct TaskModel:Identifiable, Hashable{
     let description: String
     let status: TaskStatus
     let time: Date
-    let image: String
-    let color: Color
+    let taskGroup: TaskGroupModel
     
     public static func TaskModel(model: TaskModel) -> some View {
         HStack{
@@ -39,14 +38,14 @@ struct TaskModel:Identifiable, Hashable{
             
             Spacer()
             VStack(alignment: .trailing){
-                CustomImage.getImage(imageName: model.image)
+                CustomImage.getImage(imageName: model.taskGroup.img)
                     .frame(maxHeight: 30)
                 
                 Spacer()
                 textView(text: model.status.builder, size: 12)
                     .padding([.leading,.trailing],20)
                     .padding([.top,.bottom],10)
-                    .background(model.color)
+                    .background(model.taskGroup.color)
                     .cornerRadius(16)
             }
             .padding()
