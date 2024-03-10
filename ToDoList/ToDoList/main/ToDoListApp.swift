@@ -17,7 +17,7 @@ struct ToDoListApp: App {
         WindowGroup {
             GeometryReader{ make in
                 NavigationView{
-                    HomePageView()
+                    CalendarPageView()
                 }
                 .onAppear{
                     if !sizeStatus() {

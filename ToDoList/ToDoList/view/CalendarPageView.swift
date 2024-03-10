@@ -9,9 +9,17 @@ import SwiftUI
 
 struct CalendarPageView: View {
     
-    private let taskStatus = ["All","To do", "In Progress", "Done"]
+    @State private var selectDate = 0
+    
+    private let taskStatus = [
+                            TaskStatus.all,
+                            TaskStatus.toDo,
+                            TaskStatus.inProcess,
+                            TaskStatus.done]
 
-    @State private var taskStatusId = 0
+    @State private var taskStatusState: TaskStatus = .all
+    @State private var selectColor:Color = .purple
+
     
 //MARK: Body
     var body: some View {
@@ -44,21 +52,30 @@ extension CalendarPageView {
     private func calendar() -> some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack{
-                ForEach(0..<31) { date in
-                    let date = Calendar.current.date(byAdding: .day, value: date, to: Date()) ?? Date()
-                    CalendarModel.shared.forCalendarPage(date: date)
+                ForEach(-15..<16, id: \.self) { id in
+                    let date: Date = Calendar.current.date(byAdding: .day, value: id, to: Date()) ?? Date()
+                    Button(action: {
+                        selectDate = id
+                    }, label: {
+                        CalendarModel.shared.forCalendarPage(date: date)
+                    })
+                    .foregroundColor(selectDate == id ? .white: .black)
+                    .background(selectDate == id ? Color("purple") : .white)
+                    .cornerRadius(16)
+                    
                 }
             }
             .padding(5)
         }
+        .defaultScrollAnchor(.center)
     }
     
 //MARK: Status Task
     private func statusTask() -> some View {
         ScrollView(.horizontal,showsIndicators: false){
             HStack{
-                ForEach(0..<taskStatus.count, id: \.self){ id in
-                   statusTaskView(id: id)
+                ForEach(taskStatus, id: \.self){ id in
+                    statusTaskView(status: id)
                 }
             }
             .padding(.leading)
@@ -66,16 +83,17 @@ extension CalendarPageView {
         .frame(maxWidth: .infinity)
     }
     
-    private func statusTaskView(id: Int) -> some View {
+    private func statusTaskView(status: TaskStatus) -> some View {
         Button(action: {
-            taskStatusId = id
+            print(status)
+            taskStatusState = status
         }, label: {
-            textView(text: taskStatus[id], size: 16)
+            textView(text: status.builder, size: 16)
                 .padding([.leading,.trailing],20)
                 .padding([.top,.bottom],10)
-                .foregroundColor(taskStatusId == id ? .white : Color("purple"))
+                .foregroundColor(taskStatusState == status ? .white : Color("purple"))
         })
-        .background(Color("purple").opacity(taskStatusId == id ? 1 : 0.1))
+        .background(Color("purple").opacity(taskStatusState == status ? 1 : 0.1))
         .cornerRadius(16)
         .padding(5)
     }
@@ -84,7 +102,13 @@ extension CalendarPageView {
     private func statusResult() -> some View {
         ScrollView(.vertical, showsIndicators: false){
             ForEach(Data.Tasks.Task){ task in
-                TaskModel.TaskModel(model: task)
+                if taskStatusState != .all{
+                    if task.status == taskStatusState {
+                        TaskModel.TaskModel(model: task)
+                    }
+                }else{
+                    TaskModel.TaskModel(model: task)
+                }
             }
         }
     }

@@ -8,10 +8,10 @@
 import SwiftUI
 
 enum TaskStatus{
-    case done
+    case all
     case toDo
     case inProcess
-    case all
+    case done
     
     var builder: String{
         switch self {
