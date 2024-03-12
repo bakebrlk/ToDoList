@@ -22,6 +22,11 @@ struct CalendarModel{
         .background(Color.clear)
     }
     
+    public func forAddTaskPage(date: Binding<Date>) -> String {
+        let dd = date.wrappedValue
+        return "\(dayOfMonth(currentDate: dd)) " + "\(month(currentDate: dd)), " + "\(year(currentDate: dd))"
+    }
+    
     public func time(currentDate: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h:mm a"
@@ -45,6 +50,12 @@ struct CalendarModel{
     private func dayOfWeek(currentDate: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E"
+        return dateFormatter.string(from: currentDate)
+    }
+    
+    private func year(currentDate: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "Y"
         return dateFormatter.string(from: currentDate)
     }
 }

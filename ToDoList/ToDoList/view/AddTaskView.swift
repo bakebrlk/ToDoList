@@ -19,6 +19,8 @@ struct AddTaskView: View {
     @State private var startDate = Date()
     @State private var endDate = Date()
     
+    @State private var showDatePicker: Bool = false
+    
 //MARK: Body
     var body: some View {
         VStack {
@@ -26,19 +28,26 @@ struct AddTaskView: View {
             
             taskGroup
             
-            if showDropDown{
-                withAnimation{
-                    dropDown
+            ZStack{
+                projectNameView
+
+                if showDropDown{
+                    withAnimation{
+                        dropDown
+                    }
                 }
+                
             }
-            
-            projectNameView
-            
             descriptionView
             
-            selectDateModel(title: "Start Date", date: $startDate)
+            SelectDateModel(startDate: $startDate, endDate: $endDate, currentDate: 0, title: "Start Date", showDatePicker: showDatePicker)
             
-            selectDateModel(title: "End Date", date: $endDate)
+            SelectDateModel(startDate: $startDate, endDate: $endDate, currentDate: 1, title: "End Date", showDatePicker: showDatePicker)
+            
+           
+            Spacer()
+            
+            addProjectBtn
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.cyan.opacity(0.1))
@@ -169,36 +178,44 @@ extension AddTaskView {
         .padding([.leading, .trailing,.bottom])
     }
     
-    
-//MARK: Select Date Model
-    private func selectDateModel(title: String, date: Binding<Date>) -> some View{
-        HStack{
-            Image(systemName: "calendar")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .padding([.top, .bottom, .leading])
-                .foregroundColor(Color("purple"))
+//MARK: Add Project
+    private var addProjectBtn: some View {
+        Button {
+            if verifyTask() {
 
-            VStack(alignment: .leading){
-                textView(text: title, size: 14)
-                    .foregroundStyle(Color(.systemGray))
+                let cc = Calendar.current
+                var currentDate = startDate
+                let toDate: Date = cc.date(byAdding: .day, value: 1, to: endDate) ?? .now
                 
-                textView(text: "\(date.wrappedValue)", size: 18)
+                repeat {
+                    
+                    if let nextDate = cc.date(byAdding: .day, value: 1, to: currentDate) {
+                            currentDate = nextDate
+                    }
+                    
+                    Data.Tasks.appendTask(model: TaskModel(title: projectName, description: description, status: .toDo, time: currentDate, taskGroup: selectedTaskGroup))
+                                        
+                } while currentDate <= toDate
             }
             
-            Spacer()
-            
-            Image(systemName: showDropDown ? "arrowtriangle.up.fill" : "arrowtriangle.down.fill")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .padding(24)
+        } label: {
+            textView(text: "Add Project", size: 18)
         }
-        .frame(maxWidth: .infinity, maxHeight: Size.size[1]/12)
-        .background(Color.white)
+        .frame(maxWidth: .infinity, maxHeight: Size.size[1]/13)
+        .background(Color("purple"))
+        .foregroundColor(.white)
         .cornerRadius(20)
-        .padding([.leading, .trailing, .bottom])
+        .padding()
     }
     
+//MARK: Verification
+    private func verifyTask() -> Bool{
+        if projectName.isEmpty || description.isEmpty {
+            return false
+        }
+        
+        return true
+    }
 }
 
 #Preview {

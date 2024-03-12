@@ -26,9 +26,14 @@ struct Data{
             
         ]
     }
-    
+        
     struct Tasks{
-        static let inProgress: [inProgressModel] = [
+                            
+        static func appendTask(model: TaskModel) {
+            Task.append(model)
+        }
+                
+        static var inProgress: [inProgressModel] = [
             inProgressModel(group: "Buissness", title: "Buy Flowers", logo: "taskLogo1", color: .cyan, progress: 0.5),
             inProgressModel(group: "Buissness", title: "Pay for sub", logo: "taskLogo2", color: .green, progress: 0.2),
             inProgressModel(group: "Buissness", title: "write code", logo: "taskLogo3", color: .purple, progress: 0.7),
@@ -36,7 +41,7 @@ struct Data{
             inProgressModel(group: "Buissness", title: "conf project", logo: "taskLogo5", color: .teal, progress: 1.0),
         ]
         
-        static let TaskGroup: [TaskGroupModel] = [
+        static var TaskGroup: [TaskGroupModel] = [
             TaskGroupModel(title: "Buissness", count: 20, img: "taskLogo1", process: 0.5, color: .red.opacity(0.6)),
             TaskGroupModel(title: "Buissness", count: 5, img: "taskLogo3", process: 0.2, color: .purple.opacity(0.6)),
             TaskGroupModel(title: "Buissness", count: 1, img: "taskLogo2", process: 0.1, color: .blue.opacity(0.6)),
@@ -44,12 +49,12 @@ struct Data{
             TaskGroupModel(title: "Buissness", count: 15, img: "taskLogo5", process: 0.9, color: .mint.opacity(0.6))
         ]
 
-        static let Task: [TaskModel] = [
-            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .done, time: Date(),taskGroup: TaskGroup[0]),
-            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .inProcess, time: Date(), taskGroup: TaskGroup[1]),
-            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .toDo, time: Date(), taskGroup: TaskGroup[2]),
-            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .done, time: Date(), taskGroup: TaskGroup[3]),
-            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .inProcess, time: Date(), taskGroup: TaskGroup[4]),
+        static var Task: [TaskModel] = [
+            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .done, time: Date(),taskGroup: Data.Tasks.TaskGroup[0]),
+            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .inProcess, time: Date(), taskGroup: Data.Tasks.TaskGroup[1]),
+            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .toDo, time: Date(), taskGroup: Data.Tasks.TaskGroup[2]),
+            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .done, time: Date(), taskGroup: Data.Tasks.TaskGroup[3]),
+            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .inProcess, time: Date(), taskGroup: Data.Tasks.TaskGroup[4]),
         ]
     }
 }

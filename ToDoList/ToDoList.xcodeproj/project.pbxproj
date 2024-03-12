@@ -83,6 +83,7 @@
 		8B40321C2B80C3480097D29C /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B40321B2B80C3480097D29C /* Data.swift */; };
 		8B40321E2B80C4930097D29C /* WelcomePageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B40321D2B80C4930097D29C /* WelcomePageModel.swift */; };
 		8B540BF42B9E588500762D99 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B540BF32B9E588500762D99 /* AddTaskView.swift */; };
+		8B7E66F82BA1053B0056C5A1 /* SelectDateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E66F72BA1053B0056C5A1 /* SelectDateModel.swift */; };
 		8B7F01432B97ABFB009405FC /* TaskGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F01422B97ABFB009405FC /* TaskGroupModel.swift */; };
 		8B7F01462B97C532009405FC /* CalendarPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F01452B97C532009405FC /* CalendarPageView.swift */; };
 		8B7F01492B97C5FC009405FC /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F01482B97C5FC009405FC /* CustomNavigationBar.swift */; };
@@ -139,6 +140,7 @@
 		8B40321B2B80C3480097D29C /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		8B40321D2B80C4930097D29C /* WelcomePageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageModel.swift; sourceTree = "<group>"; };
 		8B540BF32B9E588500762D99 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
+		8B7E66F72BA1053B0056C5A1 /* SelectDateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateModel.swift; sourceTree = "<group>"; };
 		8B7F01422B97ABFB009405FC /* TaskGroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TaskGroupModel.swift; path = ../HomePage/TaskGroupModel.swift; sourceTree = "<group>"; };
 		8B7F01452B97C532009405FC /* CalendarPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPageView.swift; sourceTree = "<group>"; };
 		8B7F01482B97C5FC009405FC /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 				8B40321D2B80C4930097D29C /* WelcomePageModel.swift */,
 				8B8A2B752B8DBFB000D74AB0 /* AuthDataResultModel.swift */,
 				8BC0AD9A2B91146600DE3BCC /* ImagePicker.swift */,
+				8B7E66F72BA1053B0056C5A1 /* SelectDateModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -547,6 +550,7 @@
 				8B2EC91D2B84C33A00A6BF00 /* FirebaseFunction.swift in Sources */,
 				8B540BF42B9E588500762D99 /* AddTaskView.swift in Sources */,
 				8B16014D2B82D8CA0017FD2B /* SignInView.swift in Sources */,
+				8B7E66F82BA1053B0056C5A1 /* SelectDateModel.swift in Sources */,
 				8B16014B2B82D7580017FD2B /* UserDefaults.swift in Sources */,
 				8B8A2B762B8DBFB000D74AB0 /* AuthDataResultModel.swift in Sources */,
 				8B1BB5E52B957C4E001D62DA /* Size.swift in Sources */,
