@@ -17,7 +17,7 @@ struct ToDoListApp: App {
         WindowGroup {
             GeometryReader{ make in
                 NavigationView{
-                   AddTaskView()
+                   TimerView()
                 }
                 .onAppear{
                     if !sizeStatus() {

@@ -83,6 +83,8 @@
 		8B40321C2B80C3480097D29C /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B40321B2B80C3480097D29C /* Data.swift */; };
 		8B40321E2B80C4930097D29C /* WelcomePageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B40321D2B80C4930097D29C /* WelcomePageModel.swift */; };
 		8B540BF42B9E588500762D99 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B540BF32B9E588500762D99 /* AddTaskView.swift */; };
+		8B72FAD42BA29C8000D30FD8 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B72FAD32BA29C8000D30FD8 /* TimerView.swift */; };
+		8B72FAD62BA2A24C00D30FD8 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B72FAD52BA2A24C00D30FD8 /* TimerModel.swift */; };
 		8B7E66F82BA1053B0056C5A1 /* SelectDateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E66F72BA1053B0056C5A1 /* SelectDateModel.swift */; };
 		8B7F01432B97ABFB009405FC /* TaskGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F01422B97ABFB009405FC /* TaskGroupModel.swift */; };
 		8B7F01462B97C532009405FC /* CalendarPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F01452B97C532009405FC /* CalendarPageView.swift */; };
@@ -140,6 +142,8 @@
 		8B40321B2B80C3480097D29C /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		8B40321D2B80C4930097D29C /* WelcomePageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageModel.swift; sourceTree = "<group>"; };
 		8B540BF32B9E588500762D99 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
+		8B72FAD32BA29C8000D30FD8 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		8B72FAD52BA2A24C00D30FD8 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		8B7E66F72BA1053B0056C5A1 /* SelectDateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateModel.swift; sourceTree = "<group>"; };
 		8B7F01422B97ABFB009405FC /* TaskGroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TaskGroupModel.swift; path = ../HomePage/TaskGroupModel.swift; sourceTree = "<group>"; };
 		8B7F01452B97C532009405FC /* CalendarPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPageView.swift; sourceTree = "<group>"; };
@@ -331,6 +335,7 @@
 				8B8A2B752B8DBFB000D74AB0 /* AuthDataResultModel.swift */,
 				8BC0AD9A2B91146600DE3BCC /* ImagePicker.swift */,
 				8B7E66F72BA1053B0056C5A1 /* SelectDateModel.swift */,
+				8B72FAD52BA2A24C00D30FD8 /* TimerModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -343,6 +348,7 @@
 				8BC0AD962B910C3100DE3BCC /* HomePageView.swift */,
 				8B7F01452B97C532009405FC /* CalendarPageView.swift */,
 				8B540BF32B9E588500762D99 /* AddTaskView.swift */,
+				8B72FAD32BA29C8000D30FD8 /* TimerView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -562,6 +568,7 @@
 				8B1BB5F12B958E3F001D62DA /* inProgressModel.swift in Sources */,
 				8B82BD482B8E563D00DC3BF2 /* NavigationModifire.swift in Sources */,
 				8B16013E2B82C4A10017FD2B /* CheckAccountView.swift in Sources */,
+				8B72FAD62BA2A24C00D30FD8 /* TimerModel.swift in Sources */,
 				8B1BB5E12B9577C8001D62DA /* RecrangleModel.swift in Sources */,
 				8B16014F2B82DA060017FD2B /* CustomTextField.swift in Sources */,
 				8B40321A2B80B0590097D29C /* WelcomePageView.swift in Sources */,
@@ -575,6 +582,7 @@
 				8B1601402B82C57A0017FD2B /* CustomButton.swift in Sources */,
 				8B279F322B80A16E00C1C298 /* ToDoListApp.swift in Sources */,
 				8B8A2B7A2B8DC13900D74AB0 /* Authentication.swift in Sources */,
+				8B72FAD42BA29C8000D30FD8 /* TimerView.swift in Sources */,
 				8B7F014D2B97DC8D009405FC /* TaskModel.swift in Sources */,
 				8B7F014B2B97CD48009405FC /* CalendarModel.swift in Sources */,
 				8B1BB5DE2B95723D001D62DA /* cartModel.swift in Sources */,
