@@ -13,6 +13,7 @@ struct SignUpView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var confpassword: String = ""
+    @State private var nickName: String = ""
     
     var body: some View{
         
@@ -21,6 +22,8 @@ struct SignUpView: View {
                     Spacer()
                     image
                     
+                    nickNameView
+                        .frame(maxWidth: .infinity, maxHeight: make.size.height/10)
                     emailView
                         .frame(maxWidth: .infinity, maxHeight: make.size.height/10)
                     passwordView
@@ -33,7 +36,7 @@ struct SignUpView: View {
                         signIn
                     }
                     signUp
-                        .frame(maxHeight: make.size.height/8)
+                        .frame(maxHeight: make.size.height/10)
                     Spacer()
                 }
                 .navigationTitle("Welcome our Friend!")
@@ -43,6 +46,10 @@ struct SignUpView: View {
 }
 
 extension SignUpView{
+    
+    private var nickNameView: some View {
+        CustomTextField(text: $nickName, isSecure: false, titleKey: "Nick Name: ", haveSecure: false)
+    }
     
     private var emailView: some View {
         CustomTextField(text: $email, isSecure: false, titleKey: "Email: ", haveSecure: false)

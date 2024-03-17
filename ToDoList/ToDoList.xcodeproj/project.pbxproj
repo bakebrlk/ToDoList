@@ -101,6 +101,7 @@
 		8B8A2B762B8DBFB000D74AB0 /* AuthDataResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8A2B752B8DBFB000D74AB0 /* AuthDataResultModel.swift */; };
 		8B8A2B7A2B8DC13900D74AB0 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8A2B792B8DC13900D74AB0 /* Authentication.swift */; };
 		8B8A2B7C2B8DE0CF00D74AB0 /* UpdatePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8A2B7B2B8DE0CF00D74AB0 /* UpdatePasswordView.swift */; };
+		8B9A085C2BA709BC009CAC97 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9A085B2BA709BC009CAC97 /* ProfileView.swift */; };
 		8BC0AD972B910C3100DE3BCC /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC0AD962B910C3100DE3BCC /* HomePageView.swift */; };
 		8BC0AD992B9110CB00DE3BCC /* CustomImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC0AD982B9110CB00DE3BCC /* CustomImage.swift */; };
 		8BC0AD9B2B91146600DE3BCC /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC0AD9A2B91146600DE3BCC /* ImagePicker.swift */; };
@@ -160,6 +161,7 @@
 		8B8A2B752B8DBFB000D74AB0 /* AuthDataResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataResultModel.swift; sourceTree = "<group>"; };
 		8B8A2B792B8DC13900D74AB0 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		8B8A2B7B2B8DE0CF00D74AB0 /* UpdatePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordView.swift; sourceTree = "<group>"; };
+		8B9A085B2BA709BC009CAC97 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		8BC0AD962B910C3100DE3BCC /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		8BC0AD982B9110CB00DE3BCC /* CustomImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImage.swift; sourceTree = "<group>"; };
 		8BC0AD9A2B91146600DE3BCC /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 				8B7F01452B97C532009405FC /* CalendarPageView.swift */,
 				8B540BF32B9E588500762D99 /* AddTaskView.swift */,
 				8B72FAD32BA29C8000D30FD8 /* TimerView.swift */,
+				8B9A085B2BA709BC009CAC97 /* ProfileView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B2EC91D2B84C33A00A6BF00 /* FirebaseFunction.swift in Sources */,
+				8B9A085C2BA709BC009CAC97 /* ProfileView.swift in Sources */,
 				8B540BF42B9E588500762D99 /* AddTaskView.swift in Sources */,
 				8B16014D2B82D8CA0017FD2B /* SignInView.swift in Sources */,
 				8B7E66F82BA1053B0056C5A1 /* SelectDateModel.swift in Sources */,
@@ -724,6 +728,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ToDoList/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ToDoList/main/Info.plist;
@@ -753,6 +758,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ToDoList/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ToDoList/main/Info.plist;
