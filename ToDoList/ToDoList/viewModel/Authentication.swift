@@ -10,16 +10,19 @@ import SwiftUI
 
 struct Authentication{
     
-    static func signUp(email: String, password: String, confPassword: String) -> Bool{
+    static func signUp(email: String, password: String, confPassword: String, nickName: String) -> Bool{
         
-        guard !email.isEmpty && !password.isEmpty && confPassword == password && validPassword(password: password) else{
+        guard !email.isEmpty && !password.isEmpty && confPassword == password && validPassword(password: password) && !nickName.isEmpty else{
             return false
         }
         
         Task {
             do {
-                let returnedUserData = try await FirebaseFunction.signUp(email: email, password: password)
+                let returnedUserData = try await FirebaseFunction.signUp(email: email, password: password, nickName: nickName)
                 print(returnedUserData)
+                
+                try await FirebaseFunction.createNewUser(userModel: returnedUserData)
+                
                 return true
             }catch {
                 print(error)

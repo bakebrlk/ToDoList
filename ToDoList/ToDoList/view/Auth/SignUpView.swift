@@ -73,16 +73,15 @@ extension SignUpView{
         Button(
             action: {
                 DispatchQueue.main.async {
-                    if Authentication.signUp(email: email, password: password, confPassword: confpassword) {
+                    if Authentication.signUp(email: email, password: password, confPassword: confpassword, nickName: nickName) {
                         print("Succes")
                     }else{
                         print("error")
                     }
                 }
         }, label: {
-            NavigationLink(destination: SignUpView()){
-                textView(text: "Sign Up", size: 22)
-            }
+            textView(text: "Sign Up", size: 22)
+            
         })
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color("purple"))

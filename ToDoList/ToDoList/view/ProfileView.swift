@@ -12,11 +12,14 @@ struct ProfileView: View {
     @State private var isImagePickerPresented = false
     @State private var selectedImage: UIImage?
     @State private var isBackgroundModew = false
+        
+    @StateObject private var user = Data.User()
     
 //MARK: Body
     var body: some View {
         VStack{
             navBar
+            Spacer()
             avatar(height: Size.size[1]/3)
             
             settings
@@ -29,6 +32,10 @@ struct ProfileView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.cyan.opacity(0.1))
+        
+        .task {
+            try? await user.userInfo()
+        }
     }
 }
 
@@ -60,8 +67,8 @@ extension ProfileView{
 //MARK: Settings and User Information
     private var settings: some View {
         VStack{
-            userInfo(title: "nick name: ", description: "Bekzat")
-            userInfo(title: "email: ", description: "1@gmail.com")
+            userInfo(title: "nick name: ", description: user.user?.name ?? "user")
+            userInfo(title: "email: ", description: user.user?.email ?? "user@gmail.com")
             backgroundSwitch
             editProfile
             signOut
@@ -134,7 +141,8 @@ extension ProfileView{
     private var signOut: some View {
       
             Button(action: {
-                
+                try? Authentication.signOut()
+                print("sign out")
             }, label: {
                 textView(text: "Sign Out", size: 15)
                     .foregroundColor(.red)

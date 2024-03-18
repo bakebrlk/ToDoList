@@ -7,7 +7,21 @@
 
 import SwiftUI
 
-struct Data{
+final class Data{
+    
+    final class User: ObservableObject{
+        
+        @Published private(set) var user: UserModel? = nil
+        
+        func userInfo() async throws{
+            let authDataResult = try FirebaseFunction.getAuthenticatedUser()
+            let userInfo = try await FirebaseFunction.getUserInfo(userId: authDataResult.uid)
+                    
+            DispatchQueue.main.async {
+                self.user = userInfo
+            }
+        }
+    }
     
     struct WelcomePage{
         static let data: [WelcomePageModel] = [
@@ -58,3 +72,4 @@ struct Data{
         ]
     }
 }
+
