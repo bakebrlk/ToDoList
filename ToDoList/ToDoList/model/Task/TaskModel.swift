@@ -23,6 +23,7 @@ struct TaskModel:Identifiable, Hashable{
                     .foregroundColor(Color(.systemGray))
                 
                 textView(text: model.title, size: 14)
+                    .foregroundColor(.black)
                     .padding([.top,.bottom],5)
                 HStack{
                     CustomImage.getImage(systemName: "clock.fill")
@@ -51,7 +52,7 @@ struct TaskModel:Identifiable, Hashable{
             .padding()
         }
         .frame(maxWidth: .infinity, maxHeight: Size.size[1]/6)
-        .background(Color.white)
+        .background(Color.white.opacity(BackgroundMode().isDark ? 0.92 : 0))
         .cornerRadius(20)
         .padding(10)
     }

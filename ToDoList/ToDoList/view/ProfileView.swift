@@ -15,24 +15,30 @@ struct ProfileView: View {
         
     @StateObject private var user = Data.User()
     
+    @ObservedObject private var backMode: BackgroundMode
+    
+    init(backMode: BackgroundMode){
+        self.backMode = backMode
+    }
+    
 //MARK: Body
     var body: some View {
         VStack{
             navBar
             Spacer()
             avatar(height: Size.size[1]/3)
-            
+
             settings
-            
-            Spacer()
             
             textView(text: "Taskly!", size: 32)
                 .foregroundColor(Color("purple"))
-                .padding(.bottom)
+                .padding([.top], 15)
+                .padding(.bottom,30)
+            
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.cyan.opacity(0.1))
-        
+        .environment(\.colorScheme, BackgroundMode().isDark ? .dark : .light)
+        .background(BackgroundMode().viewBack())
         .task {
             try? await user.userInfo()
         }
@@ -42,7 +48,7 @@ struct ProfileView: View {
 extension ProfileView{
 //MARK: Nav Bar
     private var navBar: some View {
-        NavigationTopBar(title: "Profile", backAction: ())
+        NavigationTopBar(title: "Profile")
     }
     
 //MARK: Image Picker
@@ -66,26 +72,34 @@ extension ProfileView{
 
 //MARK: Settings and User Information
     private var settings: some View {
-        VStack{
-            userInfo(title: "nick name: ", description: user.user?.name ?? "user")
-            userInfo(title: "email: ", description: user.user?.email ?? "user@gmail.com")
-            backgroundSwitch
-            editProfile
-            signOut
+        
+        ScrollView{
+            VStack{
+                userInfo(title: "nick name: ", description: user.user?.name ?? "user")
+                userInfo(title: "email: ", description: user.user?.email ?? "user@gmail.com")
+                backgroundSwitch
+                editProfile
+                signOut
+            }
+            .frame(maxWidth: Size.size[0]/1.2, maxHeight: Size.size[1]/2.6)
+            .background(BackgroundMode().isDark ? Color(.systemGray) : Color.white)
+            .cornerRadius(20)
+            .padding([.leading, .trailing],40)
         }
-        .background(Color.white)
-        .cornerRadius(20)
-        .padding([.leading, .trailing],40)    }
+    }
+        
     
 //MARK: User Info
     private func userInfo(title: String, description: String) -> some View {
         VStack{
             HStack{
                 textView(text: title, size: 14)
+                    .foregroundColor(BackgroundMode().textColor())
                     .padding(.leading)
                 Spacer()
                 
                 textView(text: description, size: 14)
+                    .foregroundColor(BackgroundMode().textColor())
                     .padding(.trailing)
             }
             
@@ -100,10 +114,10 @@ extension ProfileView{
     private var editProfile: some View {
         VStack{
             Button(action: {
-                
+                print(BackgroundMode().isDark)
             }, label: {
                 textView(text: "Edit Profile", size: 15)
-                    .foregroundColor(Color("purple"))
+                    .foregroundColor(.cyan)
                     .multilineTextAlignment(.leading)
                     .padding([.leading, .trailing, .top])
                 
@@ -122,10 +136,11 @@ extension ProfileView{
         VStack{
             HStack{
                 textView(text: "light/dark mode", size: 14)
+                    .foregroundColor(BackgroundMode().textColor())
                     .padding(.leading)
                 Spacer()
                 
-                Toggle("", isOn: $isBackgroundModew)
+                Toggle("", isOn: backMode.$isDark)
                     .toggleStyle(SwitchToggleStyle(tint: Color("purple")))
                     .padding(.trailing)
             }
@@ -152,6 +167,7 @@ extension ProfileView{
 }
 
 #Preview {
-    ProfileView()
+    
+    ProfileView(backMode: BackgroundMode())
 }
     

@@ -44,20 +44,19 @@ struct AddTaskView: View {
             
             SelectDateModel(startDate: $startDate, endDate: $endDate, currentDate: 1, title: "End Date", showDatePicker: showDatePicker)
             
-           
-            Spacer()
-            
             addProjectBtn
+            
+            Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.cyan.opacity(0.1))
+        .background(BackgroundMode().viewBack())
     }
 }
 
 extension AddTaskView {
 //MARK: TOP Navigation BAR
     private var navigationBar: some View {
-        NavigationTopBar(title: "Add Project", backAction: backAction())
+        NavigationTopBar(title: "Add Project")
     }
     
     private func backAction(){
@@ -95,6 +94,7 @@ extension AddTaskView {
                 showDropDown.toggle()
             }
         }
+        .environment(\.colorScheme, BackgroundMode().isDark ? .dark : .light)
     }
     
 //MARK: Drop Down

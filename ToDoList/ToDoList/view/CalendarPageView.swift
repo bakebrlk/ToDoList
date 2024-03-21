@@ -33,7 +33,8 @@ struct CalendarPageView: View {
             statusResult()
         }
         .frame(maxWidth: .infinity,maxHeight: .infinity)
-        .background(Color.cyan.opacity(0.1))
+        .background(BackgroundMode().viewBack())
+        .environment(\.colorScheme, BackgroundMode().isDark ? .dark : .light)
     }
 }
 
@@ -41,7 +42,7 @@ extension CalendarPageView {
     
 //MARK: TOP Navigation BAR
     private var navigationBar: some View {
-        NavigationTopBar(title: "Today's Task", backAction: backAction())
+        NavigationTopBar(title: "Today's Task")
     }
     
     private func backAction(){
@@ -60,7 +61,7 @@ extension CalendarPageView {
                         CalendarModel.shared.forCalendarPage(date: date)
                     })
                     .foregroundColor(selectDate == id ? .white: .black)
-                    .background(selectDate == id ? Color("purple") : .white)
+                    .background(selectDate == id ? Color("purple") : .white.opacity(BackgroundMode().isDark ? 0.92 : 0))
                     .cornerRadius(16)
                     
                 }

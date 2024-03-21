@@ -28,7 +28,7 @@ struct cartModel{
                 .padding()
         }
         .frame(width: Size.size[0]*0.55)
-        .background(model.color.opacity(0.5))
+        .background(model.color.opacity(0.9))
         .cornerRadius(20)
         .padding(.leading)
     }
@@ -42,6 +42,7 @@ struct cartModel{
             
             VStack(alignment: .leading){
                 textView(text: model.title, size: 14)
+                    .foregroundColor(.black)
                 textView(text: "\(model.count) Tasks", size: 10)
                     .foregroundColor(Color(.systemGray))
                     .padding(.top,0.1)
@@ -52,7 +53,7 @@ struct cartModel{
                 .padding(.trailing)
         }
         .frame(width: Size.size[0]*0.9, height: Size.size[1]*0.1)
-        .background(.white.opacity(0.6))
+        .background(.white.opacity(0.92))
         .cornerRadius(20)
         .padding(.leading)
     }

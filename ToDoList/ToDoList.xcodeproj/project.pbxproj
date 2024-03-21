@@ -104,6 +104,8 @@
 		8B8A2B7A2B8DC13900D74AB0 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8A2B792B8DC13900D74AB0 /* Authentication.swift */; };
 		8B8A2B7C2B8DE0CF00D74AB0 /* UpdatePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8A2B7B2B8DE0CF00D74AB0 /* UpdatePasswordView.swift */; };
 		8B9A085C2BA709BC009CAC97 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9A085B2BA709BC009CAC97 /* ProfileView.swift */; };
+		8BBAFCB02BAAFF7F009609EE /* BackgroundMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAFCAF2BAAFF7F009609EE /* BackgroundMode.swift */; };
+		8BBAFCB22BAB09D1009609EE /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAFCB12BAB09D1009609EE /* CustomTabBar.swift */; };
 		8BC0AD972B910C3100DE3BCC /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC0AD962B910C3100DE3BCC /* HomePageView.swift */; };
 		8BC0AD992B9110CB00DE3BCC /* CustomImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC0AD982B9110CB00DE3BCC /* CustomImage.swift */; };
 		8BC0AD9B2B91146600DE3BCC /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC0AD9A2B91146600DE3BCC /* ImagePicker.swift */; };
@@ -166,6 +168,8 @@
 		8B8A2B792B8DC13900D74AB0 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		8B8A2B7B2B8DE0CF00D74AB0 /* UpdatePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordView.swift; sourceTree = "<group>"; };
 		8B9A085B2BA709BC009CAC97 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		8BBAFCAF2BAAFF7F009609EE /* BackgroundMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundMode.swift; sourceTree = "<group>"; };
+		8BBAFCB12BAB09D1009609EE /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		8BC0AD962B910C3100DE3BCC /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		8BC0AD982B9110CB00DE3BCC /* CustomImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImage.swift; sourceTree = "<group>"; };
 		8BC0AD9A2B91146600DE3BCC /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -374,6 +378,8 @@
 				8B82BD492B8E576100DC3BF2 /* View.swift */,
 				8B82BD4B2B8E59AB00DC3BF2 /* Navigation.swift */,
 				8B1BB5E42B957C4E001D62DA /* Size.swift */,
+				8BBAFCAF2BAAFF7F009609EE /* BackgroundMode.swift */,
+				8BBAFCB12BAB09D1009609EE /* CustomTabBar.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -566,6 +572,7 @@
 				8B9A085C2BA709BC009CAC97 /* ProfileView.swift in Sources */,
 				8B540BF42B9E588500762D99 /* AddTaskView.swift in Sources */,
 				8B16014D2B82D8CA0017FD2B /* SignInView.swift in Sources */,
+				8BBAFCB02BAAFF7F009609EE /* BackgroundMode.swift in Sources */,
 				8B7E66F82BA1053B0056C5A1 /* SelectDateModel.swift in Sources */,
 				8B16014B2B82D7580017FD2B /* UserDefaults.swift in Sources */,
 				8B8A2B762B8DBFB000D74AB0 /* AuthDataResultModel.swift in Sources */,
@@ -599,6 +606,7 @@
 				8B7F014B2B97CD48009405FC /* CalendarModel.swift in Sources */,
 				8B1BB5DE2B95723D001D62DA /* cartModel.swift in Sources */,
 				8B8A2B7C2B8DE0CF00D74AB0 /* UpdatePasswordView.swift in Sources */,
+				8BBAFCB22BAB09D1009609EE /* CustomTabBar.swift in Sources */,
 				8BDE130B2B912253005BBEFF /* CircleModel.swift in Sources */,
 				8B40321E2B80C4930097D29C /* WelcomePageModel.swift in Sources */,
 				8BC0AD972B910C3100DE3BCC /* HomePageView.swift in Sources */,

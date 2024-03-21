@@ -19,5 +19,4 @@ func customButton(text: String, action: ()) -> some View{
     })
     .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
     .cornerRadius(18)
-//    .padding()
 }

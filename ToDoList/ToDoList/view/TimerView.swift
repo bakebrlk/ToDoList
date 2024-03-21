@@ -19,6 +19,11 @@ struct TimerView: View {
     var body: some View {
         
         VStack{
+            
+            NavigationTopBar(title: "Timer")
+            
+            Spacer()
+            
             timer
             
             HStack {
@@ -37,11 +42,15 @@ struct TimerView: View {
                 addTime(second: 60.0, text: "+1m")
                 addTime(second: 10.0, text: "+10s")
             }
+            
+            Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.cyan.opacity(0.1))
-
+        .background(BackgroundMode().viewBack())
+        .environment(\.colorScheme, BackgroundMode().isDark ? .dark : .light)
+        
     }
+    
 }
 
 extension TimerView {

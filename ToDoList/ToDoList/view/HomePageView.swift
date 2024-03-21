@@ -29,8 +29,8 @@ struct HomePageView: View {
                     TaskGroup()
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.cyan.opacity(0.1))
-
+                .background(BackgroundMode().viewBack())
+                .environment(\.colorScheme, BackgroundMode().isDark ? .dark : .light)
             }
             .onAppear{
                 withAnimation{
@@ -51,6 +51,7 @@ extension HomePageView{
             
             notification
                 .frame(maxHeight: height/13)
+                .foregroundColor(BackgroundMode().textColor())
         }
         .frame(maxWidth: .infinity, maxHeight: height/10)
     }
@@ -58,7 +59,9 @@ extension HomePageView{
     private var userName: some View{
         VStack(alignment: .leading){
             textView(text: "Hello!", size: 18)
+                .foregroundColor(BackgroundMode().textColor())
             textView(text: "Bekzat", size: 22)
+                .foregroundColor(BackgroundMode().textColor())
         }
     }
     
@@ -93,6 +96,7 @@ extension HomePageView{
             VStack(alignment: .leading){
                 todayStatusView
                     .lineLimit(nil)
+
                 Spacer()
                 viewTaskBtn(width: width/2.5, height: height/16)
                 
@@ -166,6 +170,7 @@ extension HomePageView{
         VStack(alignment: .leading){
             
             textView(text: "In Progress (\(Data.Tasks.inProgress.count))", size: 18)
+                .foregroundColor(BackgroundMode().textColor())
                 .padding(.leading)
             
             ScrollView(.horizontal, showsIndicators: false){
@@ -183,6 +188,7 @@ extension HomePageView{
         VStack(alignment: .leading){
             
             textView(text: "Task Groups (\(Data.Tasks.TaskGroup.count))", size: 18)
+                .foregroundColor(BackgroundMode().textColor())
                 .padding()
             
             ScrollView(.vertical, showsIndicators: false){
