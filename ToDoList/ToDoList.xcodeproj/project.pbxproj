@@ -95,8 +95,7 @@
 		8B7F014D2B97DC8D009405FC /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F014C2B97DC8D009405FC /* TaskModel.swift */; };
 		8B7F01502B97E351009405FC /* TaskStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F014F2B97E351009405FC /* TaskStatus.swift */; };
 		8B82BD462B8E53C900DC3BF2 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82BD452B8E53C800DC3BF2 /* Router.swift */; };
-		8B82BD482B8E563D00DC3BF2 /* NavigationModifire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82BD472B8E563D00DC3BF2 /* NavigationModifire.swift */; };
-		8B82BD4A2B8E576100DC3BF2 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82BD492B8E576100DC3BF2 /* View.swift */; };
+		8B82BD482B8E563D00DC3BF2 /* RouterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82BD472B8E563D00DC3BF2 /* RouterView.swift */; };
 		8B82BD4C2B8E59AB00DC3BF2 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82BD4B2B8E59AB00DC3BF2 /* Navigation.swift */; };
 		8B874DB12B8E37F30076E224 /* emailLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B874DB02B8E37F20076E224 /* emailLogo.png */; };
 		8B874DB32B8E382E0076E224 /* SendMailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B874DB22B8E382E0076E224 /* SendMailView.swift */; };
@@ -159,8 +158,7 @@
 		8B7F014C2B97DC8D009405FC /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		8B7F014F2B97E351009405FC /* TaskStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatus.swift; sourceTree = "<group>"; };
 		8B82BD452B8E53C800DC3BF2 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		8B82BD472B8E563D00DC3BF2 /* NavigationModifire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModifire.swift; sourceTree = "<group>"; };
-		8B82BD492B8E576100DC3BF2 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		8B82BD472B8E563D00DC3BF2 /* RouterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterView.swift; sourceTree = "<group>"; };
 		8B82BD4B2B8E59AB00DC3BF2 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		8B874DB02B8E37F20076E224 /* emailLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emailLogo.png; sourceTree = "<group>"; };
 		8B874DB22B8E382E0076E224 /* SendMailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMailView.swift; sourceTree = "<group>"; };
@@ -374,8 +372,7 @@
 				8B2EC91C2B84C33A00A6BF00 /* FirebaseFunction.swift */,
 				8B8A2B792B8DC13900D74AB0 /* Authentication.swift */,
 				8B82BD452B8E53C800DC3BF2 /* Router.swift */,
-				8B82BD472B8E563D00DC3BF2 /* NavigationModifire.swift */,
-				8B82BD492B8E576100DC3BF2 /* View.swift */,
+				8B82BD472B8E563D00DC3BF2 /* RouterView.swift */,
 				8B82BD4B2B8E59AB00DC3BF2 /* Navigation.swift */,
 				8B1BB5E42B957C4E001D62DA /* Size.swift */,
 				8BBAFCAF2BAAFF7F009609EE /* BackgroundMode.swift */,
@@ -580,10 +577,9 @@
 				8B7F01432B97ABFB009405FC /* TaskGroupModel.swift in Sources */,
 				8B1601422B82C6960017FD2B /* CustomText.swift in Sources */,
 				8B874DB32B8E382E0076E224 /* SendMailView.swift in Sources */,
-				8B82BD4A2B8E576100DC3BF2 /* View.swift in Sources */,
 				8B82BD4C2B8E59AB00DC3BF2 /* Navigation.swift in Sources */,
 				8B1BB5F12B958E3F001D62DA /* inProgressModel.swift in Sources */,
-				8B82BD482B8E563D00DC3BF2 /* NavigationModifire.swift in Sources */,
+				8B82BD482B8E563D00DC3BF2 /* RouterView.swift in Sources */,
 				8B16013E2B82C4A10017FD2B /* CheckAccountView.swift in Sources */,
 				8B72FAD62BA2A24C00D30FD8 /* TimerModel.swift in Sources */,
 				8B3BF69C2BA868E700499FAC /* DataModel.swift in Sources */,

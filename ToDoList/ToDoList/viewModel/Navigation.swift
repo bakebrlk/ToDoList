@@ -7,6 +7,18 @@
 
 import SwiftUI
 
-struct Navigation{
-    @State var navigation: Router = .welcome
+final class Navigation: ObservableObject{
+    @Published var path: NavigationPath = NavigationPath()
+    
+    func navigateTo(_ appRoute: Router) {
+        path.append(appRoute)
+    }
+       
+    func navigateBack() {
+        path.removeLast()
+    }
+       
+    func popToRoot() {
+        path.removeLast(path.count)
+    }
 }

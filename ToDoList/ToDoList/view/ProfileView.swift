@@ -17,6 +17,8 @@ struct ProfileView: View {
     
     @ObservedObject private var backMode: BackgroundMode
     
+    @EnvironmentObject var navigate: Navigation
+
     init(backMode: BackgroundMode){
         self.backMode = backMode
     }
@@ -114,7 +116,7 @@ extension ProfileView{
     private var editProfile: some View {
         VStack{
             Button(action: {
-                print(BackgroundMode().isDark)
+                navigate.navigateTo(.checkAccount)
             }, label: {
                 textView(text: "Edit Profile", size: 15)
                     .foregroundColor(.cyan)
