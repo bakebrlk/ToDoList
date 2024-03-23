@@ -15,6 +15,8 @@ struct HomePageView: View {
     @State private var todayStatus: String = "Your today's task almost done!"
     @State private var statisticsValue = 0.0
   
+    @StateObject private var user = Data.User()
+
     //MARK: Body
     var body: some View {
         
@@ -60,7 +62,7 @@ extension HomePageView{
         VStack(alignment: .leading){
             textView(text: "Hello!", size: 18)
                 .foregroundColor(BackgroundMode().textColor())
-            textView(text: "Bekzat", size: 22)
+            textView(text: user.user?.name ?? "User", size: 22)
                 .foregroundColor(BackgroundMode().textColor())
         }
     }

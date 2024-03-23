@@ -84,7 +84,7 @@ extension CustomTabBar {
             .background(Color.clear)
 
         }
-        .frame(maxWidth: .infinity, maxHeight: Size.size[1]/30)
+        .frame(maxWidth: .infinity, maxHeight: Size.size[1]/26)
         .background(Color.clear)
 
     }
