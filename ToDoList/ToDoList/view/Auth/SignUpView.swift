@@ -78,7 +78,7 @@ extension SignUpView{
         Button(
             action: {
                 DispatchQueue.main.async {
-                    if Authentication.signUp(email: email, password: password, confPassword: confpassword, nickName: nickName, photoUrl: ava.jpe) {
+                    if Authentication.signUp(email: email, password: password, confPassword: confpassword, nickName: nickName) {
                         print("Succes")
                     }else{
                         print("error")

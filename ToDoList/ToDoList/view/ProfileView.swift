@@ -8,14 +8,12 @@
 import SwiftUI
 
 struct ProfileView: View {
-    
-    @State private var isImagePickerPresented = false
-    @State private var selectedImage: UIImage?
-    @State private var isBackgroundModew = false
-        
+           
     @StateObject private var user = Data.User()
     
     @ObservedObject private var backMode: BackgroundMode
+    
+    @State private var editProfileCheck = false
     
     @EnvironmentObject var navigate: Navigation
 
@@ -44,6 +42,11 @@ struct ProfileView: View {
         .task {
             try? await user.userInfo()
         }
+        
+        .sheet(isPresented: $editProfileCheck, content: {
+            EditProfileView(checkPresent: $editProfileCheck)
+                .presentationDetents([.medium])
+        })
     }
 }
 
@@ -53,21 +56,10 @@ extension ProfileView{
         NavigationTopBar(title: "Profile")
     }
     
-//MARK: Image Picker
+//MARK: Avatar
     private func avatar(height: CGFloat) -> some View {
-        Button {
-            isImagePickerPresented.toggle()
-        } label: {
-            if let image = selectedImage {
-                CustomImage.getImage(uiImage: image, height: height/1.1)
-            }else{
-                CustomImage.getImage(imageName: "checkAcc")
-            }
-            
-        }
-        .sheet(isPresented: $isImagePickerPresented) {
-            ImagePicker(selectedImage: $selectedImage, isImagePickerPresented: $isImagePickerPresented)
-        }
+       
+        CustomImage.getImage(imageName: "checkAcc")
         .frame(maxWidth: height, maxHeight: height)
         .cornerRadius(height/2)
     }
@@ -116,7 +108,8 @@ extension ProfileView{
     private var editProfile: some View {
         VStack{
             Button(action: {
-                navigate.navigateTo(.checkAccount)
+//                navigate.navigateTo(.checkAccount)
+                editProfileCheck.toggle()
             }, label: {
                 textView(text: "Edit Profile", size: 15)
                     .foregroundColor(.cyan)
