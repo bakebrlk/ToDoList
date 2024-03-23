@@ -18,7 +18,9 @@ struct Authentication{
         
         Task {
             do {
-                let returnedUserData = try await FirebaseFunction.signUp(email: email, password: password, nickName: nickName)
+                
+                
+                let returnedUserData = try await FirebaseFunction.signUp(email: email, password: password, nickName: nickName, photoUrl: URL(string: "https://firebasestorage.googleapis.com/v0/b/todolist-50fbf.appspot.com/o/checkAcc.png?alt=media&token=d7882cd9-8453-46c3-addd-4695e9eff4cc")!)
                 print(returnedUserData)
                 
                 try await FirebaseFunction.createNewUser(userModel: returnedUserData)

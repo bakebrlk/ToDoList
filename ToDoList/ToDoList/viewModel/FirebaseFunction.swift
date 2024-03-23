@@ -13,12 +13,12 @@ import FirebaseFirestoreSwift
 
 struct FirebaseFunction{
             
-    static func signUp(email: String, password: String, nickName: String) async throws -> AuthDataResultModel{
+    static func signUp(email: String, password: String, nickName: String, photoUrl: URL) async throws -> AuthDataResultModel{
         let authDataResult = try await Auth.auth().createUser(withEmail: email, password: password)
         
         let changeRequest = authDataResult.user.createProfileChangeRequest()
-           changeRequest.displayName = nickName
-           
+        changeRequest.displayName = nickName
+        changeRequest.photoURL = photoUrl
         do {
                try await changeRequest.commitChanges()
                print(authDataResult.user.displayName ?? " aaa ")
@@ -64,6 +64,7 @@ struct FirebaseFunction{
         var userData: [String: Any] = [
             "id": userModel.uid,
             "name": userModel.name,
+            "avatar": userModel.photoUrl!
 //            "db": DataModel()
         ]
         
@@ -89,6 +90,6 @@ struct FirebaseFunction{
         let email = data["email"] ?? "load"
         let photoUrl = data["photoUrl"] ?? "load"
         
-        return UserModel(id: userId, name: nickName as! String, email: email as! String)
+        return UserModel(id: userId, name: nickName as! String, email: email as! String, avatar: photoUrl as! URL)
     }
 }

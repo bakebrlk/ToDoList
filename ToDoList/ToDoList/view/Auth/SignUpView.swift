@@ -69,11 +69,16 @@ extension SignUpView{
             .padding()
     }
     
+    private var ava: UIImage {
+        let image = UIImage(named: "checkAcc")
+        return image!
+    }
+    
     private var signUp: some View {
         Button(
             action: {
                 DispatchQueue.main.async {
-                    if Authentication.signUp(email: email, password: password, confPassword: confpassword, nickName: nickName) {
+                    if Authentication.signUp(email: email, password: password, confPassword: confpassword, nickName: nickName, photoUrl: ava.jpe) {
                         print("Succes")
                     }else{
                         print("error")

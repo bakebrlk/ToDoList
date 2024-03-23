@@ -11,6 +11,6 @@ struct UserModel{
     var id: String
     var name: String
     var email: String
-//    var avatar: Image
+    var avatar: URL
 //    var db: Data
 }
