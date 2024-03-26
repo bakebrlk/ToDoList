@@ -10,15 +10,16 @@ import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import FirebaseStorage
 
 struct FirebaseFunction{
             
-    static func signUp(email: String, password: String, nickName: String, photoUrl: URL) async throws -> AuthDataResultModel{
+    static func signUp(email: String, password: String, nickName: String) async throws -> AuthDataResultModel{
         let authDataResult = try await Auth.auth().createUser(withEmail: email, password: password)
         
         let changeRequest = authDataResult.user.createProfileChangeRequest()
         changeRequest.displayName = nickName
-        changeRequest.photoURL = photoUrl
+        
         do {
                try await changeRequest.commitChanges()
                print(authDataResult.user.displayName ?? " aaa ")
@@ -88,8 +89,55 @@ struct FirebaseFunction{
         
         let nickName = data["name"] ?? "load"
         let email = data["email"] ?? "load"
-        let photoUrl = data["photoUrl"] ?? "load"
+        let photoUrl = data["avatar"] ?? "load"
         
-        return UserModel(id: userId, name: nickName as! String, email: email as! String, avatar: photoUrl as! URL)
+        return UserModel(id: userId, name: nickName as! String, email: email as! String, avatarURL: photoUrl as! String)
+    }
+    
+    static func updateUser(userId: String, nickName: String) async throws{
+        let data: [String: Any] = [
+            "name" : nickName
+        ]
+        
+        try await Firestore.firestore().collection("users").document(userId).updateData(data)
+    } 
+    
+    static func updateUserAvatar(userId: String, path: String) async throws{
+        let data: [String: Any] = [
+            "avatar" : path
+        ]
+        
+        try await Firestore.firestore().collection("users").document(userId).updateData(data)
+    }
+    
+//MARK: Storage
+    private static let storage = Storage.storage().reference()
+    
+    private static var imagesReference: StorageReference {
+        storage.child("images")
+    }
+    
+    private static func userReference(userId: String) -> StorageReference {
+        storage.child("users").child(userId)
+    }
+    
+    
+    public static func saveImage(data: Foundation.Data, userId: String) async throws -> (path: String, name: String){
+    
+        let meta = StorageMetadata()
+        meta.contentType = "image/jpeg"
+        
+        let path = "\(UUID().uuidString).jpeg"
+        let returnedMetaData = try await userReference(userId: userId).child(path).putDataAsync(data, metadata: meta)
+        
+        guard let returnedPath = returnedMetaData.path, let returnedName = returnedMetaData.name else {
+            throw URLError(.badServerResponse)
+        }
+        
+        return (returnedPath, returnedName)
+    }
+    
+    public static func getDataImage(userId: String, path: String) async throws -> Foundation.Data {
+        try await storage.child(path).data(maxSize: 3 * 1024 * 1024)
     }
 }

@@ -17,7 +17,11 @@ struct ToDoListApp: App {
         WindowGroup {
             GeometryReader{ make in
                 RouterView{
-                    CustomTabBar()
+                    if Authentication.checkAuthentication() {
+                        SignInView()
+                    }else {
+                        CustomTabBar()
+                    }
                 }
                 .onAppear{
                     if !sizeStatus() {

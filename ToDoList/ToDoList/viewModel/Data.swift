@@ -7,18 +7,27 @@
 
 import SwiftUI
 
-final class Data{
+final class Data: ObservableObject{
     
     final class User: ObservableObject{
         
-        @Published private(set) var user: UserModel? = nil
+        @Published var user: UserModel? = nil
         
-        func userInfo() async throws{
+        public func userInfo() async throws{
             let authDataResult = try FirebaseFunction.getAuthenticatedUser()
             let userInfo = try await FirebaseFunction.getUserInfo(userId: authDataResult.uid)
                     
             DispatchQueue.main.async {
                 self.user = userInfo
+            }
+        }
+        
+        public func editUser(nick: String) async throws{
+            try await FirebaseFunction.updateUser(userId: user!.id, nickName: nick)
+            let updateUser = try await FirebaseFunction.getUserInfo(userId: user!.id)
+            
+            DispatchQueue.main.async {
+                self.user = updateUser
             }
         }
     }

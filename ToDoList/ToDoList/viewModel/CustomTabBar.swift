@@ -10,13 +10,16 @@ import SwiftUI
 struct CustomTabBar: View {
     
     @State private var id = 0
+    
     @StateObject private var backgroundMode = BackgroundMode()
+    
+    @StateObject private var user = Data.User()
 
 //MARK: Body
     var body: some View {
         VStack{
             if id == 0 {
-                HomePageView()
+                HomePageView(user: user)
                 
             }else if id == 1{
                 CalendarPageView()
@@ -28,7 +31,7 @@ struct CustomTabBar: View {
                 TimerView()
                 
             }else if id == 4 {
-                ProfileView(backMode: backgroundMode)
+                ProfileView(user: user, backMode: backgroundMode)
             }
             
             Spacer()
@@ -36,6 +39,15 @@ struct CustomTabBar: View {
                 
         }
         .background(BackgroundMode().viewBack())
+        .onAppear {
+            Task {
+                do {
+                    try await user.userInfo()
+                } catch {
+                    print("Error fetching user info: \(error)")
+                }
+            }
+        }
     }
 }
 
@@ -96,7 +108,7 @@ extension CustomTabBar {
             image
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .foregroundColor(BackgroundMode().isDark ? .teal : Color("purple"))
+                .foregroundColor(BackgroundMode().isDark ? .yellow : Color("purple"))
         })
 
     }

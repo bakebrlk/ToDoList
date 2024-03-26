@@ -9,17 +9,14 @@ import SwiftUI
 
 struct ProfileView: View {
            
-    @StateObject private var user = Data.User()
+    @StateObject public var user: Data.User
     
-    @ObservedObject private var backMode: BackgroundMode
-    
-    @State private var editProfileCheck = false
-    
+    @ObservedObject public var backMode: BackgroundMode
     @EnvironmentObject var navigate: Navigation
 
-    init(backMode: BackgroundMode){
-        self.backMode = backMode
-    }
+    @State private var editProfileCheck = false
+    @State private var avatarData: Foundation.Data? = nil
+    
     
 //MARK: Body
     var body: some View {
@@ -31,7 +28,7 @@ struct ProfileView: View {
             settings
             
             textView(text: "Taskly!", size: 32)
-                .foregroundColor(Color("purple"))
+                .foregroundColor(BackgroundMode().isDark ? .yellow : Color("purple"))
                 .padding([.top], 15)
                 .padding(.bottom,30)
             
@@ -40,11 +37,19 @@ struct ProfileView: View {
         .environment(\.colorScheme, BackgroundMode().isDark ? .dark : .light)
         .background(BackgroundMode().viewBack())
         .task {
-            try? await user.userInfo()
+            
+            do {
+                try? await user.userInfo()
+                
+                if let user = user.user {
+                    avatarData = try? await FirebaseFunction.getDataImage(userId: user.id, path: user.avatarURL)
+                    print(user.avatarURL)
+                }
+            }
         }
         
         .sheet(isPresented: $editProfileCheck, content: {
-            EditProfileView(checkPresent: $editProfileCheck)
+            EditProfileView(checkPresent: $editProfileCheck, user: user, avatarData: $avatarData)
                 .presentationDetents([.medium])
         })
     }
@@ -58,10 +63,15 @@ extension ProfileView{
     
 //MARK: Avatar
     private func avatar(height: CGFloat) -> some View {
-       
-        CustomImage.getImage(imageName: "checkAcc")
+        Group{
+           
+            CustomImage.getImage(uiImage: (UIImage(data: avatarData ?? Foundation.Data()) ?? UIImage(systemName: "person.circle"))!, height: Size.size[1]/4)
+            
+        }
         .frame(maxWidth: height, maxHeight: height)
-        .cornerRadius(height/2)
+        .cornerRadius(height/4)
+        
+        
     }
 
 //MARK: Settings and User Information
@@ -136,7 +146,7 @@ extension ProfileView{
                 Spacer()
                 
                 Toggle("", isOn: backMode.$isDark)
-                    .toggleStyle(SwitchToggleStyle(tint: Color("purple")))
+                    .toggleStyle(SwitchToggleStyle(tint: BackgroundMode().avtorColor()))
                     .padding(.trailing)
             }
             
@@ -163,6 +173,6 @@ extension ProfileView{
 
 #Preview {
     
-    ProfileView(backMode: BackgroundMode())
+    ProfileView(user: Data.User(), backMode: BackgroundMode())
 }
     

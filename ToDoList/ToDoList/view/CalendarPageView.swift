@@ -60,8 +60,8 @@ extension CalendarPageView {
                     }, label: {
                         CalendarModel.shared.forCalendarPage(date: date)
                     })
-                    .foregroundColor(selectDate == id ? .white: .black)
-                    .background(selectDate == id ? Color("purple") : .white.opacity(BackgroundMode().isDark ? 0.92 : 0))
+                    .foregroundColor(.black)
+                    .background(selectDate == id ?  BackgroundMode().avtorColor() : .white.opacity(BackgroundMode().isDark ? 0.92 : 0))
                     .cornerRadius(16)
                     
                 }
@@ -92,9 +92,9 @@ extension CalendarPageView {
             textView(text: status.builder, size: 16)
                 .padding([.leading,.trailing],20)
                 .padding([.top,.bottom],10)
-                .foregroundColor(taskStatusState == status ? .white : Color("purple"))
+                .foregroundColor(taskStatusState != status ? .white : BackgroundMode().isDark ? Color("purple") : .yellow )
         })
-        .background(Color("purple").opacity(taskStatusState == status ? 1 : 0.1))
+        .background( BackgroundMode().avtorColor().opacity(taskStatusState == status ? 1 : 0.5))
         .cornerRadius(16)
         .padding(5)
     }

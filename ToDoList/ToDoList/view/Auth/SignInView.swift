@@ -12,6 +12,8 @@ struct SignInView: View {
     @State private var email = ""
     @State private var password = ""
     
+    @EnvironmentObject var navigate: Navigation
+
     var body: some View {
         NavigationView {
             GeometryReader{ make in
@@ -60,6 +62,7 @@ extension SignInView {
             action: {
                 if Authentication.signIn(email: email, password: password) {
                     print("succes")
+                    navigate.navigateTo(.tabBar)
                 }
         }, label: {
             textView(text: "Sign In", size: 22)

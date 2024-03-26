@@ -15,7 +15,7 @@ struct HomePageView: View {
     @State private var todayStatus: String = "Your today's task almost done!"
     @State private var statisticsValue = 0.0
   
-    @StateObject private var user = Data.User()
+    @StateObject public var user: Data.User
 
     //MARK: Body
     var body: some View {
@@ -204,6 +204,6 @@ extension HomePageView{
     }
 }
 
-#Preview {
-    HomePageView()
-}
+//#Preview {
+//    HomePageView(user:)
+//}

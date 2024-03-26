@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct UserModel{
-    var id: String
+    let id: String
     var name: String
     var email: String
-    var avatar: URL
+    var avatarURL: String
 //    var db: Data
+    
 }

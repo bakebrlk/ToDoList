@@ -52,7 +52,7 @@ struct TaskModel:Identifiable, Hashable{
             .padding()
         }
         .frame(maxWidth: .infinity, maxHeight: Size.size[1]/6)
-        .background(Color.white.opacity(BackgroundMode().isDark ? 0.92 : 0))
+        .background(Color.white.opacity(BackgroundMode().isDark ? 0.92 : 1))
         .cornerRadius(20)
         .padding(10)
     }
