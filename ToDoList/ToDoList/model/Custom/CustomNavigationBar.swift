@@ -19,7 +19,7 @@ public func NavigationTopBar(title: String) -> some View{
         Button(action: {
             
         }, label: {
-            CustomImage.getImage(systemName: "bell.fill")
+            CustomImage.getImage(systemName: "ellipsis.message")
                 .foregroundColor(BackgroundMode().textColor())
         })
     }

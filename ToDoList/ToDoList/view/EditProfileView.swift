@@ -30,7 +30,7 @@ struct EditProfileView: View {
         .task {
             if let user = user.user {
                 let newData = try? await FirebaseFunction.getDataImage(userId: user.id, path: user.avatarURL)
-                print("data: \(newData)  user: \(user.avatarURL)" )
+                
                 selectedImage = UIImage(data: newData ?? Foundation.Data())
             }
         }
