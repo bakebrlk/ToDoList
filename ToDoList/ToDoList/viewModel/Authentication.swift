@@ -35,22 +35,10 @@ struct Authentication{
         return true
     }
     
-    static func signIn(email: String, password: String) -> Bool{
-        
+    static func signIn(email: String, password: String) {
         Task{
-            do{
-                let returnedUserData = try await FirebaseFunction.signIn(email: email, password: password)
-                print(returnedUserData)
-               
-            }catch{
-                print("error")
-                return false
-            }
-            return true
+            let returnedUserData = try? await FirebaseFunction.signIn(email: email, password: password)
         }
-        
-        return true
-        
     }
     
     static func checkAuthentication() -> Bool{

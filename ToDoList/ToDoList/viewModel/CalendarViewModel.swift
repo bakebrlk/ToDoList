@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-extension editTaskView{
+extension CalendarPageView{
     class ViewModel: ObservableObject {
         @Published private var selectedTask: TaskModel = TaskModel(title: "", description: "", status: .all, time: Date(), taskGroup: Data.Tasks.TaskGroup[0])
         

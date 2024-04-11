@@ -16,6 +16,7 @@ enum Router{
     case updatePassword
     case sendMail
     case tabBar
+    case chat
     
     @ViewBuilder
     var builder: some View {
@@ -27,6 +28,7 @@ enum Router{
         case .updatePassword: UpdatePasswordView()
         case .sendMail: SendMailView()
         case .tabBar: CustomTabBar()
+        case .chat: ChatView()
         }
     }
 }

@@ -65,8 +65,7 @@ struct FirebaseFunction{
         var userData: [String: Any] = [
             "id": userModel.uid,
             "name": userModel.name,
-            "avatar": userModel.photoUrl!
-//            "db": DataModel()
+            "avatar": userModel.photoUrl ?? "https://firebasestorage.googleapis.com/v0/b/todolist-50fbf.appspot.com/o/checkAcc.png?alt=media&token=b17db4f2-27c3-4c8d-9ca2-69a44dc4df68"
         ]
         
         if let email = userModel.email {
@@ -77,11 +76,11 @@ struct FirebaseFunction{
             userData["photoUrl"] = photoUrl
         }
         
-        try await Firestore.firestore().collection("users").document(userModel.uid).setData(userData,merge: false)
+        try await Firestore.firestore().collection("usersProfile").document(userModel.uid).setData(userData,merge: false)
     }
     
     static func getUserInfo(userId: String) async throws -> UserModel{
-        let snapshot = try await Firestore.firestore().collection("users").document(userId).getDocument()
+        let snapshot = try await Firestore.firestore().collection("usersProfile").document(userId).getDocument()
         
         guard let data = snapshot.data() else {
             throw URLError(.badServerResponse)
@@ -99,15 +98,15 @@ struct FirebaseFunction{
             "name" : nickName
         ]
         
-        try await Firestore.firestore().collection("users").document(userId).updateData(data)
-    } 
+        try await Firestore.firestore().collection("usersProfile").document(userId).updateData(data)
+    }
     
     static func updateUserAvatar(userId: String, path: String) async throws{
         let data: [String: Any] = [
             "avatar" : path
         ]
         
-        try await Firestore.firestore().collection("users").document(userId).updateData(data)
+        try await Firestore.firestore().collection("usersProfile").document(userId).updateData(data)
     }
     
 //MARK: Storage
@@ -118,7 +117,7 @@ struct FirebaseFunction{
     }
     
     private static func userReference(userId: String) -> StorageReference {
-        storage.child("users").child(userId)
+        storage.child("usersProfile").child(userId)
     }
     
     
@@ -140,4 +139,47 @@ struct FirebaseFunction{
     public static func getDataImage(userId: String, path: String) async throws -> Foundation.Data {
         try await storage.child(path).data(maxSize: 3 * 1024 * 1024)
     }
+    
+// MARK: Tasks
+    
+    public static func createTask(userID: String, model: TaskModel) async throws {
+        let taskData: [String: Any] = [
+            "title": model.title,
+            "description": model.description,
+            "status": model.status.builder,
+            "time": model.time,
+            "taskGroupTitle" : model.taskGroup.title
+        ]
+        
+        try await Firestore.firestore().collection("usersTasks").document(userID).collection("list").addDocument(data: taskData) /*.setData(taskData,merge: false)*/
+    }
+    
+    public static func getTask(userID: String) async throws{
+        let snapshots = try await Firestore.firestore().collection("usersTasks").document(userID).collection("list").getDocuments().documents
+
+        for i in 0..<snapshots.count{
+            let data = snapshots[i]
+            
+            guard let timestamp = data["time"] as? Timestamp else {
+                print("Invalid Timestamp for document ID: \(snapshots[i].documentID)")
+                continue
+            }
+                   
+            let DataDate = date(from: timestamp)
+                  
+            print(DataDate)
+            DispatchQueue.main.async {
+                TaskData.db.appendTask(model: TaskModel(title: data["title"] as! String, description: data["description"] as! String, status: .toDo, time: DataDate, taskGroup: TaskGroupModel(title: "Buissness", count: 20, img: "taskLogo1", process: 0.5, color: .red.opacity(0.6))))
+            }
+           
+        }
+    }
+    
+    private static func date(from timestamp: Timestamp) -> Date {
+        let seconds = TimeInterval(timestamp.seconds)
+        let date = Date(timeIntervalSince1970: seconds)
+        
+        return date
+    }
 }
+

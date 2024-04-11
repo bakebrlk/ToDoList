@@ -126,7 +126,7 @@ extension HomePageView{
     }
     
     private func viewTaskBtn(width: CGFloat, height: CGFloat) -> some View {
-        customButton(text: "View Task", action: openTask())
+        customButton(text: "View Task", action: openTask)
             .frame(maxWidth: width, maxHeight: height)
             .background(Color.white)
             .foregroundColor(Color("purple"))

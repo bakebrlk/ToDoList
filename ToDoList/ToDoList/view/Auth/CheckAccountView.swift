@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct CheckAccountView: View {
-    
+    @EnvironmentObject var navigate: Navigation
+
     var body: some View {
-        NavigationView {
+        
             GeometryReader { make in
                 VStack{
                     Spacer()
@@ -24,7 +25,7 @@ struct CheckAccountView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color("purple"))
-            }
+            
         }
         
     }
@@ -49,11 +50,11 @@ extension CheckAccountView {
         VStack{
             Spacer()
        
-                customButton(text: "I've already account ", action: haveAccount())
+                customButton(text: "I've already account ", action: haveAccount)
                     .foregroundColor(.white)
             
           
-                customButton(text: "Sign Up", action: signUp())
+                customButton(text: "Sign Up", action: signUp)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color.white)
                     .foregroundColor(.black)
@@ -69,11 +70,11 @@ extension CheckAccountView {
 extension CheckAccountView{
     
     private func haveAccount(){
-        
+        navigate.navigateTo(.singIn)
     }
     
     private func signUp(){
-        
+        navigate.navigateTo(.signUp)
     }
 }
 

@@ -11,14 +11,20 @@ final class Navigation: ObservableObject{
     @Published var path: NavigationPath = NavigationPath()
     
     func navigateTo(_ appRoute: Router) {
-        path.append(appRoute)
+        DispatchQueue.main.async {
+            self.path.append(appRoute)
+        }
     }
-       
+        
     func navigateBack() {
-        path.removeLast()
+        DispatchQueue.main.async {
+            self.path.removeLast()
+        }
     }
-       
+        
     func popToRoot() {
-        path.removeLast(path.count)
+        DispatchQueue.main.async {
+            self.path.removeLast(self.path.count)
+        }
     }
 }

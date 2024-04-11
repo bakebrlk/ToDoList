@@ -30,8 +30,12 @@ struct EditProfileView: View {
         .task {
             if let user = user.user {
                 let newData = try? await FirebaseFunction.getDataImage(userId: user.id, path: user.avatarURL)
-                
+                print("photo path-\(user.avatarURL)-")
                 selectedImage = UIImage(data: newData ?? Foundation.Data())
+                
+                if newData == Foundation.Data() {
+                    selectedImage = UIImage(named: "checkAcc")
+                }
             }
         }
     }
@@ -43,7 +47,15 @@ extension EditProfileView{
         Button {
             isImagePickerPresented.toggle()
         } label: {
-            CustomImage.getImage(uiImage: selectedImage!, height: height/1.1)
+            ZStack{
+                CustomImage.getImage(uiImage: (selectedImage ?? UIImage(systemName: "person.circle"))!, height: height/1.1)
+                
+                textView(text: "edit a photo", size: 12)
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Color(.systemGray).opacity(0.5))
+                    .cornerRadius(16)
+            }
         }
         .sheet(isPresented: $isImagePickerPresented) {
             ImagePicker(selectedImage: $selectedImage, isImagePickerPresented: $isImagePickerPresented)
@@ -56,7 +68,7 @@ extension EditProfileView{
         
         TextField("", text: $nickName)
             .placeholder(when: nickName.isEmpty) {
-            Text("nick name: ")
+            Text("nick name: (not necessary)")
                     .foregroundColor(BackgroundMode().isDark ? .white.opacity(0.6) : .gray)
             }
             .frame(maxWidth: .infinity, maxHeight: Size.size[1]/16)

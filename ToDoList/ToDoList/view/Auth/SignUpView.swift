@@ -15,6 +15,8 @@ struct SignUpView: View {
     @State private var confpassword: String = ""
     @State private var nickName: String = ""
     
+    @EnvironmentObject var navigate: Navigation
+
     var body: some View{
         
             GeometryReader{ make in
@@ -98,7 +100,7 @@ extension SignUpView{
     private var signIn: some View {
         Button(
             action: {
-            print("Sign In")
+                navigate.navigateTo(.singIn)
         }
             , label: {
             textView(text: "Sign In", size: 16)

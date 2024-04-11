@@ -9,6 +9,10 @@ import SwiftUI
 
 struct AddTaskView: View {
     
+    @StateObject public var user: Data.User
+    @ObservedObject var viewModel = ViewModel()
+    @EnvironmentObject var navigate: Navigation
+
     @State private var selectedTaskGroup: TaskGroupModel = Data.Tasks.TaskGroup[0]
     @State private var showDropDown: Bool = false
     
@@ -20,6 +24,7 @@ struct AddTaskView: View {
     @State private var endDate = Date()
     
     @State private var showDatePicker: Bool = false
+    
     
 //MARK: Body
     var body: some View {
@@ -56,7 +61,11 @@ struct AddTaskView: View {
 extension AddTaskView {
 //MARK: TOP Navigation BAR
     private var navigationBar: some View {
-        NavigationTopBar(title: "Add Project")
+        NavigationBar().NavigationTopBar(title: "Add Project", navigateTo: navigateChat)
+    }
+    
+    private func navigateChat(){
+        navigate.navigateTo(.chat)
     }
     
     private func backAction(){
@@ -146,11 +155,14 @@ extension AddTaskView {
                     .foregroundColor(Color(.systemGray))
                     .padding(.leading)
                     .padding(.top, 10)
-                TextField("...", text: $projectName, axis: .vertical)
+            TextField("...", text: $projectName, axis: .vertical)
                     .autocorrectionDisabled()
                     .lineLimit(1, reservesSpace: true)
                     .padding(.leading)
                     .padding(.bottom,10)
+                    .onTapGesture {
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    }
         }
         .background(Color.white)
         .cornerRadius(20)
@@ -170,6 +182,9 @@ extension AddTaskView {
                 .lineLimit(6, reservesSpace: true)
                 .padding(.leading)
                 .padding(.bottom,10)
+                .onTapGesture {
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                }
             
         }
         .frame(maxWidth: .infinity, maxHeight: Size.size[1]/4)
@@ -188,13 +203,15 @@ extension AddTaskView {
                 let toDate: Date = cc.date(byAdding: .day, value: 1, to: endDate) ?? .now
                 
                 repeat {
+
+                    TaskData.db.appendTask(model: TaskModel(title: projectName, description: description, status: .toDo, time: currentDate, taskGroup: selectedTaskGroup))
+                             
+                    viewModel.addTask(userId: user.user!.id, taskModel: TaskModel(title: projectName, description: description, status: .toDo, time: currentDate, taskGroup: selectedTaskGroup))
                     
+                    print(currentDate)
                     if let nextDate = cc.date(byAdding: .day, value: 1, to: currentDate) {
                             currentDate = nextDate
                     }
-                    
-                    Data.Tasks.appendTask(model: TaskModel(title: projectName, description: description, status: .toDo, time: currentDate, taskGroup: selectedTaskGroup))
-                                        
                 } while currentDate <= toDate
             }
             
@@ -216,8 +233,4 @@ extension AddTaskView {
         
         return true
     }
-}
-
-#Preview {
-    AddTaskView()
 }

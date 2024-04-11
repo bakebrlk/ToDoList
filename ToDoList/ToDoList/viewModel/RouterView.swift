@@ -21,8 +21,12 @@ struct RouterView<Content: View>: View {
             content
                 .navigationDestination(for: Router.self) { route in
                     route.builder
-                }
+                        .navigationBarBackButtonHidden(true)
+
+            }
         }
+        .accentColor(.black)
+        .statusBar(hidden: false)
         .environmentObject(router)
     }
 }

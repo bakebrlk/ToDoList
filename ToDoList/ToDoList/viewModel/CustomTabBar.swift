@@ -25,7 +25,7 @@ struct CustomTabBar: View {
                 CalendarPageView()
                 
             }else if id == 2 {
-                AddTaskView()
+                AddTaskView(user: user)
                 
             }else if id == 3 {
                 TimerView()
@@ -43,6 +43,8 @@ struct CustomTabBar: View {
             Task {
                 do {
                     try await user.userInfo()
+                    try await FirebaseFunction.getTask(userID: user.user!.id)
+
                 } catch {
                     print("Error fetching user info: \(error)")
                 }
@@ -59,10 +61,10 @@ extension CustomTabBar {
                 .frame(width: Size.size[0], height: Size.size[1]/10)
                 .clipShape(
                     .rect(
-                        topLeadingRadius: 20,
+                        topLeadingRadius: 35,
                         bottomLeadingRadius: 0,
                         bottomTrailingRadius: 0,
-                        topTrailingRadius: 20
+                        topTrailingRadius: 35
                         
                     )
                 )
@@ -72,11 +74,13 @@ extension CustomTabBar {
                 
                 getButton(id: 0, image: Image(systemName: "house.fill"))
                     .frame(width: 30, height: 30)
-                    .padding([.leading, .trailing,.bottom], 10)
+                    .padding([.bottom], 10)
+                    .padding([.leading, .trailing,], 15)
                 
                 getButton(id: 1, image: Image(systemName: "calendar"))
                     .frame(width: 30, height: 30)
-                    .padding([.leading, .trailing,.bottom], 10)
+                    .padding([.bottom], 10)
+                    .padding([.leading, .trailing,], 15)
                 
                 getButton(id: 2, image: Image(systemName: "plus.circle.fill"))
                     .padding(10)
@@ -87,11 +91,13 @@ extension CustomTabBar {
                 
                 getButton(id: 3, image: Image(systemName: "gauge.with.needle"))
                     .frame(width: 30, height: 30)
-                    .padding([.leading, .trailing,.bottom], 10)
+                    .padding([.bottom], 10)
+                    .padding([.leading, .trailing,], 15)
                 
                 getButton(id: 4, image: Image(systemName: "person.crop.circle"))
                     .frame(width: 30, height: 30)
-                    .padding([.leading, .trailing,.bottom], 10)
+                    .padding([.bottom], 10)
+                    .padding([.leading, .trailing,], 15)
             }
             .background(Color.clear)
 

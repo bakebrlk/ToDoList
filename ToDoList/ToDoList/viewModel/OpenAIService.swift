@@ -1,8 +1,8 @@
 //
 //  OpenAIService.swift
-//  Taskly
+//  Chatgpt3.5
 //
-//  Created by bakebrlk on 01.04.2024.
+//  Created by Rauan on 29.11.2023.
 //
 
 import Foundation
@@ -28,7 +28,7 @@ class OpenAIService {
         ]
 //        return AF.streamRequest(endpointUrl,method: .post,parameters: body,encoder: .json,headers: headers)
         
-        generatingMessageId = messages.last?.id.uuidString
+        generatingMessageId = messages.last?.id
         dataStreamRequest = AF.streamRequest(endpointUrl, method: .post, parameters: body, encoder: .json, headers: headers)
         return dataStreamRequest!
     }
@@ -60,4 +60,3 @@ struct OpenAIChatResponse: Decodable {
 struct OpenAIChatChoice: Decodable {
     let message: OpenAIChatMessage
 }
-

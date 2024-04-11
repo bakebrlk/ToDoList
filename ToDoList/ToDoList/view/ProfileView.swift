@@ -58,7 +58,10 @@ struct ProfileView: View {
 extension ProfileView{
 //MARK: Nav Bar
     private var navBar: some View {
-        NavigationTopBar(title: "Profile")
+        NavigationBar().NavigationTopBar(title: "Profile", navigateTo: navigateChat)
+    }
+    private func navigateChat(){
+        navigate.navigateTo(.chat)
     }
     
 //MARK: Avatar
@@ -162,6 +165,7 @@ extension ProfileView{
       
             Button(action: {
                 try? Authentication.signOut()
+                navigate.navigateTo(.checkAccount)
                 print("sign out")
             }, label: {
                 textView(text: "Sign Out", size: 15)

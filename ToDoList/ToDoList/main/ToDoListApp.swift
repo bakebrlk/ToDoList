@@ -7,8 +7,8 @@
 import SwiftUI
 import FirebaseCore
 import Firebase
-import FirebaseMessaging
-import UserNotifications
+//import FirebaseMessaging
+//import UserNotifications
 
 @main
 struct ToDoListApp: App {
@@ -20,7 +20,7 @@ struct ToDoListApp: App {
             GeometryReader{ make in
                 RouterView{
                     if Authentication.checkAuthentication() {
-                        SignInView()
+                        CheckAccountView()
                     } else {
                         CustomTabBar()
                     }
@@ -47,26 +47,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
         FirebaseApp.configure()
-        
-        Messaging.messaging().delegate = self
-        UNUserNotificationCenter.current().delegate = self
-        
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { success, _ in
-            guard success else {
-                return
-            }
-            print("Success in APNS registry")
-        }
-        
-        Messaging.messaging().isAutoInitEnabled = true
-        application.registerForRemoteNotifications()
+//        
+//        Messaging.messaging().delegate = self
+//        UNUserNotificationCenter.current().delegate = self
+//        
+//        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { success, _ in
+//            guard success else {
+//                return
+//            }
+//            print("Success in APNS registry")
+//        }
+//        
+//        Messaging.messaging().isAutoInitEnabled = true
+//        application.registerForRemoteNotifications()
         return true
     }
     
-    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        if let token = fcmToken {
-            print("FCM registration token: \(token)")
-        }
-        print("message")
-    }
+//    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+//        if let token = fcmToken {
+//            print("FCM registration token: \(token)")
+//        }
+//        print("message")
+//    }
 }

@@ -7,15 +7,25 @@
 
 import SwiftUI
 
-struct TaskModel:Identifiable, Hashable{
+struct TaskModel:Identifiable{
+
     var id = UUID()
-    let title: String
-    let description: String
-    let status: TaskStatus
+    var title: String
+    var description: String
+    var status: TaskStatus
     let time: Date
     let taskGroup: TaskGroupModel
     
-    public static func TaskModel(model: TaskModel) -> some View {
+    static func == (lhs: TaskModel, rhs: TaskModel) -> Bool {
+        return lhs.id == rhs.id
+            && lhs.title == rhs.title
+            && lhs.description == rhs.description
+            && lhs.status == rhs.status
+            && lhs.time == rhs.time
+            && lhs.taskGroup == rhs.taskGroup
+    }
+    
+    public static func TaskModel(model: TaskModel) -> some View  {
         HStack{
             
             VStack(alignment: .leading){
@@ -55,5 +65,6 @@ struct TaskModel:Identifiable, Hashable{
         .background(Color.white.opacity(BackgroundMode().isDark ? 0.92 : 1))
         .cornerRadius(20)
         .padding(10)
+        
     }
 }

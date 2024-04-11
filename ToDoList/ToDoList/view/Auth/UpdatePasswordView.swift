@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct UpdatePasswordView: View {
-    
-    let email: String = "210103194@stu.sdu.edu.kz"
-    @State private var password: String = ""
-    @State private var confPassword: String = ""
+    @EnvironmentObject var navigate: Navigation
+
+    @State private var email: String = ""
     
     var body: some View {
-        NavigationView{
+        
             GeometryReader{ make in
                 VStack {
                     Spacer()
@@ -27,18 +26,16 @@ struct UpdatePasswordView: View {
                         .frame(maxHeight: make.size.height/10)
                     Spacer()
                 }
-            }
+            
         }
-        .fullScreenCover(isPresented: .constant(true), content: {
-            SendMailView()
-        })
+       
     }
         
 }
 
 extension UpdatePasswordView {
     private var emailView: some View {
-        CustomTextField(text: $password, isSecure: false, titleKey: "email: ", haveSecure: false)
+        CustomTextField(text: $email, isSecure: false, titleKey: "email: ", haveSecure: false)
     }
     
     private var image: some View {
@@ -51,13 +48,15 @@ extension UpdatePasswordView {
     private var updatePassword: some View {
         Button(
             action: {
-                if password == confPassword {
+                if !email.isEmpty {
                     Authentication.resendPassword(email: email)
                     try? Authentication.signOut()
-                   
+                    navigate.navigateTo(.sendMail)
+
                 }else{
                     print("-")
                 }
+                
         }, label: {
             textView(text: "Update Password", size: 22)
         })

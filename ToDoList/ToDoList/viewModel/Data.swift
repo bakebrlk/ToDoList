@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-final class Data: ObservableObject{
+struct Data{
     
     final class User: ObservableObject{
         
@@ -50,11 +50,22 @@ final class Data: ObservableObject{
         ]
     }
         
-    struct Tasks{
-                            
-        static func appendTask(model: TaskModel) {
-            Task.append(model)
-        }
+    class Tasks: ObservableObject{
+        
+//        @Published var Task: [TaskModel] = []
+//               
+//               init() {
+//                   self.Task = [
+//                    TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .done, time: Date(), taskGroup: Data.Tasks.TaskGroup[0]),
+//                       TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .inProcess, time: Date(), taskGroup: Data.Tasks.TaskGroup[1]),
+//                       TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .toDo, time: Date(), taskGroup: Data.Tasks.TaskGroup[2]),
+//                       TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .done, time: Date(), taskGroup: Data.Tasks.TaskGroup[3]),
+//                       TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .inProcess, time: Date(), taskGroup: Data.Tasks.TaskGroup[4])
+//                   ]
+//               }
+//        public func appendTask(model: TaskModel) {
+//            Task.append(model)
+//        }
                 
         static var inProgress: [inProgressModel] = [
             inProgressModel(group: "Buissness", title: "Buy Flowers", logo: "taskLogo1", color: .cyan, progress: 0.5),
@@ -64,6 +75,7 @@ final class Data: ObservableObject{
             inProgressModel(group: "Buissness", title: "conf project", logo: "taskLogo5", color: .teal, progress: 1.0),
         ]
         
+        
         static var TaskGroup: [TaskGroupModel] = [
             TaskGroupModel(title: "Buissness", count: 20, img: "taskLogo1", process: 0.5, color: .red.opacity(0.6)),
             TaskGroupModel(title: "Buissness", count: 5, img: "taskLogo3", process: 0.2, color: .purple.opacity(0.6)),
@@ -72,13 +84,7 @@ final class Data: ObservableObject{
             TaskGroupModel(title: "Buissness", count: 15, img: "taskLogo5", process: 0.9, color: .mint.opacity(0.6))
         ]
 
-        static var Task: [TaskModel] = [
-            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .done, time: Date(),taskGroup: Data.Tasks.TaskGroup[0]),
-            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .inProcess, time: Date(), taskGroup: Data.Tasks.TaskGroup[1]),
-            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .toDo, time: Date(), taskGroup: Data.Tasks.TaskGroup[2]),
-            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .done, time: Date(), taskGroup: Data.Tasks.TaskGroup[3]),
-            TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .inProcess, time: Date(), taskGroup: Data.Tasks.TaskGroup[4]),
-        ]
+        
     }
 }
 

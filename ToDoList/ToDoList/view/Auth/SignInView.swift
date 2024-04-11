@@ -12,10 +12,14 @@ struct SignInView: View {
     @State private var email = ""
     @State private var password = ""
     
+    @State private var signInStatus = false
+    
     @EnvironmentObject var navigate: Navigation
 
+    private var timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
+    
     var body: some View {
-        NavigationView {
+       
             GeometryReader{ make in
                 VStack {
                     Spacer()
@@ -36,7 +40,7 @@ struct SignInView: View {
                 }
                 .navigationTitle("Welcome to Back")
             }
-        }
+        
     }
 }
 
@@ -60,10 +64,8 @@ extension SignInView {
     private var signIn: some View {
         Button(
             action: {
-                if Authentication.signIn(email: email, password: password) {
-                    print("succes")
-                    navigate.navigateTo(.tabBar)
-                }
+ 
+                Authentication.signIn(email: email, password: password)
         }, label: {
             textView(text: "Sign In", size: 22)
         })
@@ -72,17 +74,33 @@ extension SignInView {
         .foregroundColor(.white)
         .cornerRadius(16)
         .padding()
+        .onReceive(timer) { [self] _ in
+            navigationStatus()
+        }
+    }
+    
+    private func navigationStatus(){
+    
+        Task{
+            if !Authentication.checkAuthentication(){
+                self.timer.upstream.connect().cancel()
+                navigate.navigateTo(.tabBar)
+            }else{
+                print("No account")
+            }
+        }
     }
     
     private var signUp: some View {
         Button(
             action: {
+                navigate.navigateTo(.updatePassword)
         }
             , label: {
             textView(text: "Forgot password", size: 16)
         })
         .foregroundColor(.orange)
-        .padding(.trailing)
+        .padding([.trailing,.top])
     }
     
 }

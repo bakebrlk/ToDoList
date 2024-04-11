@@ -8,10 +8,10 @@
 import Foundation
 import SwiftUI
 
-func customButton(text: String, action: ()) -> some View{
+func customButton(text: String, action: @escaping () -> Void) -> some View{
     Button(
         action: {
-            action
+            action()
         },
         label: {
             textView(text: text, size: 22)

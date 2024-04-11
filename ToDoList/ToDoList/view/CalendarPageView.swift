@@ -11,6 +11,14 @@ struct CalendarPageView: View {
     
     @State private var selectDate = 0
     
+    @EnvironmentObject var navigate: Navigation
+    
+    @State private var listIsEmpty = false
+    
+    @State private var showEditTask: Bool = false
+    
+    @ObservedObject var viewModel = editTaskView.ViewModel()
+
     private let taskStatus = [
                             TaskStatus.all,
                             TaskStatus.toDo,
@@ -20,6 +28,7 @@ struct CalendarPageView: View {
     @State private var taskStatusState: TaskStatus = .all
     @State private var selectColor:Color = .purple
 
+    @StateObject var db = TaskData.db
     
 //MARK: Body
     var body: some View {
@@ -35,6 +44,13 @@ struct CalendarPageView: View {
         .frame(maxWidth: .infinity,maxHeight: .infinity)
         .background(BackgroundMode().viewBack())
         .environment(\.colorScheme, BackgroundMode().isDark ? .dark : .light)
+        .onAppear {
+            listIsEmpty = db.Task.isEmpty
+        }
+        .sheet(isPresented: $showEditTask, content: {
+            editTaskView(task: viewModel.getTask(), showEditTask: $showEditTask, db: db)
+                .presentationDetents([.height(Size.size[1]/2.1)])
+        })
     }
 }
 
@@ -42,11 +58,11 @@ extension CalendarPageView {
     
 //MARK: TOP Navigation BAR
     private var navigationBar: some View {
-        NavigationTopBar(title: "Today's Task")
+        NavigationBar().NavigationTopBar(title: "Today's Task", navigateTo: navigateChat)
     }
     
-    private func backAction(){
-        
+    private func navigateChat(){
+        navigate.navigateTo(.chat)
     }
     
 //MARK: Calendar
@@ -57,6 +73,8 @@ extension CalendarPageView {
                     let date: Date = Calendar.current.date(byAdding: .day, value: id, to: Date()) ?? Date()
                     Button(action: {
                         selectDate = id
+                        listIsEmpty = checkSelectedDate()
+                        print(listIsEmpty)
                     }, label: {
                         CalendarModel.shared.forCalendarPage(date: date)
                     })
@@ -69,6 +87,19 @@ extension CalendarPageView {
             .padding(5)
         }
         .defaultScrollAnchor(.center)
+    }
+    
+    private func checkSelectedDate() -> Bool {
+        
+        var result = true
+        for date in db.Task{
+            if Calendar.current.isDate(date.time, equalTo:  Calendar.current.date(byAdding: .day, value: selectDate, to: Date())! , toGranularity: .day){
+                
+                result = false
+                break
+            }
+        }
+        return result
     }
     
 //MARK: Status Task
@@ -86,7 +117,6 @@ extension CalendarPageView {
     
     private func statusTaskView(status: TaskStatus) -> some View {
         Button(action: {
-            print(status)
             taskStatusState = status
         }, label: {
             textView(text: status.builder, size: 16)
@@ -101,18 +131,57 @@ extension CalendarPageView {
     
 //MARK: Status Result
     private func statusResult() -> some View {
-        ScrollView(.vertical, showsIndicators: false){
-            ForEach(Data.Tasks.Task){ task in
-                if taskStatusState != .all{
-                    if task.status == taskStatusState {
-                        TaskModel.TaskModel(model: task)
+        ZStack{
+            if listIsEmpty {
+                VStack{
+                    Spacer()
+                    Image("listEmpty")
+                        .frame(maxWidth: Size.size[1]/1.5)
+                    textView(text: "List is Empty", size: 24)
+                        .foregroundStyle(BackgroundMode().textColor())
+                    Spacer()
+                }
+            } else {
+                ScrollView(.vertical, showsIndicators: false) {
+                    ForEach(db.Task) { task in
+//                        let task = db.Task[index]
+                        
+                        if Calendar.current.isDate(task.time, equalTo: Calendar.current.date(byAdding: .day, value: selectDate, to: Date())!, toGranularity: .day) {
+                            
+                            if taskStatusState == .all {
+                                
+                                        Button(action: {
+                                            viewModel.setTask(task: task)
+                                            showEditTask.toggle()
+                                            print("\(taskStatusState) \(task.status)")
+                                        }) {
+                                            TaskModel.TaskModel(model: task)
+                                        }
+                                    
+                                
+                            }else{
+                                
+                                if taskStatusState != .all && task.status == taskStatusState {
+                                    TaskModel.TaskModel(model: task)
+                                        .onTapGesture {
+                                            viewModel.setTask(task: task)
+                                            showEditTask.toggle()
+                                            print(task.status)
+                                        }
+                                    
+                                }
+                            }
+                           
+                                
+                            
+                        }
                     }
-                }else{
-                    TaskModel.TaskModel(model: task)
                 }
             }
         }
+        
     }
+
 }
 
 #Preview {

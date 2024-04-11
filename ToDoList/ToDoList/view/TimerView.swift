@@ -14,13 +14,14 @@ struct TimerView: View {
     @State private var totalSecond = 60.0
     
     @State private var timerMonitoring: TimerEnum = .def
-    
+    @EnvironmentObject var navigate: Navigation
+
 //MARK: Body
     var body: some View {
         
         VStack{
             
-            NavigationTopBar(title: "Timer")
+            NavigationBar().NavigationTopBar(title: "Timer", navigateTo: navigateChat)
             
             Spacer()
             
@@ -54,6 +55,11 @@ struct TimerView: View {
 }
 
 extension TimerView {
+    
+    private func navigateChat(){
+        navigate.navigateTo(.chat)
+    }
+    
 //MARK: Timer
     private var timer: some View {
         TimerModel(timerTotalSecond: $monitoringSecond, process: $process, val: $totalSecond, timerMonitoring: $timerMonitoring).TimerViewModel(width: Size.size[0]*0.7, height: Size.size[1]*0.4)

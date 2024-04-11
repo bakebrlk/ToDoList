@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct SendMailView: View {
+    
+    @EnvironmentObject var navigate: Navigation
+
     var body: some View {
-        NavigationView {
+        
             GeometryReader { make in
                 VStack{
                     
@@ -21,7 +24,7 @@ struct SendMailView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .navigationTitle("Send Email")
-        }
+        
     }
 }
 
@@ -36,7 +39,8 @@ extension SendMailView {
     }
     
     private func btn(height: CGFloat) -> some View {
-        customButton(text: "Sign In", action: action())
+        customButton(text: "Sign In", action: action)
+            .frame(maxWidth: .infinity, maxHeight: Size.size[1]/14)
             .background(Color("purple"))
             .foregroundColor(.white)
             .cornerRadius(20)
@@ -44,7 +48,7 @@ extension SendMailView {
     }
     
     private func action(){
-        
+        navigate.navigateTo(.singIn)
     }
 }
 
