@@ -18,7 +18,7 @@ struct CalendarPageView: View {
     @State private var showEditTask: Bool = false
     
     @ObservedObject var viewModel = editTaskView.ViewModel()
-
+    
     private let taskStatus = [
                             TaskStatus.all,
                             TaskStatus.toDo,
@@ -28,7 +28,7 @@ struct CalendarPageView: View {
     @State private var taskStatusState: TaskStatus = .all
     @State private var selectColor:Color = .purple
 
-    @StateObject var db = TaskData.db
+    @StateObject var db: TaskData
     
 //MARK: Body
     var body: some View {
@@ -144,31 +144,53 @@ extension CalendarPageView {
             } else {
                 ScrollView(.vertical, showsIndicators: false) {
                     ForEach(db.Task) { task in
-//                        let task = db.Task[index]
                         
                         if Calendar.current.isDate(task.time, equalTo: Calendar.current.date(byAdding: .day, value: selectDate, to: Date())!, toGranularity: .day) {
                             
                             if taskStatusState == .all {
-                                
-                                        Button(action: {
-                                            viewModel.setTask(task: task)
-                                            showEditTask.toggle()
-                                            print("\(taskStatusState) \(task.status)")
-                                        }) {
-                                            TaskModel.TaskModel(model: task)
-                                        }
-                                    
-                                
-                            }else{
-                                
-                                if taskStatusState != .all && task.status == taskStatusState {
+                                withAnimation{
                                     TaskModel.TaskModel(model: task)
+                                        .onAppear{
+                                            TaskModel.setViewModel(db: db)
+                                        }
                                         .onTapGesture {
                                             viewModel.setTask(task: task)
                                             showEditTask.toggle()
                                             print(task.status)
                                         }
+                                        .gesture(DragGesture()
+                                            .onChanged{ value in
+                                                self.onChanged(value: value, model: task)
+                                            }
+                                            .onEnded { value in
+                                                self.onEnd(value: value, model: task)
+                                            }
+                                        )
                                     
+                                }
+                                
+                            }else{
+                                
+                                if taskStatusState != .all && task.status == taskStatusState {
+                                    withAnimation{
+                                        TaskModel.TaskModel(model: task)
+                                            .onAppear{
+                                                TaskModel.setViewModel(db: db)
+                                            }
+                                            .onTapGesture {
+                                                viewModel.setTask(task: task)
+                                                showEditTask.toggle()
+                                                print(task.status)
+                                            }
+                                            .gesture(DragGesture()
+                                                .onChanged{ value in
+                                                    self.onChanged(value: value, model: task)
+                                                }
+                                                .onEnded { value in
+                                                    self.onEnd(value: value, model: task)
+                                                }
+                                            )
+                                    }
                                 }
                             }
                            
@@ -182,8 +204,56 @@ extension CalendarPageView {
         
     }
 
+    private func onChanged(value: DragGesture.Value, model: TaskModel){
+        if value.translation.width > 0 {
+            for i in 0..<db.Task.count{
+                if db.Task[i].id == model.id{
+                    
+                    if  db.Task[i].isSwiped {
+                        db.Task[i].offSet = value.translation.width - 90
+                    }else{
+                        db.Task[i].offSet = value.translation.width
+                    }
+                }
+            }
+        }
+    }
+    
+    private func onEnd(value: DragGesture.Value, model: TaskModel){
+        withAnimation(.easeOut){
+            print(value.translation.width)
+                for i in 0..<db.Task.count{
+                    if db.Task[i].id == model.id{
+                            
+                            if db.Task[i].offSet > 50 {
+                                withAnimation{
+                                    db.Task[i].offSet = Size.size[1]/10
+                                }
+                                
+                                if -value.translation.width > Size.size[0]/3{
+                                    db.Task[i].offSet = 0
+                                    
+                                }
+                            }
+                            else if  db.Task[i].offSet < 50 {
+                                db.Task[i].offSet = -Size.size[1]/4
+                                
+                                if value.translation.width > -Size.size[0]/3{
+                                    db.Task[i].offSet = 0
+                                    
+                                }
+                            }
+                            
+                            else{
+                                db.Task[i].isSwiped = false
+                                db.Task[i].offSet = 0
+                            }
+
+                    }
+                }
+
+        }
+    }
 }
 
-#Preview {
-    CalendarPageView()
-}
+

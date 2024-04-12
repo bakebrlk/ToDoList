@@ -41,7 +41,7 @@ struct Authentication{
         }
     }
     
-    static func checkAuthentication() -> Bool{
+    @MainActor static func checkAuthentication() -> Bool{
         let authUser = try? FirebaseFunction.getAuthenticatedUser()
         return authUser == nil
     }
@@ -71,7 +71,7 @@ struct Authentication{
     }
     
     
-    static func signOut() throws{
+    @MainActor static func signOut() throws{
         try FirebaseFunction.signOut()
     }
 }

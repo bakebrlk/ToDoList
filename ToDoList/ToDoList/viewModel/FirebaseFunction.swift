@@ -142,6 +142,12 @@ struct FirebaseFunction{
     
 // MARK: Tasks
     
+    @ObservedObject static var db = TaskData()
+    
+    public static func setDB(db: TaskData){
+        self.db = db
+    }
+    
     public static func createTask(userID: String, model: TaskModel) async throws {
         let taskData: [String: Any] = [
             "title": model.title,
@@ -164,14 +170,14 @@ struct FirebaseFunction{
                 print("Invalid Timestamp for document ID: \(snapshots[i].documentID)")
                 continue
             }
-                   
+            
             let DataDate = date(from: timestamp)
                   
             print(DataDate)
             DispatchQueue.main.async {
-                TaskData.db.appendTask(model: TaskModel(title: data["title"] as! String, description: data["description"] as! String, status: .toDo, time: DataDate, taskGroup: TaskGroupModel(title: "Buissness", count: 20, img: "taskLogo1", process: 0.5, color: .red.opacity(0.6))))
+                db.appendTask(model: TaskModel(id: "\(data.documentID)",title: data["title"] as! String, description: data["description"] as! String, status: .toDo, time: DataDate, taskGroup: TaskGroupModel(title: "Buissness", count: 20, img: "taskLogo1", process: 0.5, color: .red.opacity(0.6))))
             }
-           
+            
         }
     }
     
@@ -181,5 +187,25 @@ struct FirebaseFunction{
         
         return date
     }
+    
+    @MainActor
+    static func updateTask(userId: String, taskID: String, title: String?, description: String?, status: TaskStatus?) {
+        var data: [String: Any] = [:]
+        
+        if let title = title {
+            data["title"] = title
+        }
+        
+        if let description = description {
+            data["description"] = description
+        }
+        
+        if let status = status {
+            data["status"] = status.builder
+        }
+        
+        Firestore.firestore().collection("usersTasks").document(userId).collection("list").document(taskID).updateData(data)
+    }
+    
 }
 

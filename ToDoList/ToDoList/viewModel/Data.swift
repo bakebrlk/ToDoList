@@ -14,7 +14,7 @@ struct Data{
         @Published var user: UserModel? = nil
         
         public func userInfo() async throws{
-            let authDataResult = try FirebaseFunction.getAuthenticatedUser()
+            let authDataResult = try await FirebaseFunction.getAuthenticatedUser()
             let userInfo = try await FirebaseFunction.getUserInfo(userId: authDataResult.uid)
                     
             DispatchQueue.main.async {
@@ -51,21 +51,6 @@ struct Data{
     }
         
     class Tasks: ObservableObject{
-        
-//        @Published var Task: [TaskModel] = []
-//               
-//               init() {
-//                   self.Task = [
-//                    TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .done, time: Date(), taskGroup: Data.Tasks.TaskGroup[0]),
-//                       TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .inProcess, time: Date(), taskGroup: Data.Tasks.TaskGroup[1]),
-//                       TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .toDo, time: Date(), taskGroup: Data.Tasks.TaskGroup[2]),
-//                       TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .done, time: Date(), taskGroup: Data.Tasks.TaskGroup[3]),
-//                       TaskModel(title: "Market Research", description: "Grocery shopping app design", status: .inProcess, time: Date(), taskGroup: Data.Tasks.TaskGroup[4])
-//                   ]
-//               }
-//        public func appendTask(model: TaskModel) {
-//            Task.append(model)
-//        }
                 
         static var inProgress: [inProgressModel] = [
             inProgressModel(group: "Buissness", title: "Buy Flowers", logo: "taskLogo1", color: .cyan, progress: 0.5),

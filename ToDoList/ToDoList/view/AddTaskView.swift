@@ -204,7 +204,7 @@ extension AddTaskView {
                 
                 repeat {
 
-                    TaskData.db.appendTask(model: TaskModel(title: projectName, description: description, status: .toDo, time: currentDate, taskGroup: selectedTaskGroup))
+                    TaskData().appendTask(model: TaskModel(title: projectName, description: description, status: .toDo, time: currentDate, taskGroup: selectedTaskGroup))
                              
                     viewModel.addTask(userId: user.user!.id, taskModel: TaskModel(title: projectName, description: description, status: .toDo, time: currentDate, taskGroup: selectedTaskGroup))
                     

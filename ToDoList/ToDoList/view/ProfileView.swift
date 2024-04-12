@@ -88,10 +88,11 @@ extension ProfileView{
                 editProfile
                 signOut
             }
-            .frame(maxWidth: Size.size[0]/1.2, maxHeight: Size.size[1]/2.6)
-            .background(BackgroundMode().isDark ? Color(.systemGray) : Color.white)
-            .cornerRadius(20)
-            .padding([.leading, .trailing],40)
+//            .frame(maxWidth: Size.size[0]/1.2, maxHeight: Size.size[1]/2.6)
+//            .background(BackgroundMode().isDark ? Color(.systemGray) : Color.white)
+//            .cornerRadius(20)
+//            .padding([.leading, .trailing],40)
+            .padding()
         }
     }
         

@@ -12,7 +12,8 @@ extension editTaskView{
     class ViewModel: ObservableObject {
         @Published private var selectedTask: TaskModel = TaskModel(title: "", description: "", status: .all, time: Date(), taskGroup: Data.Tasks.TaskGroup[0])
         
-       
+        public let user = Data.User()
+
         public var db = TaskData()
         
         public func setTask(task: TaskModel) {
@@ -45,6 +46,9 @@ extension editTaskView{
             }
             
         }
-
+        
+     
     }
+    
+    
 }

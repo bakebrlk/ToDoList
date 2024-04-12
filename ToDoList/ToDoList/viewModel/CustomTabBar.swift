@@ -13,8 +13,10 @@ struct CustomTabBar: View {
     
     @StateObject private var backgroundMode = BackgroundMode()
     
-    @StateObject private var user = Data.User()
+    @StateObject public var user = Data.User()
+    @StateObject var db = TaskData()
 
+    
 //MARK: Body
     var body: some View {
         VStack{
@@ -22,7 +24,7 @@ struct CustomTabBar: View {
                 HomePageView(user: user)
                 
             }else if id == 1{
-                CalendarPageView()
+                CalendarPageView( db: db)
                 
             }else if id == 2 {
                 AddTaskView(user: user)
@@ -43,6 +45,7 @@ struct CustomTabBar: View {
             Task {
                 do {
                     try await user.userInfo()
+                    FirebaseFunction.setDB(db: db)
                     try await FirebaseFunction.getTask(userID: user.user!.id)
 
                 } catch {
