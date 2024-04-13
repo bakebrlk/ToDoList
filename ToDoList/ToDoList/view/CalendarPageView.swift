@@ -16,9 +16,7 @@ struct CalendarPageView: View {
     @State private var listIsEmpty = false
     
     @State private var showEditTask: Bool = false
-    
-    @ObservedObject var viewModel = editTaskView.ViewModel()
-    
+        
     private let taskStatus = [
                             TaskStatus.all,
                             TaskStatus.toDo,
@@ -28,6 +26,7 @@ struct CalendarPageView: View {
     @State private var taskStatusState: TaskStatus = .all
     @State private var selectColor:Color = .purple
 
+    @State private var selectedTask: TaskModel? = nil
     @StateObject var db: TaskData
     
 //MARK: Body
@@ -48,7 +47,7 @@ struct CalendarPageView: View {
             listIsEmpty = db.Task.isEmpty
         }
         .sheet(isPresented: $showEditTask, content: {
-            editTaskView(task: viewModel.getTask(), showEditTask: $showEditTask, db: db)
+            editTaskView(task: $selectedTask, showEditTask: $showEditTask, db: db)
                 .presentationDetents([.height(Size.size[1]/2.1)])
         })
     }
@@ -147,16 +146,26 @@ extension CalendarPageView {
                         
                         if Calendar.current.isDate(task.time, equalTo: Calendar.current.date(byAdding: .day, value: selectDate, to: Date())!, toGranularity: .day) {
                             
-                            if taskStatusState == .all {
-                                withAnimation{
-                                    TaskModel.TaskModel(model: task)
-                                        .onAppear{
-                                            TaskModel.setViewModel(db: db)
+                            if taskStatusState == .all{
+                                TaskViewCell(model: task)
+                                    .onTapGesture {
+                                        selectedTask = task
+                                        showEditTask.toggle()
+                                    }
+                                    .gesture(DragGesture()
+                                        .onChanged{ value in
+                                            self.onChanged(value: value, model: task)
                                         }
+                                        .onEnded { value in
+                                            self.onEnd(value: value, model: task)
+                                        }
+                                    )
+                            }else{
+                                if taskStatusState != .all && task.status == taskStatusState {
+                                    TaskViewCell(model: task)
                                         .onTapGesture {
-                                            viewModel.setTask(task: task)
+                                            selectedTask = task
                                             showEditTask.toggle()
-                                            print(task.status)
                                         }
                                         .gesture(DragGesture()
                                             .onChanged{ value in
@@ -166,37 +175,11 @@ extension CalendarPageView {
                                                 self.onEnd(value: value, model: task)
                                             }
                                         )
-                                    
-                                }
-                                
-                            }else{
-                                
-                                if taskStatusState != .all && task.status == taskStatusState {
-                                    withAnimation{
-                                        TaskModel.TaskModel(model: task)
-                                            .onAppear{
-                                                TaskModel.setViewModel(db: db)
-                                            }
-                                            .onTapGesture {
-                                                viewModel.setTask(task: task)
-                                                showEditTask.toggle()
-                                                print(task.status)
-                                            }
-                                            .gesture(DragGesture()
-                                                .onChanged{ value in
-                                                    self.onChanged(value: value, model: task)
-                                                }
-                                                .onEnded { value in
-                                                    self.onEnd(value: value, model: task)
-                                                }
-                                            )
-                                    }
                                 }
                             }
-                           
-                                
-                            
+
                         }
+
                     }
                 }
             }
@@ -204,15 +187,16 @@ extension CalendarPageView {
         
     }
 
+    
     private func onChanged(value: DragGesture.Value, model: TaskModel){
         if value.translation.width > 0 {
             for i in 0..<db.Task.count{
                 if db.Task[i].id == model.id{
                     
                     if  db.Task[i].isSwiped {
-                        db.Task[i].offSet = value.translation.width - 90
+                        db.offSet(index: i, value.translation.width - 90)
                     }else{
-                        db.Task[i].offSet = value.translation.width
+                        db.offSet(index: i, value.translation.width)
                     }
                 }
             }
@@ -222,31 +206,30 @@ extension CalendarPageView {
     private func onEnd(value: DragGesture.Value, model: TaskModel){
         withAnimation(.easeOut){
             print(value.translation.width)
-                for i in 0..<db.Task.count{
-                    if db.Task[i].id == model.id{
+                for task in db.getTasks(){
+                    if task.id == model.id{
                             
-                            if db.Task[i].offSet > 50 {
+                        
+                            if task.offSet > 50 {
                                 withAnimation{
-                                    db.Task[i].offSet = Size.size[1]/10
+                                    db.offSet(task: task, Size.size[1]/10)
                                 }
                                 
                                 if -value.translation.width > Size.size[0]/3{
-                                    db.Task[i].offSet = 0
-                                    
+                                    db.offSet(task: task, 0)
                                 }
                             }
-                            else if  db.Task[i].offSet < 50 {
-                                db.Task[i].offSet = -Size.size[1]/4
+                            else if  task.offSet < 50 {
+                                db.offSet(task: task, -Size.size[1]/4)
                                 
                                 if value.translation.width > -Size.size[0]/3{
-                                    db.Task[i].offSet = 0
-                                    
+                                    db.offSet(task: task, 0)
                                 }
                             }
                             
                             else{
-                                db.Task[i].isSwiped = false
-                                db.Task[i].offSet = 0
+                                db.isSwipe(task: task, false)
+                                db.offSet(task: task, 0)
                             }
 
                     }

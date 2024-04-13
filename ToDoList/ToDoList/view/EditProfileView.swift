@@ -16,7 +16,7 @@ struct EditProfileView: View {
     
     @Binding public var checkPresent: Bool
     
-    @StateObject public var user: Data.User
+    @StateObject public var user: UserResponse
     @Binding public var avatarData: Foundation.Data?
 
     var body: some View {
@@ -135,7 +135,7 @@ extension EditProfileView{
 }
 
 #Preview {
-    EditProfileView(checkPresent: .constant(true), user: Data.User(), avatarData: .constant(Foundation.Data()))
+    EditProfileView(checkPresent: .constant(true), user: UserResponse(), avatarData: .constant(Foundation.Data()))
 }
 
 

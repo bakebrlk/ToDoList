@@ -114,8 +114,6 @@
 		8B8A2B7C2B8DE0CF00D74AB0 /* UpdatePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8A2B7B2B8DE0CF00D74AB0 /* UpdatePasswordView.swift */; };
 		8B9282452BC1B8040015E2E1 /* listEmpty.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B9282442BC1B8040015E2E1 /* listEmpty.png */; };
 		8B9460E02BC3493000569F79 /* editTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9460DF2BC3493000569F79 /* editTaskView.swift */; };
-		8B9460E22BC36E6700569F79 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9460E12BC36E6700569F79 /* CalendarViewModel.swift */; };
-		8B9460E42BC376B000569F79 /* editTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9460E32BC376B000569F79 /* editTaskViewModel.swift */; };
 		8B9460E62BC38A0200569F79 /* TaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9460E52BC38A0200569F79 /* TaskData.swift */; };
 		8B9A085C2BA709BC009CAC97 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9A085B2BA709BC009CAC97 /* ProfileView.swift */; };
 		8BAEB9A22BAEF39600B5F5E2 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAEB9A12BAEF39600B5F5E2 /* EditProfileView.swift */; };
@@ -127,6 +125,7 @@
 		8BC1B6E82B8158380069ECF6 /* onbording3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1B6E52B8158380069ECF6 /* onbording3.png */; };
 		8BC1B6E92B8158380069ECF6 /* onbording2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1B6E62B8158380069ECF6 /* onbording2.png */; };
 		8BC1B6EA2B8158380069ECF6 /* onbording1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1B6E72B8158380069ECF6 /* onbording1.png */; };
+		8BDB73BA2BCA114100BC0BE8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB73B92BCA114100BC0BE8 /* User.swift */; };
 		8BDE130B2B912253005BBEFF /* CircleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDE130A2B912253005BBEFF /* CircleModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -203,8 +202,6 @@
 		8B8A2B7B2B8DE0CF00D74AB0 /* UpdatePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordView.swift; sourceTree = "<group>"; };
 		8B9282442BC1B8040015E2E1 /* listEmpty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = listEmpty.png; sourceTree = "<group>"; };
 		8B9460DF2BC3493000569F79 /* editTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editTaskView.swift; sourceTree = "<group>"; };
-		8B9460E12BC36E6700569F79 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
-		8B9460E32BC376B000569F79 /* editTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editTaskViewModel.swift; sourceTree = "<group>"; };
 		8B9460E52BC38A0200569F79 /* TaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskData.swift; sourceTree = "<group>"; };
 		8B9A085B2BA709BC009CAC97 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		8BAEB9A12BAEF39600B5F5E2 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
@@ -216,6 +213,7 @@
 		8BC1B6E52B8158380069ECF6 /* onbording3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onbording3.png; sourceTree = "<group>"; };
 		8BC1B6E62B8158380069ECF6 /* onbording2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onbording2.png; sourceTree = "<group>"; };
 		8BC1B6E72B8158380069ECF6 /* onbording1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onbording1.png; sourceTree = "<group>"; };
+		8BDB73B92BCA114100BC0BE8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8BDE130A2B912253005BBEFF /* CircleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -420,6 +418,7 @@
 		8B4032182B80AF730097D29C /* viewModel */ = {
 			isa = PBXGroup;
 			children = (
+				8BDB73B92BCA114100BC0BE8 /* User.swift */,
 				8B40321B2B80C3480097D29C /* Data.swift */,
 				8B16014A2B82D7580017FD2B /* UserDefaults.swift */,
 				8B2EC91C2B84C33A00A6BF00 /* FirebaseFunction.swift */,
@@ -434,8 +433,6 @@
 				8B08BE352BBA2C2E005E049A /* OpenAIService.swift */,
 				8B08BE3C2BBA34FC005E049A /* Constants.swift */,
 				8B76B4132BC02734005B68A9 /* AddTaskViewModel.swift */,
-				8B9460E12BC36E6700569F79 /* CalendarViewModel.swift */,
-				8B9460E32BC376B000569F79 /* editTaskViewModel.swift */,
 				8B9460E52BC38A0200569F79 /* TaskData.swift */,
 			);
 			path = viewModel;
@@ -640,12 +637,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BDB73BA2BCA114100BC0BE8 /* User.swift in Sources */,
 				8B2EC91D2B84C33A00A6BF00 /* FirebaseFunction.swift in Sources */,
 				8B9A085C2BA709BC009CAC97 /* ProfileView.swift in Sources */,
 				8B08BE3D2BBA34FC005E049A /* Constants.swift in Sources */,
 				8B540BF42B9E588500762D99 /* AddTaskView.swift in Sources */,
 				8B16014D2B82D8CA0017FD2B /* SignInView.swift in Sources */,
-				8B9460E42BC376B000569F79 /* editTaskViewModel.swift in Sources */,
 				8B08BE322BBA2B0D005E049A /* ChatView.swift in Sources */,
 				8BBAFCB02BAAFF7F009609EE /* BackgroundMode.swift in Sources */,
 				8B7E66F82BA1053B0056C5A1 /* SelectDateModel.swift in Sources */,
@@ -655,7 +652,6 @@
 				8B1BB5E52B957C4E001D62DA /* Size.swift in Sources */,
 				8B7F01432B97ABFB009405FC /* TaskGroupModel.swift in Sources */,
 				8B1601422B82C6960017FD2B /* CustomText.swift in Sources */,
-				8B9460E22BC36E6700569F79 /* CalendarViewModel.swift in Sources */,
 				8B874DB32B8E382E0076E224 /* SendMailView.swift in Sources */,
 				8B82BD4C2B8E59AB00DC3BF2 /* Navigation.swift in Sources */,
 				8B1BB5F12B958E3F001D62DA /* inProgressModel.swift in Sources */,

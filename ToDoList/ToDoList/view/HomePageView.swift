@@ -15,7 +15,7 @@ struct HomePageView: View {
     @State private var todayStatus: String = "Your today's task almost done!"
     @State private var statisticsValue = 0.0
   
-    @StateObject public var user: Data.User
+    @StateObject public var user: UserResponse
 
     //MARK: Body
     var body: some View {

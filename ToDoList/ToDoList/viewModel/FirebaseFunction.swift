@@ -12,6 +12,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseStorage
 
+@MainActor
 struct FirebaseFunction{
             
     static func signUp(email: String, password: String, nickName: String) async throws -> AuthDataResultModel{
@@ -142,11 +143,7 @@ struct FirebaseFunction{
     
 // MARK: Tasks
     
-    @ObservedObject static var db = TaskData()
-    
-    public static func setDB(db: TaskData){
-        self.db = db
-    }
+//    @StateObject static var db = TaskData()
     
     public static func createTask(userID: String, model: TaskModel) async throws {
         let taskData: [String: Any] = [
@@ -160,9 +157,11 @@ struct FirebaseFunction{
         try await Firestore.firestore().collection("usersTasks").document(userID).collection("list").addDocument(data: taskData) /*.setData(taskData,merge: false)*/
     }
     
-    public static func getTask(userID: String) async throws{
+    public static func getTask(userID: String) async throws -> [TaskModel]{
         let snapshots = try await Firestore.firestore().collection("usersTasks").document(userID).collection("list").getDocuments().documents
 
+        var tasks: [TaskModel] = []
+        
         for i in 0..<snapshots.count{
             let data = snapshots[i]
             
@@ -172,13 +171,11 @@ struct FirebaseFunction{
             }
             
             let DataDate = date(from: timestamp)
-                  
-            print(DataDate)
-            DispatchQueue.main.async {
-                db.appendTask(model: TaskModel(id: "\(data.documentID)",title: data["title"] as! String, description: data["description"] as! String, status: .toDo, time: DataDate, taskGroup: TaskGroupModel(title: "Buissness", count: 20, img: "taskLogo1", process: 0.5, color: .red.opacity(0.6))))
-            }
-            
+           
+            tasks.append(TaskModel(id: "\(data.documentID)",title: data["title"] as! String, description: data["description"] as! String, status: .toDo, time: DataDate, taskGroup: TaskGroupModel(title: "Buissness", count: 20, img: "taskLogo1", process: 0.5, color: .red.opacity(0.6))))
         }
+        
+        return tasks
     }
     
     private static func date(from timestamp: Timestamp) -> Date {
@@ -188,7 +185,6 @@ struct FirebaseFunction{
         return date
     }
     
-    @MainActor
     static func updateTask(userId: String, taskID: String, title: String?, description: String?, status: TaskStatus?) {
         var data: [String: Any] = [:]
         
@@ -205,6 +201,7 @@ struct FirebaseFunction{
         }
         
         Firestore.firestore().collection("usersTasks").document(userId).collection("list").document(taskID).updateData(data)
+            
     }
     
 }

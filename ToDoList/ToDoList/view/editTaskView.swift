@@ -12,14 +12,12 @@ struct editTaskView: View {
     @State private var title: String = ""
     @State private var description: String = ""
     
-    private var task: TaskModel
+    @Binding private var task: TaskModel?
     @Binding private var showEditTask: Bool
-    private var db: TaskData
-    
-    @ObservedObject private var viewModel: ViewModel = ViewModel()
-    
-    init(task: TaskModel,showEditTask: Binding<Bool>, db: TaskData) {
-        self.task = task
+    @ObservedObject public var db: TaskData
+        
+    init(task: Binding<TaskModel?>,showEditTask: Binding<Bool>, db: TaskData) {
+        _task = task
         _showEditTask = showEditTask
         self.db = db
     }
@@ -34,18 +32,16 @@ struct editTaskView: View {
             
             textView(text: "Edit Task", size: 22)
                 .padding(10)
-            textField(text: "Title: ", helpText: viewModel.getTask().title, mainText: $title, textLimit: 1)
-            textField(text: "Description: ", helpText: viewModel.getTask().description, mainText: $description, textLimit: 3)
+            textField(text: "Title: ", helpText: task!.title, mainText: $title, textLimit: 1)
+            textField(text: "Description: ", helpText: task!.description, mainText: $description, textLimit: 3)
             
             Spacer()
             
             Button(action: {
-                
-                viewModel.setDB(db: db)
-                
+                                
                 let title: String? = (!title.isEmpty) ? title : nil
                 let description = (!description.isEmpty) ? description : nil
-                viewModel.updateData(task: task, title: title, description: description)
+                db.updateData(task: task!, title: title, description: description)
                 
                 showEditTask.toggle()
             }, label: {
@@ -59,9 +55,7 @@ struct editTaskView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(BackgroundMode().viewBack())
-        .onAppear{
-            viewModel.setTask(task: task)
-        }
+        
     }
 }
 

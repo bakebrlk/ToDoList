@@ -13,7 +13,7 @@ struct CustomTabBar: View {
     
     @StateObject private var backgroundMode = BackgroundMode()
     
-    @StateObject public var user = Data.User()
+    @StateObject public var user = UserResponse()
     @StateObject var db = TaskData()
 
     
@@ -45,9 +45,12 @@ struct CustomTabBar: View {
             Task {
                 do {
                     try await user.userInfo()
-                    FirebaseFunction.setDB(db: db)
-                    try await FirebaseFunction.getTask(userID: user.user!.id)
-
+                    if let user = user.user{
+                        try await db.appendTasks(userID: user.id)
+                        db.setUser(user: user)
+                    }else{
+                        print("User == nil")
+                    }
                 } catch {
                     print("Error fetching user info: \(error)")
                 }

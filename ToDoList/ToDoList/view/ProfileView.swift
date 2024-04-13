@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
            
-    @StateObject public var user: Data.User
+    @StateObject public var user: UserResponse
     
     @ObservedObject public var backMode: BackgroundMode
     @EnvironmentObject var navigate: Navigation
@@ -178,6 +178,6 @@ extension ProfileView{
 
 #Preview {
     
-    ProfileView(user: Data.User(), backMode: BackgroundMode())
+    ProfileView(user:UserResponse(), backMode: BackgroundMode())
 }
     

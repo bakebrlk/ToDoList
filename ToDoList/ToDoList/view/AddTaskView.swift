@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddTaskView: View {
     
-    @StateObject public var user: Data.User
+    @StateObject public var user = UserResponse()
     @ObservedObject var viewModel = ViewModel()
     @EnvironmentObject var navigate: Navigation
 
@@ -204,8 +204,8 @@ extension AddTaskView {
                 
                 repeat {
 
-                    TaskData().appendTask(model: TaskModel(title: projectName, description: description, status: .toDo, time: currentDate, taskGroup: selectedTaskGroup))
-                             
+//                    TaskData().appendTask(model: TaskModel(title: projectName, description: description, status: .toDo, time: currentDate, taskGroup: selectedTaskGroup))
+//                             
                     viewModel.addTask(userId: user.user!.id, taskModel: TaskModel(title: projectName, description: description, status: .toDo, time: currentDate, taskGroup: selectedTaskGroup))
                     
                     print(currentDate)

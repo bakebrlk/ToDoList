@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct TaskModel:Identifiable{
 
@@ -17,10 +18,7 @@ struct TaskModel:Identifiable{
     let taskGroup: TaskGroupModel
     var offSet: CGFloat = 0
     var isSwiped: Bool = false
-    
-    @ObservedObject static var db = TaskData()
-    public static let user = Data.User()
-
+ 
     static func == (lhs: TaskModel, rhs: TaskModel) -> Bool {
         return lhs.id == rhs.id
             && lhs.title == rhs.title
@@ -29,15 +27,24 @@ struct TaskModel:Identifiable{
             && lhs.time == rhs.time
             && lhs.taskGroup == rhs.taskGroup
     }
+
+}
+
+struct TaskViewCell: View{
     
-    public static func setViewModel(db: TaskData){
-        self.db = db
-        Task{
-            try await user.userInfo()
-        }
-    }
+//    @StateObject var db = TaskData()
+//    public let user = Data.User()
+//    
+//    public static func setViewModel(db: TaskData){
+//        self.db = db
+//        Task{
+//            try await user.userInfo()
+//        }
+//    }
     
-    public static func TaskModel(model: TaskModel) -> some View {
+    var model: TaskModel
+    
+    var body: some View {
 
         ZStack{
             
@@ -47,14 +54,14 @@ struct TaskModel:Identifiable{
             
             HStack{
                 Button {
-                    offsetTask(task: model, width: 1000)
-                    deleteTask(task: model)
-                    print(model)
-                    Timer.scheduledTimer(withTimeInterval: 0.15, repeats: false) {_ in
-                        withAnimation{
-                            deleteTask(task: model)
-                        }
-                    }
+//                    self.offsetTask(task: model, width: 1000)
+//                    self.deleteTask(task: model)
+//                    print(model)
+//                    Timer.scheduledTimer(withTimeInterval: 0.15, repeats: false) {_ in
+//                        withAnimation{
+//                            self.deleteTask(task: model)
+//                        }
+//                    }
                 } label: {
                     Image(systemName: "trash")
                         .frame(width: Size.size[0]/5)
@@ -67,7 +74,7 @@ struct TaskModel:Identifiable{
                 HStack{
                     
                     Button {
-                        updateStatus(task: model, status: .toDo)
+//                        updateStatus(task: model, status: .toDo)
                     } label: {
                         
                         Image(systemName: "square.and.pencil")
@@ -79,7 +86,8 @@ struct TaskModel:Identifiable{
                     .frame(width: Size.size[0]/7, height: Size.size[1]/15)
                     
                     Button {
-                        updateStatus(task: model, status: .inProcess)
+//                        self.updateStatus(task: model, status: .inProcess)
+                            
                     } label: {
                         Image(systemName: "rectangle.and.pencil.and.ellipsis.rtl")
                             .resizable()
@@ -90,7 +98,7 @@ struct TaskModel:Identifiable{
                     .frame(width: Size.size[0]/7, height: Size.size[1]/15)
                     
                     Button {
-                        updateStatus(task: model, status: .done)
+//                        self.updateStatus(task: model, status: .done)
                     } label: {
                         Image(systemName: "checkmark.circle")
                             .resizable()
@@ -150,40 +158,37 @@ struct TaskModel:Identifiable{
     }
 
     
-    public static func updateStatus(task: TaskModel, status: TaskStatus) {
-    
-        Task{
-            if let user = user.user{
-                DispatchQueue.main.async {
-                    FirebaseFunction.updateTask(userId: user.id, taskID: task.id, title: nil, description: nil, status: status)
-                }
-            }
-            
-            offsetTask(task: task, width: 0)
-        }
-        
-        Task{
-            try await db.updateStatus(task: task, status: status)
-        }
-    }
-    
-    public static func deleteTask(task: TaskModel){
-        for i in 0..<db.Task.count {
-            if db.Task[i].id == task.id{
-                db.Task.remove(at: i)
-                break
-            }
-        }
-    }
-    
-    public static func offsetTask(task: TaskModel, width: CGFloat){
-        for i in 0..<db.Task.count {
-            if db.Task[i].id == task.id{
-                withAnimation(.easeOut(duration: 1.5)){
-                   db.Task[i].offSet = width
-                }
-                break
-            }
-        }
-    }
+//    public func updateStatus(task: TaskModel, status: TaskStatus) {
+//    
+//        Task{
+//            if let user = user.user{
+//                DispatchQueue.main.async {
+//                    FirebaseFunction.updateTask(userId: user.id, taskID: task.id, title: nil, description: nil, status: status)
+//                }
+//            }
+//            
+//            offsetTask(task: task, width: 0)
+//        }
+//        
+//        Task{
+//            DispatchQueue.main.async{
+//                self.db.updateStatus(task: task, status: status)
+//            }
+//        }
+//    }
+//    
+//    public func deleteTask(task: TaskModel){
+//        for i in 0..<db.Task.count {
+//            if db.Task[i].id == task.id{
+//                db.Task.remove(at: i)
+//                break
+//            }
+//        }
+//    }
+//    
+//    public func offsetTask(task: TaskModel, width: CGFloat){
+//        withAnimation{
+//            db.offSet(task: task, 0)
+//        }
+//    }
 }

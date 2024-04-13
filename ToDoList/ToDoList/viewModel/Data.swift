@@ -8,30 +8,7 @@
 import SwiftUI
 
 struct Data{
-    
-    final class User: ObservableObject{
-        
-        @Published var user: UserModel? = nil
-        
-        public func userInfo() async throws{
-            let authDataResult = try await FirebaseFunction.getAuthenticatedUser()
-            let userInfo = try await FirebaseFunction.getUserInfo(userId: authDataResult.uid)
-                    
-            DispatchQueue.main.async {
-                self.user = userInfo
-            }
-        }
-        
-        public func editUser(nick: String) async throws{
-            try await FirebaseFunction.updateUser(userId: user!.id, nickName: nick)
-            let updateUser = try await FirebaseFunction.getUserInfo(userId: user!.id)
-            
-            DispatchQueue.main.async {
-                self.user = updateUser
-            }
-        }
-    }
-    
+     
     struct WelcomePage{
         static let data: [WelcomePageModel] = [
             WelcomePageModel(id: 0,
