@@ -28,7 +28,7 @@ enum TimerEnum {
     }
 }
 
-class TimerModel {
+class TimerModel: NSObject, ObservableObject{
     
     @Binding private var timerTotalSecond: Double
     @Binding private var processTimer: Double
@@ -52,12 +52,15 @@ class TimerModel {
                 .onReceive(timer) { [self] _ in
                     
                     if timerMonitoring == .start{
+                        
                         if timerTotalSecond > 0 {
                             withAnimation{
                                 timerTotalSecond -= 1
                                 processTimer = Double(timerTotalSecond/timerFullSecond)
                             }
                         }else{
+
+                            addNotification()
                             timerFullSecond = 0
                             processTimer = 1.0
                             timerMonitoring = .def
@@ -72,6 +75,9 @@ class TimerModel {
                 .foregroundColor(.white)
                 .cornerRadius(20)
         }
+        .onAppear{
+            self.authorizeNotification()
+        }
     }
     
     private func SecondFormatter(totalSecond: Double) -> String{
@@ -85,5 +91,30 @@ class TimerModel {
         
         return res
         
+    }
+}
+extension TimerModel: UNUserNotificationCenterDelegate{
+    
+
+    
+    func authorizeNotification(){
+        UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert, .badge]) {_,_ in }
+        
+        UNUserNotificationCenter.current().delegate = self
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.sound,.banner])
+    }
+    
+    private func addNotification(){
+        let content = UNMutableNotificationContent()
+        content.title = "Taskly Timer"
+        content.subtitle = "Timer is up !!!"
+        content.sound = UNNotificationSound.default
+        
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(0.1), repeats: false) )
+
+        UNUserNotificationCenter.current().add(request)
     }
 }

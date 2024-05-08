@@ -39,9 +39,9 @@ struct TimerView: View {
             }
             
             HStack{
-                addTime(second: 3600.0, text: "+1h")
-                addTime(second: 60.0, text: "+1m")
-                addTime(second: 10.0, text: "+10s")
+                addTime(second: 3600.0, text: "h", count: 5)
+                addTime(second: 60.0, text: "m", count: 30)
+                addTime(second: 1.0, text: "s", count: 60)
             }
             
             Spacer()
@@ -107,24 +107,46 @@ extension TimerView {
     }
     
 //MARK: Add time
-    private func addTime(second: Double, text: String) -> some View {
-        Button(action: {
+    private func addTime(second: Double, text: String, count: Int) -> some View {
+        
+            Button(action: {
+                totalSecond += second
+                monitoringSecond += second
+                
+                withAnimation{
+                    process = monitoringSecond/totalSecond
+                }
+                
+            }, label: {
+                textView(text: "+1\(text)", size: 16)
+                    .foregroundColor(.white)
+                    .padding()
+            })
+            .background(Color("purple"))
+            .cornerRadius(20)
             
+            .contextMenu {
+                ScrollView{
+                    ForEach(1...count, id: \.self){ i in
+                        menuModel(text: "+\(i)\(text)", second: Double(i)*second)
+                    }
+                }
+            }
+        
+            .padding([.leading, .top])
+    }
+    
+    private func menuModel(text: String, second: Double) -> some View{
+        Button {
             totalSecond += second
             monitoringSecond += second
             
             withAnimation{
                 process = monitoringSecond/totalSecond
             }
-            
-        }, label: {
-            textView(text: text, size: 16)
-                .foregroundColor(.white)
-                .padding()
-        })
-        .background(Color("purple"))
-        .cornerRadius(20)
-        .padding([.leading, .top])
+        } label: {
+            textView(text: text, size: 18)
+        }
     }
 }
 #Preview {

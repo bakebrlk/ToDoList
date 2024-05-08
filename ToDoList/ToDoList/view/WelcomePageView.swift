@@ -22,6 +22,8 @@ struct WelcomePageView: View{
     
     @State private var nextPageBool = false
     
+    @EnvironmentObject var navigate: Navigation
+
     var body: some View {
         
         NavigationView {
@@ -55,7 +57,7 @@ struct WelcomePageView: View{
                
                 .onAppear{
                     reloadData()
-                    
+                    setStatusWelcomePage(status: true)
                 }
             }
             
@@ -106,6 +108,8 @@ extension WelcomePageView {
             descriptionView = textView(text: desciption, size: 18)
             
             imageView = Image(imageName)
+        }else{
+            navigate.navigateTo(.checkAccount)
         }
     }
 }

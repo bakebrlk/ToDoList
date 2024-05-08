@@ -14,24 +14,33 @@ import Firebase
 struct ToDoListApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    private var backMode = BackgroundMode()
     
     var body: some Scene {
         WindowGroup {
             GeometryReader{ make in
                 RouterView{
-                    if Authentication.checkAuthentication() {
+                    
+                    if !statusWelcomePage() {
+                        WelcomePageView()
+                    }
+                    else if Authentication.checkAuthentication() {
                         CheckAccountView()
                     } else {
-                        CustomTabBar()
+                        if getFaceID() {
+                            FaceIDView()
+                        }else{
+                            SplashScreen()
+                        }
                     }
                 }
                 .onAppear{
                     if !sizeStatus() {
-                        print("size")
                         setStatusSize(status: true)
                         setSize(width: make.size.width, height: make.size.height)
                     } else {
                         print("Size: \(getSize())")
+                        print("status: \(statusWelcomePage())")
                     }
                 }
             }

@@ -26,26 +26,44 @@ struct Data{
             
         ]
     }
+    
+    final class Tasks: ObservableObject{
         
-    class Tasks: ObservableObject{
-                
-        static var inProgress: [inProgressModel] = [
-            inProgressModel(group: "Buissness", title: "Buy Flowers", logo: "taskLogo1", color: .cyan, progress: 0.5),
-            inProgressModel(group: "Buissness", title: "Pay for sub", logo: "taskLogo2", color: .green, progress: 0.2),
-            inProgressModel(group: "Buissness", title: "write code", logo: "taskLogo3", color: .purple, progress: 0.7),
-            inProgressModel(group: "Buissness", title: "do project", logo: "taskLogo4", color: .mint, progress: 0.1),
-            inProgressModel(group: "Buissness", title: "conf project", logo: "taskLogo5", color: .teal, progress: 1.0),
-        ]
-        
-        
-        static var TaskGroup: [TaskGroupModel] = [
-            TaskGroupModel(title: "Buissness", count: 20, img: "taskLogo1", process: 0.5, color: .red.opacity(0.6)),
-            TaskGroupModel(title: "Buissness", count: 5, img: "taskLogo3", process: 0.2, color: .purple.opacity(0.6)),
-            TaskGroupModel(title: "Buissness", count: 1, img: "taskLogo2", process: 0.1, color: .blue.opacity(0.6)),
-            TaskGroupModel(title: "Buissness", count: 30, img: "taskLogo4", process: 0.4, color: .yellow.opacity(0.6)),
-            TaskGroupModel(title: "Buissness", count: 15, img: "taskLogo5", process: 0.9, color: .mint.opacity(0.6))
-        ]
+        @Published var TaskGroup: [TaskGroupModel] = [
+            TaskGroupModel(title: "Education and Learning", count: 0, img: "taskLogo1", process: 0.0, color: .red.opacity(0.6), doneCount: 0),
+            TaskGroupModel(title: "Health and Fitness", count: 0, img: "taskLogo3", process: 0.0, color: .purple.opacity(0.6), doneCount: 0),
+            TaskGroupModel(title: "Personal tasks", count: 0, img: "taskLogo2", process: 0.0, color: .blue.opacity(0.6), doneCount: 0),
+            TaskGroupModel(title: "Work tasks", count: 0, img: "taskLogo4", process: 0.0, color: .yellow.opacity(0.6), doneCount: 0),
+            TaskGroupModel(title: "Others", count: 0, img: "taskLogo5", process: 0.0, color: .mint.opacity(0.6), doneCount: 0)
+       ]
 
+        public func appendCount(taskGroup: TaskGroupModel, isDone: Bool){
+            
+            for i in TaskGroup.indices {
+                if taskGroup.title == TaskGroup[i].title {
+                    if isDone {
+                        TaskGroup[i].doneCount += 1
+                    }
+                    TaskGroup[i].count += 1
+                    break
+                }
+            }
+        }
+        
+        public func statistics(group: TaskGroupModel){
+            
+            for i in TaskGroup.indices {
+                if group.title == TaskGroup[i].title {
+                    if TaskGroup[i].count > 0 {
+                        withAnimation{
+                            TaskGroup[i].process = TaskGroup[i].doneCount/TaskGroup[i].count
+                        }
+                    }
+                    break
+                    
+                }
+            }
+        }
         
     }
 }

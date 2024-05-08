@@ -13,52 +13,115 @@ struct AddTaskView: View {
     @ObservedObject var viewModel = ViewModel()
     @EnvironmentObject var navigate: Navigation
 
-    @State private var selectedTaskGroup: TaskGroupModel = Data.Tasks.TaskGroup[0]
+    @State private var selectedTaskGroup: TaskGroupModel = Data.Tasks().TaskGroup[0]
     @State private var showDropDown: Bool = false
-    
     
     @State private var projectName: String = ""
     @State private var description: String = ""
+    
+    @State private var verifyTitle = false
+    @State private var verifyDescription = false
     
     @State private var startDate = Date()
     @State private var endDate = Date()
     
     @State private var showDatePicker: Bool = false
     
+    @State private var isLoading = false
+    @State private var isSuccess = false
     
+    @StateObject var db: TaskData
+
 //MARK: Body
     var body: some View {
-        VStack {
-            navigationBar
-            
-            taskGroup
-            
-            ZStack{
-                projectNameView
-
-                if showDropDown{
-                    withAnimation{
-                        dropDown
+        ZStack{
+            VStack {
+                
+                navigationBar
+                
+                taskGroup
+                
+                ZStack{
+                    projectNameView
+                    
+                    if showDropDown{
+                        withAnimation{
+                            dropDown
+                        }
                     }
+                    
                 }
+                descriptionView
+                
+                SelectDateModel(startDate: $startDate, endDate: $endDate, currentDate: 0, title: "Start Date", showDatePicker: showDatePicker)
+                
+                SelectDateModel(startDate: $startDate, endDate: $endDate, currentDate: 1, title: "End Date", showDatePicker: showDatePicker)
+                
+                addProjectBtn
+                
+                Spacer()
                 
             }
-            descriptionView
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(BackgroundMode().viewBack())
             
-            SelectDateModel(startDate: $startDate, endDate: $endDate, currentDate: 0, title: "Start Date", showDatePicker: showDatePicker)
+            if isLoading {
+                Color(.systemBackground)
+                    .ignoresSafeArea()
+                    .opacity(0.4)
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: Color("purple")))
+                    .scaleEffect(3)
+            }
             
-            SelectDateModel(startDate: $startDate, endDate: $endDate, currentDate: 1, title: "End Date", showDatePicker: showDatePicker)
-            
-            addProjectBtn
-            
-            Spacer()
+            if isSuccess {
+                Color(.systemBackground)
+                    .ignoresSafeArea()
+                    .opacity(0.4)
+                
+                VStack{
+                    Image(systemName: "checkmark.circle")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100, height: 100)
+                        .foregroundColor(.green)
+                    
+                    textView(text: "Success", size: 22)
+                        .foregroundColor(.green)
+                        .padding(.top)
+                }
+            }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(BackgroundMode().viewBack())
     }
 }
 
 extension AddTaskView {
+    
+//MARK: Loading
+    private func loading(){
+        withAnimation{
+            isLoading = true
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            
+            withAnimation{
+                projectName = ""
+                description = ""
+                startDate = Date()
+                endDate = Date()
+                selectedTaskGroup = Data.Tasks().TaskGroup[0]
+                
+                isLoading = false
+                isSuccess = true
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                withAnimation{
+                    isSuccess = false
+                }
+            }
+        }
+    }
+    
 //MARK: TOP Navigation BAR
     private var navigationBar: some View {
         NavigationBar().NavigationTopBar(title: "Add Project", navigateTo: navigateChat)
@@ -66,10 +129,6 @@ extension AddTaskView {
     
     private func navigateChat(){
         navigate.navigateTo(.chat)
-    }
-    
-    private func backAction(){
-        
     }
 
 //MARK: Task Group
@@ -109,7 +168,7 @@ extension AddTaskView {
 //MARK: Drop Down
     private var dropDown: some View {
         ScrollView(.vertical){
-            ForEach(Data.Tasks.TaskGroup){ group in
+            ForEach(Data.Tasks().TaskGroup){ group in
                 VStack{
                     taskGroupModel(taskGroup: group)
                     
@@ -166,6 +225,10 @@ extension AddTaskView {
         }
         .background(Color.white)
         .cornerRadius(20)
+        .overlay(
+              RoundedRectangle(cornerRadius: 20)
+                .stroke(verifyTitle ? .red : .white, lineWidth: 2)
+          )
         .padding([.leading, .trailing,.bottom])
         
     }
@@ -190,29 +253,45 @@ extension AddTaskView {
         .frame(maxWidth: .infinity, maxHeight: Size.size[1]/4)
         .background(Color.white)
         .cornerRadius(20)
+        .overlay(
+              RoundedRectangle(cornerRadius: 20)
+                .stroke(verifyDescription ? .red : .white, lineWidth: 2)
+          )
         .padding([.leading, .trailing,.bottom])
     }
     
 //MARK: Add Project
     private var addProjectBtn: some View {
         Button {
+
             if verifyTask() {
 
+                loading()
+                
                 let cc = Calendar.current
                 var currentDate = startDate
-                let toDate: Date = cc.date(byAdding: .day, value: 1, to: endDate) ?? .now
                 
-                repeat {
+                while currentDate <= endDate{
 
-//                    TaskData().appendTask(model: TaskModel(title: projectName, description: description, status: .toDo, time: currentDate, taskGroup: selectedTaskGroup))
-//                             
-                    viewModel.addTask(userId: user.user!.id, taskModel: TaskModel(title: projectName, description: description, status: .toDo, time: currentDate, taskGroup: selectedTaskGroup))
+                    let newTask = TaskModel(id: UUID().uuidString, title: projectName, description: description, status: .toDo, time: currentDate, taskGroup: selectedTaskGroup)
+                    
+                    db.Task.append(newTask)
+                    
+                    viewModel.addTask(userId: user.user!.id, taskModel: newTask)
                     
                     print(currentDate)
                     if let nextDate = cc.date(byAdding: .day, value: 1, to: currentDate) {
                             currentDate = nextDate
                     }
-                } while currentDate <= toDate
+                }
+            }else{
+                if projectName.isEmpty{
+                    verifyTitle = true
+                }
+                
+                if description.isEmpty{
+                    verifyDescription = true
+                }
             }
             
         } label: {
@@ -230,6 +309,9 @@ extension AddTaskView {
         if projectName.isEmpty || description.isEmpty {
             return false
         }
+        
+        verifyTitle = false
+        verifyDescription = false
         
         return true
     }

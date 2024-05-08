@@ -39,6 +39,8 @@ struct ChatView: View {
                 TextField("Enter a message...", text: $viewModel.currentInput)
                     .padding()
                     .background(colorScheme == .dark ? .gray.opacity(0.2) : .gray.opacity(0.4))
+                    .foregroundColor(BackgroundMode().textColor())
+                    .autocorrectionDisabled()
                     .cornerRadius(12)
                 Button {
                     viewModel.cancelStream()
@@ -61,6 +63,8 @@ struct ChatView: View {
             }
         }
         .padding()
+        .background(BackgroundMode().viewBack())
+//        .ignoresSafeArea(.all)
     }
     
     func messageView(message: Message) -> some View{

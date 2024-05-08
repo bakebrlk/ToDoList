@@ -11,55 +11,49 @@ struct CustomTabBar: View {
     
     @State private var id = 0
     
-    @StateObject private var backgroundMode = BackgroundMode()
+    @ObservedObject public var backgroundMode: BackgroundMode
     
-    @StateObject public var user = UserResponse()
-    @StateObject var db = TaskData()
+    @StateObject public var user: UserResponse
+    @StateObject var db: TaskData
 
+    @Binding public var avatarData: Foundation.Data?
+    @StateObject public var taskGroup: Data.Tasks
     
 //MARK: Body
     var body: some View {
         VStack{
             if id == 0 {
-                HomePageView(user: user)
+                HomePageView(avatarData: $avatarData, user: user, db: db, pageId: $id, taskGroup: taskGroup)
                 
             }else if id == 1{
                 CalendarPageView( db: db)
                 
             }else if id == 2 {
-                AddTaskView(user: user)
+                AddTaskView(user: user, db: db)
                 
             }else if id == 3 {
                 TimerView()
                 
             }else if id == 4 {
-                ProfileView(user: user, backMode: backgroundMode)
+                ProfileView(user: user, backMode: backgroundMode, avatarData: $avatarData)
             }
             
             Spacer()
             tabBar
                 
         }
+    
         .background(BackgroundMode().viewBack())
-        .onAppear {
-            Task {
-                do {
-                    try await user.userInfo()
-                    if let user = user.user{
-                        try await db.appendTasks(userID: user.id)
-                        db.setUser(user: user)
-                    }else{
-                        print("User == nil")
-                    }
-                } catch {
-                    print("Error fetching user info: \(error)")
-                }
-            }
+        .onAppear{
+            id = 0
+            db.Task.sort { $0.time < $1.time }
         }
     }
+    
 }
 
 extension CustomTabBar {
+    
     private var tabBar: some View {
         ZStack(){
             
@@ -126,6 +120,3 @@ extension CustomTabBar {
     }
 }
 
-#Preview {
-    CustomTabBar()
-}

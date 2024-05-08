@@ -64,7 +64,6 @@ extension SignInView {
     private var signIn: some View {
         Button(
             action: {
- 
                 Authentication.signIn(email: email, password: password)
         }, label: {
             textView(text: "Sign In", size: 22)
@@ -84,7 +83,7 @@ extension SignInView {
         Task{
             if !Authentication.checkAuthentication(){
                 self.timer.upstream.connect().cancel()
-                navigate.navigateTo(.tabBar)
+                navigate.navigateTo(.splashScreen)
             }else{
                 print("No account")
             }

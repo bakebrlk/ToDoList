@@ -15,15 +15,16 @@ struct ProfileView: View {
     @EnvironmentObject var navigate: Navigation
 
     @State private var editProfileCheck = false
-    @State private var avatarData: Foundation.Data? = nil
     
+    @Binding public var avatarData: Foundation.Data?
+    @State private var faceID: Bool = getFaceID()
     
 //MARK: Body
     var body: some View {
         VStack{
             navBar
             Spacer()
-            avatar(height: Size.size[1]/3)
+            avatar(height: Size.size[1]/4)
 
             settings
             
@@ -36,18 +37,6 @@ struct ProfileView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .environment(\.colorScheme, BackgroundMode().isDark ? .dark : .light)
         .background(BackgroundMode().viewBack())
-        .task {
-            
-            do {
-                try? await user.userInfo()
-                
-                if let user = user.user {
-                    avatarData = try? await FirebaseFunction.getDataImage(userId: user.id, path: user.avatarURL)
-                    print(user.avatarURL)
-                }
-            }
-        }
-        
         .sheet(isPresented: $editProfileCheck, content: {
             EditProfileView(checkPresent: $editProfileCheck, user: user, avatarData: $avatarData)
                 .presentationDetents([.medium])
@@ -85,6 +74,7 @@ extension ProfileView{
                 userInfo(title: "nick name: ", description: user.user?.name ?? "user")
                 userInfo(title: "email: ", description: user.user?.email ?? "user@gmail.com")
                 backgroundSwitch
+                faceIDSwitch
                 editProfile
                 signOut
             }
@@ -142,14 +132,26 @@ extension ProfileView{
     
 //MARK: Background Mode Switch
     private var backgroundSwitch: some View {
+        switchBtn(text: "light/dark mode", check: backMode.$isDark)
+    }
+    
+    private var faceIDSwitch: some View {
+        switchBtn(text: "active Face ID", check: $faceID)
+            .onChange(of: faceID){
+                print(faceID)
+                setfaceID(bool: faceID)
+            }
+    }
+    
+    private func switchBtn(text: String, check: Binding<Bool>) -> some View {
         VStack{
             HStack{
-                textView(text: "light/dark mode", size: 14)
+                textView(text: text, size: 14)
                     .foregroundColor(BackgroundMode().textColor())
                     .padding(.leading)
                 Spacer()
                 
-                Toggle("", isOn: backMode.$isDark)
+                Toggle("", isOn: check)
                     .toggleStyle(SwitchToggleStyle(tint: BackgroundMode().avtorColor()))
                     .padding(.trailing)
             }
@@ -160,7 +162,6 @@ extension ProfileView{
         }
         .padding([.leading,.trailing,.top])
     }
-    
 //MARK: Sign Out Btn
     private var signOut: some View {
       
@@ -176,8 +177,5 @@ extension ProfileView{
     }
 }
 
-#Preview {
-    
-    ProfileView(user:UserResponse(), backMode: BackgroundMode())
-}
+
     

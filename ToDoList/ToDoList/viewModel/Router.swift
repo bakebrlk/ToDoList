@@ -15,7 +15,7 @@ enum Router{
     case signUp
     case updatePassword
     case sendMail
-    case tabBar
+    case splashScreen
     case chat
     
     @ViewBuilder
@@ -27,7 +27,7 @@ enum Router{
         case .signUp: SignUpView()
         case .updatePassword: UpdatePasswordView()
         case .sendMail: SendMailView()
-        case .tabBar: CustomTabBar()
+        case .splashScreen: SplashScreen()
         case .chat: ChatView()
         }
     }

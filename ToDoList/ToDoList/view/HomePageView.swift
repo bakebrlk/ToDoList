@@ -9,14 +9,21 @@ import SwiftUI
 
 struct HomePageView: View {
     
-    @State private var isImagePickerPresented = false
-    @State private var selectedImage: UIImage?
-    
+    @Binding public var avatarData: Foundation.Data?
+
     @State private var todayStatus: String = "Your today's task almost done!"
     @State private var statisticsValue = 0.0
   
+    @EnvironmentObject var navigate: Navigation
     @StateObject public var user: UserResponse
-
+    @StateObject var db: TaskData
+    @Binding var pageId: Int
+    @StateObject public var taskGroup: Data.Tasks
+    
+    @State private var inProgressTasks: [inProgressModel] = []
+    
+    @State private var onAppear: Bool = false
+    
     //MARK: Body
     var body: some View {
         
@@ -35,10 +42,29 @@ struct HomePageView: View {
                 .environment(\.colorScheme, BackgroundMode().isDark ? .dark : .light)
             }
             .onAppear{
+                
+                for ind in taskGroup.TaskGroup.indices {
+                    taskGroup.TaskGroup[ind].count = 0
+                    taskGroup.TaskGroup[ind].doneCount = 0
+                }
+                
+                for task in db.Task {
+                    taskGroup.appendCount(taskGroup: task.taskGroup, isDone: task.status == .done)
+                }
+                
+                for group in taskGroup.TaskGroup {
+                    taskGroup.statistics(group: group)
+                }
+                
+                inProgressTasks = db.getInProgressTasks()
+
                 withAnimation{
-                    statisticsValue = 0.2
+                    statisticsValue = db.todayStatistic()
                 }
             }
+               
+            
+           
     }
 }
 
@@ -51,7 +77,7 @@ extension HomePageView{
             userName
             Spacer()
             
-            notification
+            chat
                 .frame(maxHeight: height/13)
                 .foregroundColor(BackgroundMode().textColor())
         }
@@ -68,27 +94,21 @@ extension HomePageView{
     }
     
     private func avatar(height: CGFloat) -> some View {
-        Button {
-            isImagePickerPresented.toggle()
-        } label: {
-            if let image = selectedImage {
-                CustomImage.getImage(uiImage: image, height: height/1.1)
-            }else{
-                CustomImage.getImage(imageName: "checkAcc")
-            }
+        Group{
+            CustomImage.getImage(uiImage: (UIImage(data: avatarData ?? Foundation.Data()) ?? UIImage(named: "checkAcc"))!, height: Size.size[1]/4)
             
         }
-        .sheet(isPresented: $isImagePickerPresented) {
-            ImagePicker(selectedImage: $selectedImage, isImagePickerPresented: $isImagePickerPresented)
-        }
+        .frame(maxWidth: height, maxHeight: height)
+        .cornerRadius(height/4)
         .padding(.leading)
-        .cornerRadius(.infinity)
-        
     }
     
-    private var notification: some View {
-        CustomImage.getImage(systemName: "bell.fill")
+    private var chat: some View {
+        CustomImage.getImage(systemName: "ellipsis.message")
             .padding()
+            .onTapGesture {
+                navigate.navigateTo(.chat)
+            }
     }
     
     //MARK: All Statistics
@@ -135,7 +155,9 @@ extension HomePageView{
     }
     
     private func openTask(){
-        
+        withAnimation{
+            pageId = 1
+        }
     }
     
     private func statisticsCircle(width: CGFloat, height: CGFloat) -> some View {
@@ -162,7 +184,9 @@ extension HomePageView{
     }
     
     private func openOptions(){
-        
+        withAnimation{
+            statisticsValue = db.todayStatistic()
+        }
     }
     
     //MARK: In Progress - Group
@@ -171,16 +195,21 @@ extension HomePageView{
         
         VStack(alignment: .leading){
             
-            textView(text: "In Progress (\(Data.Tasks.inProgress.count))", size: 18)
+            textView(text: "In Progress (\(inProgressTasks.count))", size: 18)
                 .foregroundColor(BackgroundMode().textColor())
                 .padding(.leading)
             
             ScrollView(.horizontal, showsIndicators: false){
                 HStack{
-                    ForEach(Data.Tasks.inProgress, id: \.self){ task in
+                    
+                    ForEach(inProgressTasks){ task in
                         cartModel.getInProgress(model: task)
-                        
-                    }}
+                    }
+                    
+                    if inProgressTasks.count == 0 {
+                        cartModel.inProgressEmpty()
+                    }
+                }
             }
         }
     }
@@ -189,13 +218,13 @@ extension HomePageView{
     private func TaskGroup() -> some View {
         VStack(alignment: .leading){
             
-            textView(text: "Task Groups (\(Data.Tasks.TaskGroup.count))", size: 18)
+            textView(text: "Task Groups (\(taskGroup.TaskGroup.count))", size: 18)
                 .foregroundColor(BackgroundMode().textColor())
                 .padding()
             
             ScrollView(.vertical, showsIndicators: false){
                 VStack{
-                    ForEach(Data.Tasks.TaskGroup, id: \.self){ taks in
+                    ForEach(taskGroup.TaskGroup, id: \.self){ taks in
                         cartModel.getTaskGroup(model: taks)
                     }
                 }

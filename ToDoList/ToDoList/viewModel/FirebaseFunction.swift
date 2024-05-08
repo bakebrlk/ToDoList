@@ -154,7 +154,7 @@ struct FirebaseFunction{
             "taskGroupTitle" : model.taskGroup.title
         ]
         
-        try await Firestore.firestore().collection("usersTasks").document(userID).collection("list").addDocument(data: taskData) /*.setData(taskData,merge: false)*/
+        try await Firestore.firestore().collection("usersTasks").document(userID).collection("list").addDocument(data: taskData) 
     }
     
     public static func getTask(userID: String) async throws -> [TaskModel]{
@@ -172,12 +172,33 @@ struct FirebaseFunction{
             
             let DataDate = date(from: timestamp)
            
-            tasks.append(TaskModel(id: "\(data.documentID)",title: data["title"] as! String, description: data["description"] as! String, status: .toDo, time: DataDate, taskGroup: TaskGroupModel(title: "Buissness", count: 20, img: "taskLogo1", process: 0.5, color: .red.opacity(0.6))))
+            tasks.append(TaskModel(id: "\(data.documentID)",title: data["title"] as! String, description: data["description"] as! String, status: status(status: data["status"] as! String), time: DataDate, taskGroup: getTaskGroup(title: data["taskGroupTitle"] as! String)))
         }
         
         return tasks
     }
     
+    private static func getTaskGroup(title: String) -> TaskGroupModel {
+        for group in Data.Tasks().TaskGroup {
+            if group.title == title {
+                return group
+            }
+        }
+        
+        return Data.Tasks().TaskGroup[0]
+    }
+    
+    private static func status(status: String) -> TaskStatus{
+        if status == "To do" {
+            return .toDo
+        }else if status == "Done"{
+            return .done
+        }else if status == "In Process"{
+            return .inProcess
+        }
+        return .all
+    }
+
     private static func date(from timestamp: Timestamp) -> Date {
         let seconds = TimeInterval(timestamp.seconds)
         let date = Date(timeIntervalSince1970: seconds)
@@ -202,6 +223,10 @@ struct FirebaseFunction{
         
         Firestore.firestore().collection("usersTasks").document(userId).collection("list").document(taskID).updateData(data)
             
+    }
+    
+    static func deleteTask(userId: String, taskID: String) async throws{
+        try await Firestore.firestore().collection("usersTasks").document(userId).collection("list").document(taskID).delete()
     }
     
 }

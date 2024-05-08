@@ -40,16 +40,22 @@ extension CircleModel {
                                 .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.black, .clear]), startPoint: .topLeading, endPoint: .bottomTrailing))
                         }
                 }
-            
-            Circle()
-                .trim(from: 0, to: process)
-                .stroke(style: StrokeStyle(lineWidth: 10, lineCap: .round))
-                .frame(width: width, height: height)
-                .rotationEffect(.degrees(-90))
-                .foregroundStyle(LinearGradient(gradient: Gradient(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing))
-            
+            withAnimation{
+                Circle()
+                    .trim(from: 0, to: process)
+                    .stroke(style: StrokeStyle(lineWidth: 10, lineCap: .round))
+                    .frame(width: width, height: height)
+                    .rotationEffect(.degrees(-90))
+                    .foregroundStyle(LinearGradient(gradient: Gradient(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing))
+            }
             textView(text: "\(Int(process*100))%", size: textSize)
                 .foregroundColor(textColor)
+        }
+        .task{
+            print(process)
+            if process.isNaN {
+                process = 0.0
+            }
         }
         
     }

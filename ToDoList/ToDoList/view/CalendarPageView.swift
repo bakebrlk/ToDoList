@@ -13,8 +13,8 @@ struct CalendarPageView: View {
     
     @EnvironmentObject var navigate: Navigation
     
-    @State private var listIsEmpty = false
-    
+    @State public var listIsEmpty = false
+
     @State private var showEditTask: Bool = false
         
     private let taskStatus = [
@@ -28,6 +28,7 @@ struct CalendarPageView: View {
 
     @State private var selectedTask: TaskModel? = nil
     @StateObject var db: TaskData
+    
     
 //MARK: Body
     var body: some View {
@@ -44,7 +45,8 @@ struct CalendarPageView: View {
         .background(BackgroundMode().viewBack())
         .environment(\.colorScheme, BackgroundMode().isDark ? .dark : .light)
         .onAppear {
-            listIsEmpty = db.Task.isEmpty
+           listIsEmpty = db.Task.isEmpty
+            db.Task.sort { $0.time < $1.time }
         }
         .sheet(isPresented: $showEditTask, content: {
             editTaskView(task: $selectedTask, showEditTask: $showEditTask, db: db)
@@ -73,7 +75,6 @@ extension CalendarPageView {
                     Button(action: {
                         selectDate = id
                         listIsEmpty = checkSelectedDate()
-                        print(listIsEmpty)
                     }, label: {
                         CalendarModel.shared.forCalendarPage(date: date)
                     })
@@ -101,6 +102,23 @@ extension CalendarPageView {
         return result
     }
     
+    private func checkSelectedStatus() -> Bool {
+        
+        var result = true
+        for task in db.Task{
+            if Calendar.current.isDate(task.time, equalTo: Calendar.current.date(byAdding: .day, value: selectDate, to: Date())!, toGranularity: .day){
+                if taskStatusState == .all{
+                    return false
+                }
+                if taskStatusState == task.status{
+                    result = false
+                    break
+                }
+            }
+        }
+        return result
+    }
+    
 //MARK: Status Task
     private func statusTask() -> some View {
         ScrollView(.horizontal,showsIndicators: false){
@@ -117,6 +135,7 @@ extension CalendarPageView {
     private func statusTaskView(status: TaskStatus) -> some View {
         Button(action: {
             taskStatusState = status
+            listIsEmpty = checkSelectedStatus()
         }, label: {
             textView(text: status.builder, size: 16)
                 .padding([.leading,.trailing],20)
@@ -142,12 +161,12 @@ extension CalendarPageView {
                 }
             } else {
                 ScrollView(.vertical, showsIndicators: false) {
-                    ForEach(db.Task) { task in
+                    ForEach(db.Task, id: \.id) { task in
                         
                         if Calendar.current.isDate(task.time, equalTo: Calendar.current.date(byAdding: .day, value: selectDate, to: Date())!, toGranularity: .day) {
                             
                             if taskStatusState == .all{
-                                TaskViewCell(model: task)
+                                TaskViewCell(model: task, db: db)
                                     .onTapGesture {
                                         selectedTask = task
                                         showEditTask.toggle()
@@ -160,9 +179,10 @@ extension CalendarPageView {
                                             self.onEnd(value: value, model: task)
                                         }
                                     )
+                                    .id(task.id)
                             }else{
-                                if taskStatusState != .all && task.status == taskStatusState {
-                                    TaskViewCell(model: task)
+                                if task.status == taskStatusState {
+                                    TaskViewCell(model: task, db: db)
                                         .onTapGesture {
                                             selectedTask = task
                                             showEditTask.toggle()
@@ -175,6 +195,7 @@ extension CalendarPageView {
                                                 self.onEnd(value: value, model: task)
                                             }
                                         )
+                                        .id(task.id)
                                 }
                             }
 

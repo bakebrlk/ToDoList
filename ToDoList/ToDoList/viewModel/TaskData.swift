@@ -13,23 +13,27 @@ final class TaskData: ObservableObject {
        
     private var user: UserModel?
     
+    @ObservedObject var taskGroup = Data.Tasks()
+    
+    public func setTaskGroup(_ group: Data.Tasks ) {
+        taskGroup = group
+    }
+    
     public func setUser(user: UserModel){
         self.user = user
     }
+        
+    @Published public var Task: [TaskModel] = []
     
-    @Published public var Task: [TaskModel] = [
-        TaskModel(id: "E621E1F8-C36C-495A-93FC-0C247A3E6E5F", title: "Market Research", description: "Grocery shopping app design", status: .done, time: Date(), taskGroup: Data.Tasks.TaskGroup[0]),
-        TaskModel(id: "E721E1F8-C36C-495A-93FC-0C247A3E6E5F", title: "Market Research", description: "Grocery shopping app design", status: .inProcess, time: Date(), taskGroup: Data.Tasks.TaskGroup[1]),
-        TaskModel(id: "E821E1F8-C36C-495A-93FC-0C247A3E6E5F", title: "Market Research", description: "Grocery shopping app design", status: .toDo, time: Date(), taskGroup: Data.Tasks.TaskGroup[2]),
-        TaskModel(id: "E921E1F8-C36C-495A-93FC-0C247A3E6E5F", title: "Market Research", description: "Grocery shopping app design", status: .done, time: Date(), taskGroup: Data.Tasks.TaskGroup[3]),
-        TaskModel(id: "E121E1F8-C36C-495A-93FC-0C247A3E6E5F", title: "Market Research", description: "Grocery shopping app design", status: .inProcess, time: Date(), taskGroup: Data.Tasks.TaskGroup[4])
-    ]
-    
+
     public func appendTasks(userID: String) async throws {
+        print("append Task")
         let tasks = try await FirebaseFunction.getTask(userID: userID)
 
-        for task in tasks {
-            Task.append(task)
+        Task = tasks
+        
+        for group in taskGroup.TaskGroup {
+            taskGroup.statistics(group: group)
         }
     }
     
@@ -45,7 +49,9 @@ final class TaskData: ObservableObject {
     public func offSet(task: TaskModel, _ offSet: CGFloat){
         for index in 0..<Task.count {
             if Task[index].id == task.id {
-                Task[index].offSet = offSet
+                withAnimation{
+                    Task[index].offSet = offSet
+                }
                 break
             }
         }
@@ -69,15 +75,16 @@ final class TaskData: ObservableObject {
                     Task[i].title = title
                     Task[i].description = description
                     
-                    FirebaseFunction.updateTask(userId: user!.id, taskID: Task[i].id, title: title, description: description, status: Task[i].status)
+                    FirebaseFunction.updateTask(userId: user!.id, taskID: Task[i].id, title: title, description: description, status: nil)
                     
                 }else if let title = title {
                     Task[i].title = title
-                    FirebaseFunction.updateTask(userId: user!.id, taskID: Task[i].id, title: title, description: Task[i].description, status: Task[i].status)
+                    FirebaseFunction.updateTask(userId: user!.id, taskID: Task[i].id, title: title, description: nil, status: nil)
                     
                 }else if let description = description{
+                    print("\(description)")
                     Task[i].description = description
-                    FirebaseFunction.updateTask(userId: user!.id, taskID: Task[i].id, title: Task[i].title, description: description, status: Task[i].status)
+                    FirebaseFunction.updateTask(userId: user!.id, taskID: Task[i].id, title: nil, description: description, status: nil)
                     
                 }
                 
@@ -93,9 +100,58 @@ final class TaskData: ObservableObject {
             
             if let index = self.Task.firstIndex(where: { $0.id == task.id }) {
                 self.Task[index].status = status
+                FirebaseFunction.updateTask(userId: user!.id, taskID: task.id, title: nil, description: nil, status: status)
             }
         }
+        offSet(task: task, 0)
     }
+    
+    public func deleteTask(task: TaskModel) async throws{
+        
+        guard let user = user else{
+            return
+        }
+        for i in 0..<Task.count {
+            if Task[i].id == task.id{
+                withAnimation{
+                    Task.remove(at: i)
+                }
+                break
+            }
+        }
+        try await FirebaseFunction.deleteTask(userId:user.id, taskID: task.id)
+    }
+    
+//MARK: Statistic
+    
+    public func todayStatistic() -> Double{
+        var doneTasks = 0.0
+        var allTasks = 0.0
+        
+        for task in Task{
+            if Calendar.current.isDate(task.time, equalTo: Calendar.current.date(byAdding: .day, value: 0, to: Date())!, toGranularity: .day) {
+                
+                if task.status == .done {
+                    doneTasks += 1.0
+                }
+                allTasks += 1.0
+            }
+        }
+        return (doneTasks/allTasks).isNaN ? 0.0 : doneTasks/allTasks
+    }
+    
+//MARK: get inProgress tasks
+    public func getInProgressTasks() -> [inProgressModel]{
+        var tasks: [inProgressModel] = []
+        
+        for task in Task {
+            if task.status == .inProcess {
+                tasks.append(inProgressModel(group: task.taskGroup.title, title: task.title, logo: task.taskGroup.img, color: task.taskGroup.color, progress: task.taskGroup.process))
+            }
+        }
+        return tasks
+    }
+    
     
 }
 

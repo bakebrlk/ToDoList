@@ -43,6 +43,7 @@ struct TaskViewCell: View{
 //    }
     
     var model: TaskModel
+    var db: TaskData
     
     var body: some View {
 
@@ -54,14 +55,12 @@ struct TaskViewCell: View{
             
             HStack{
                 Button {
-//                    self.offsetTask(task: model, width: 1000)
-//                    self.deleteTask(task: model)
-//                    print(model)
-//                    Timer.scheduledTimer(withTimeInterval: 0.15, repeats: false) {_ in
-//                        withAnimation{
-//                            self.deleteTask(task: model)
-//                        }
-//                    }
+
+                    Task{
+                        db.offSet(task: model, 1000)
+                        try await db.deleteTask(task: model)
+                    }
+                    
                 } label: {
                     Image(systemName: "trash")
                         .frame(width: Size.size[0]/5)
@@ -74,7 +73,7 @@ struct TaskViewCell: View{
                 HStack{
                     
                     Button {
-//                        updateStatus(task: model, status: .toDo)
+                        db.updateStatus(task: model, status: .toDo)
                     } label: {
                         
                         Image(systemName: "square.and.pencil")
@@ -86,7 +85,7 @@ struct TaskViewCell: View{
                     .frame(width: Size.size[0]/7, height: Size.size[1]/15)
                     
                     Button {
-//                        self.updateStatus(task: model, status: .inProcess)
+                        db.updateStatus(task: model, status: .inProcess)
                             
                     } label: {
                         Image(systemName: "rectangle.and.pencil.and.ellipsis.rtl")
@@ -98,7 +97,7 @@ struct TaskViewCell: View{
                     .frame(width: Size.size[0]/7, height: Size.size[1]/15)
                     
                     Button {
-//                        self.updateStatus(task: model, status: .done)
+                        db.updateStatus(task: model, status: .done)
                     } label: {
                         Image(systemName: "checkmark.circle")
                             .resizable()
@@ -148,7 +147,7 @@ struct TaskViewCell: View{
                 .padding()
             }
             .frame(maxWidth: .infinity, maxHeight: Size.size[1]/6)
-            .background(Color.white.opacity(BackgroundMode().isDark ? 0.92 : 1))
+            .background(Color.white.opacity(BackgroundMode().isDark ? 1 : 1))
             .offset(x: model.offSet)
         }
         .frame(maxWidth: .infinity, maxHeight: Size.size[1]/6)
@@ -157,38 +156,4 @@ struct TaskViewCell: View{
 
     }
 
-    
-//    public func updateStatus(task: TaskModel, status: TaskStatus) {
-//    
-//        Task{
-//            if let user = user.user{
-//                DispatchQueue.main.async {
-//                    FirebaseFunction.updateTask(userId: user.id, taskID: task.id, title: nil, description: nil, status: status)
-//                }
-//            }
-//            
-//            offsetTask(task: task, width: 0)
-//        }
-//        
-//        Task{
-//            DispatchQueue.main.async{
-//                self.db.updateStatus(task: task, status: status)
-//            }
-//        }
-//    }
-//    
-//    public func deleteTask(task: TaskModel){
-//        for i in 0..<db.Task.count {
-//            if db.Task[i].id == task.id{
-//                db.Task.remove(at: i)
-//                break
-//            }
-//        }
-//    }
-//    
-//    public func offsetTask(task: TaskModel, width: CGFloat){
-//        withAnimation{
-//            db.offSet(task: task, 0)
-//        }
-//    }
 }

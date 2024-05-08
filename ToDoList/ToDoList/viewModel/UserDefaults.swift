@@ -31,3 +31,13 @@ func setSize(width: CGFloat, height: CGFloat){
 func getSize() -> [CGFloat]{
     return UserDefaults.standard.value(forKey: "Size") as! [CGFloat]
 }
+
+func setfaceID(bool: Bool) {
+    UserDefaults.standard.setValue(bool, forKey: "FaceID")
+}
+
+func getFaceID() -> Bool {
+    var result = UserDefaults.standard.value(forKey: "FaceID")
+    result = (result == nil) ? false : result
+    return result as! Bool
+}

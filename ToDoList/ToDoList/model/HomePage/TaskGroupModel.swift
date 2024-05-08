@@ -10,8 +10,9 @@ import SwiftUI
 struct TaskGroupModel:Identifiable, Hashable{
     var id = UUID()
     let title: String
-    let count: Int
+    var count: CGFloat
     let img: String
-    let process: CGFloat
+    var process: CGFloat
     let color: Color
+    var doneCount: CGFloat
 }

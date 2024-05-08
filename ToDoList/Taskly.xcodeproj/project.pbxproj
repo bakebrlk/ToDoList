@@ -116,6 +116,7 @@
 		8B9460E02BC3493000569F79 /* editTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9460DF2BC3493000569F79 /* editTaskView.swift */; };
 		8B9460E62BC38A0200569F79 /* TaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9460E52BC38A0200569F79 /* TaskData.swift */; };
 		8B9A085C2BA709BC009CAC97 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9A085B2BA709BC009CAC97 /* ProfileView.swift */; };
+		8BA949D82BCC96ED00840335 /* FaceIDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA949D72BCC96ED00840335 /* FaceIDView.swift */; };
 		8BAEB9A22BAEF39600B5F5E2 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAEB9A12BAEF39600B5F5E2 /* EditProfileView.swift */; };
 		8BBAFCB02BAAFF7F009609EE /* BackgroundMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAFCAF2BAAFF7F009609EE /* BackgroundMode.swift */; };
 		8BBAFCB22BAB09D1009609EE /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAFCB12BAB09D1009609EE /* CustomTabBar.swift */; };
@@ -126,21 +127,9 @@
 		8BC1B6E92B8158380069ECF6 /* onbording2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1B6E62B8158380069ECF6 /* onbording2.png */; };
 		8BC1B6EA2B8158380069ECF6 /* onbording1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1B6E72B8158380069ECF6 /* onbording1.png */; };
 		8BDB73BA2BCA114100BC0BE8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB73B92BCA114100BC0BE8 /* User.swift */; };
+		8BDB73BC2BCA3BFD00BC0BE8 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB73BB2BCA3BFD00BC0BE8 /* SplashScreen.swift */; };
 		8BDE130B2B912253005BBEFF /* CircleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDE130A2B912253005BBEFF /* CircleModel.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		8B5A1A842BC1D5D4007992EC /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8B08BE312BBA2B0D005E049A /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
@@ -204,6 +193,8 @@
 		8B9460DF2BC3493000569F79 /* editTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editTaskView.swift; sourceTree = "<group>"; };
 		8B9460E52BC38A0200569F79 /* TaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskData.swift; sourceTree = "<group>"; };
 		8B9A085B2BA709BC009CAC97 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		8BA949D72BCC96ED00840335 /* FaceIDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDView.swift; sourceTree = "<group>"; };
+		8BA949DB2BCCB27700840335 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		8BAEB9A12BAEF39600B5F5E2 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		8BBAFCAF2BAAFF7F009609EE /* BackgroundMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundMode.swift; sourceTree = "<group>"; };
 		8BBAFCB12BAB09D1009609EE /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
@@ -214,6 +205,7 @@
 		8BC1B6E62B8158380069ECF6 /* onbording2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onbording2.png; sourceTree = "<group>"; };
 		8BC1B6E72B8158380069ECF6 /* onbording1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onbording1.png; sourceTree = "<group>"; };
 		8BDB73B92BCA114100BC0BE8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8BDB73BB2BCA3BFD00BC0BE8 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		8BDE130A2B912253005BBEFF /* CircleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -403,6 +395,7 @@
 			children = (
 				8B1BB5E32B95796A001D62DA /* Auth */,
 				8B4032192B80B0590097D29C /* WelcomePageView.swift */,
+				8BDB73BB2BCA3BFD00BC0BE8 /* SplashScreen.swift */,
 				8BC0AD962B910C3100DE3BCC /* HomePageView.swift */,
 				8B7F01452B97C532009405FC /* CalendarPageView.swift */,
 				8B9460DF2BC3493000569F79 /* editTaskView.swift */,
@@ -411,6 +404,7 @@
 				8BAEB9A12BAEF39600B5F5E2 /* EditProfileView.swift */,
 				8B9A085B2BA709BC009CAC97 /* ProfileView.swift */,
 				8B08BE312BBA2B0D005E049A /* ChatView.swift */,
+				8BA949D72BCC96ED00840335 /* FaceIDView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -441,6 +435,7 @@
 		8B6179AF2BB3B150002862DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8BA949DB2BCCB27700840335 /* LocalAuthentication.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -503,7 +498,6 @@
 				8B279F2A2B80A16E00C1C298 /* Sources */,
 				8B279F2B2B80A16E00C1C298 /* Frameworks */,
 				8B279F2C2B80A16E00C1C298 /* Resources */,
-				8B5A1A842BC1D5D4007992EC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -657,6 +651,7 @@
 				8B1BB5F12B958E3F001D62DA /* inProgressModel.swift in Sources */,
 				8B82BD482B8E563D00DC3BF2 /* RouterView.swift in Sources */,
 				8B16013E2B82C4A10017FD2B /* CheckAccountView.swift in Sources */,
+				8BDB73BC2BCA3BFD00BC0BE8 /* SplashScreen.swift in Sources */,
 				8B72FAD62BA2A24C00D30FD8 /* TimerModel.swift in Sources */,
 				8B3BF69C2BA868E700499FAC /* DataModel.swift in Sources */,
 				8B1BB5E12B9577C8001D62DA /* RecrangleModel.swift in Sources */,
@@ -677,6 +672,7 @@
 				8B279F322B80A16E00C1C298 /* ToDoListApp.swift in Sources */,
 				8B8A2B7A2B8DC13900D74AB0 /* Authentication.swift in Sources */,
 				8B72FAD42BA29C8000D30FD8 /* TimerView.swift in Sources */,
+				8BA949D82BCC96ED00840335 /* FaceIDView.swift in Sources */,
 				8B7F014D2B97DC8D009405FC /* TaskModel.swift in Sources */,
 				8B7F014B2B97CD48009405FC /* CalendarModel.swift in Sources */,
 				8B1BB5DE2B95723D001D62DA /* cartModel.swift in Sources */,
@@ -827,6 +823,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ToDoList/main/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -860,6 +857,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ToDoList/main/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
